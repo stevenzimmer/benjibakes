@@ -5,7 +5,7 @@ const roboto = Roboto({ weight: ["400",'700'], subsets: ["latin"] });
 
 
 export const metadata: Metadata = {
-  title: "Beni Bakes",
+  title: "Benji Bakes",
   description: "Home of the best brown butter chocolate chip cookies in Rocklin, Ca",
 };
 
