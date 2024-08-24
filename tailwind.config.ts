@@ -7,7 +7,19 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    
+   
     extend: {
+      fontFamily: {
+        roboto: ["Roboto","sans-serif"],
+        pw: ['"Playwrite US Trad"', "cursive"],
+      },
+      colors: {
+        bb: {
+          blue: "#5cbbf0",
+          brown: "#d9a361"
+        }
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
