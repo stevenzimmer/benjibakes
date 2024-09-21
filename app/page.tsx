@@ -1,7 +1,7 @@
 import Image from "next/image";
 const menuItems = [
     {
-        label: "Benji Bakes` Famous",
+        label: "Benji Bakes' Famous",
         title: "Brown Butter Chocolate Chip Cookie",
         description:
             "A giant chocolate chip cookie made with toasty brown butter, topped with Maldon sea salt flakes for sweet and salty perfection. Add walnuts for small charge!",
@@ -13,45 +13,50 @@ const menuItems = [
         title: "Pumpkin Snickerdoodle",
         description:
             "A large, chewy snickerdoodle made with brown butter, real pumpkin and cinnamon to ring in the beginning of fall.",
-        price: "6 for $13  |  12 for $24",
+        price: "6 for $14  |  12 for $25",
         image: "/pumpkin-snickerdoodle.png",
     },
     {
-        label: "Seasonal Special",
+        label: "Rotating Favorite",
         title: "Celebration Cookie",
         description:
             "A soft, chewy sugar cookie loaded with colorful sprinkles…perfect for any celebration.",
         price: "6 for $12  |  12 for $22",
         image: "/celebration.png",
     },
-    {
-        label: "Seasonal Special",
-        title: "Brown Butter Cookie",
-        description:
-            "A spin-off of our famous chocolate chip recipe, this cookie is crispy on the outside, chewy on the inside and highlights the toasted butter and vanilla flavors. Topped with Maldon sea salt for a savory finish!",
-        price: "6 for $12  |  12 for $22",
-        image: "/brown-butter.png",
-    },
 ];
 const d = new Date();
-const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-];
 const month = d.getMonth();
+
+// Create a seasonal menu based on the current month
+let season = "";
+switch (month) {
+    case 0:
+    case 1:
+    case 2:
+        season = "Winter";
+        break;
+
+    case 3:
+    case 4:
+        season = "Spring";
+        break;
+    case 8:
+    case 9:
+        season = "Fall";
+        break;
+    case 10:
+    case 11:
+        season = "Holiday";
+        break;
+    default:
+        season = "Summer";
+        break;
+}
+
 export default function Home() {
     return (
-        <main className="px-6 py-12 lg:p-16 bg-white max-w-6xl mx-auto rounded-lg ">
+        <main className="px-6 py-12 lg:p-16 bg-white max-w-6xl mx-auto rounded-lg relative">
             <h1 className="sr-only">Benji Bakes</h1>
             <div className="px-12">
                 <figure>
@@ -77,11 +82,18 @@ export default function Home() {
                 </figure>
 
                 <div className="text-center">
-                    <div className="mb-6 max-w-2xl mx-auto text-xl leading-normal">
+                    <a
+                        className="bg-bb-brown inline-block px-12 py-3 rounded-md text-white text-xl font-semibold hover:bg-bb-brown/90 transition-opacity duration-200 mb-12"
+                        href="#menu"
+                    >
+                        View our {season} Menu
+                    </a>
+                    <div className=" max-w-2xl mx-auto text-xl leading-normal">
                         <p>
-                            Welcome to Benji Bakes, we’re so happy you found us!
-                            We are an at home bakery located in Rocklin,
-                            California with a passion for really good cookies.
+                            Welcome to Benji Bakes, we&apos;re so happy you
+                            found us! We are an at-home bakery located in
+                            Rocklin, California with a passion for <i>really</i>{" "}
+                            good cookies.
                         </p>
                         <p>
                             See our our menu and order information below, and be
@@ -89,18 +101,12 @@ export default function Home() {
                             monthly!
                         </p>
                     </div>
-                    <a
-                        className="bg-bb-brown inline-block px-12 py-3 rounded-md text-white text-xl font-semibold hover:bg-bb-brown/90 transition-opacity duration-200"
-                        href="#menu"
-                    >
-                        View our {months[month]} Menu
-                    </a>
                 </div>
             </div>
 
             <div id="menu">
                 <h2 className="text-3xl md:text-5xl text-bb-brown font-light mt-6 py-6 md:py-12 border-b-8 border-dotted w-full flex items-center justify-center mb-6 border-bb-blue/50 font-pw">
-                    {months[month]} Menu
+                    {season} Menu
                 </h2>
 
                 {menuItems.map((item, i) => (
@@ -159,8 +165,10 @@ export default function Home() {
                     </li>
                 </ul>
                 <p className="font-semibold text-lg md:text-xl text-bb-brown">
-                    Party catering available! Cash, Venmo or Zelle payments only
-                    at this time.
+                    Party catering available!
+                </p>
+                <p className="font-semibold text-lg md:text-xl text-bb-brown">
+                    We accept cash, Venmo, or Zelle payments only at this time.
                 </p>
             </div>
         </main>
