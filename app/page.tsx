@@ -136,10 +136,10 @@ export default function Home() {
                 {menuItems.map((item, i) => (
                     <div
                         key={i}
-                        className="bg-slate-100 px-6 md:px-12 py-12 w-full rounded-lg mb-6 group"
+                        className="bg-slate-100 md:px-12 py-12 w-full rounded-lg mb-6 group"
                     >
                         <div className="flex justify-center items-center flex-wrap w-full">
-                            <div className="w-full md:w-1/2 lg:w-1/3 px-6 mb-6">
+                            <div className="w-full md:w-1/2 lg:w-1/3 px-12 md:px-6 mb-6">
                                 <Image
                                     src={item.image}
                                     alt={item.title}
@@ -171,8 +171,8 @@ export default function Home() {
                         How to Order
                     </h2>
                 </div>
-                <div className="flex items-end flex-wrap flex-col-reverse lg:flex-row -mx-6 pt-6 pb-12">
-                    <div className="w-full md:w-7/12 px-6 ">
+                <div className="flex items-end flex-wrap  -mx-6 pt-6 pb-12">
+                    <div className="w-full md:w-7/12 px-6 mb-12 lg:mb-0">
                         <p className="text-lg md:text-2xl text-bb-brown font-semibold">
                             Email orders to{" "}
                         </p>
@@ -197,7 +197,7 @@ export default function Home() {
                                 Catering available
                             </span>
                             ! Free delivery for Rocklin, Roseville, Lincoln,
-                            Granity Bay, and Loomis areas for orders over $75.
+                            Granite Bay, and Loomis areas for orders over $75.
                         </p>
                         <p className=" text-lg md:text-xl text-bb-brown">
                             We accept cash, Zelle payments
