@@ -56,13 +56,43 @@ switch (month) {
 
 export default function Home() {
     return (
-        <main className="px-6 py-12 lg:p-16 bg-white max-w-6xl mx-auto rounded-lg relative">
+        <main className="px-6 pb-12 lg:px-16 lg:pb-16 bg-white max-w-6xl mx-auto rounded-lg relative py-12 md:py-0">
+            <div className="lg:sticky top-3 left-0 right-0 px-6 py-3 w-full h-full shadow-md mb-6 md:mb-12 bg-white/80 rounded-lg z-10 hidden md:block">
+                <div className="flex justify-center md:justify-between flex-wrap items-center">
+                    <div className="w-full md:w-1/12">
+                        <Image
+                            src="/bb-letters.png"
+                            alt="Benji Bakes Letters Icon"
+                            width={120}
+                            height={120}
+                            className="mx-auto mb-6 md:mb-0"
+                            title="Benji Bakes Logo"
+                        />
+                    </div>
+                    <div className="w-full md:w-11/12">
+                        <div className="w-full flex justify-center text-center md:justify-end items-center flex-wrap ">
+                            <a
+                                href="#order"
+                                className="inline-block text-bb-brown rounded-md text-xl text-center font-semibold px-6 mb-3 md:mb-0"
+                            >
+                                How to order
+                            </a>
+                            <a
+                                className="bg-bb-brown inline-block px-6 lg:px-12 py-2 lg:py-3 rounded-md text-white text-xl font-semibold hover:bg-bb-brown/90 transition-opacity duration-200"
+                                href="#menu"
+                            >
+                                View our {season} Menu
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <h1 className="sr-only">Benji Bakes</h1>
             <div className="px-12">
                 <figure>
                     <Image
                         src="/logo-horizontal.png"
-                        alt="Beni Bakes Logo"
+                        alt="Benji Bakes Logo"
                         width={400}
                         height={400}
                         className="mb-6 mx-auto w-full max-w-lg"
@@ -82,12 +112,6 @@ export default function Home() {
                 </figure>
 
                 <div className="text-center">
-                    <a
-                        className="bg-bb-brown inline-block px-12 py-3 rounded-md text-white text-xl font-semibold hover:bg-bb-brown/90 transition-opacity duration-200 mb-12"
-                        href="#menu"
-                    >
-                        View our {season} Menu
-                    </a>
                     <div className=" max-w-2xl mx-auto text-xl leading-normal">
                         <p>
                             Welcome to Benji Bakes, we&apos;re so happy you
@@ -104,8 +128,8 @@ export default function Home() {
                 </div>
             </div>
 
-            <div id="menu">
-                <h2 className="text-3xl md:text-5xl text-bb-brown font-light mt-6 py-6 md:py-12 border-b-8 border-dotted w-full flex items-center justify-center mb-6 border-bb-blue/50 font-pw">
+            <div id="menu" className="scroll-my-32">
+                <h2 className="text-3xl md:text-5xl text-bb-brown font-light mt-6 pb-6 pt-12 border-b-8 border-dotted w-full flex items-center justify-center mb-6 border-bb-blue/50 font-pw">
                     {season} Menu
                 </h2>
 
@@ -141,35 +165,65 @@ export default function Home() {
                 ))}
             </div>
 
-            <div className="">
-                <p className="text-lg md:text-2xl text-bb-brown font-semibold">
-                    Email orders to{" "}
-                </p>
-                <a
-                    className="text-bb-blue text-xl md:text-2xl leading-loose font-light mb-6 underline block"
-                    href="mailto:allie@benjibakes.com"
-                >
-                    allie@benjibakes.com
-                </a>
+            <div className="scroll-my-32" id="order">
+                <div className="text-center">
+                    <h2 className="text-3xl md:text-5xl text-bb-brown font-light mt-6 pb-6 pt-12 border-b-8 border-dotted w-full flex items-center justify-center mb-6 border-bb-blue/50 font-pw">
+                        How to Order
+                    </h2>
+                </div>
+                <div className="flex items-end flex-wrap flex-col-reverse lg:flex-row -mx-6 pt-6 pb-12">
+                    <div className="w-full md:w-7/12 px-6 ">
+                        <p className="text-lg md:text-2xl text-bb-brown font-semibold">
+                            Email orders to{" "}
+                        </p>
+                        <a
+                            className="text-bb-blue text-xl md:text-2xl leading-loose font-light mb-6 underline block"
+                            href="mailto:allie@benjibakes.com"
+                        >
+                            allie@benjibakes.com
+                        </a>
 
-                <p className="text-lg md:text-xl text-bb-brown mb-1">
-                    In the email, please include your:
-                </p>
-                <ul className="list-disc pl-8 text-lg md:text-xl text-bb-brown mb-3">
-                    <li>Name</li>
-                    <li>Phone number</li>
-                    <li>Order details</li>
-                    <li>
-                        Pickup date and time (either Tuesday or Thursday
-                        afternoon)
-                    </li>
-                </ul>
-                <p className="font-semibold text-lg md:text-xl text-bb-brown">
-                    Party catering available!
-                </p>
-                <p className="font-semibold text-lg md:text-xl text-bb-brown">
-                    We accept cash, Venmo, or Zelle payments only at this time.
-                </p>
+                        <p className="text-lg md:text-xl text-bb-brown mb-1">
+                            In the email, please include your:
+                        </p>
+                        <ul className="list-disc pl-8 text-lg md:text-xl text-bb-brown mb-3">
+                            <li>Name</li>
+                            <li>Phone number</li>
+                            <li>Order details</li>
+                            <li>Pickup date and time</li>
+                        </ul>
+                        <p className=" text-lg md:text-xl text-bb-brown mb-3">
+                            <span className="font-semibold">
+                                Catering available
+                            </span>
+                            ! Free delivery for Rocklin, Roseville, Lincoln,
+                            Granity Bay, and Loomis areas for orders over $75.
+                        </p>
+                        <p className=" text-lg md:text-xl text-bb-brown">
+                            We accept cash, Zelle payments
+                            (allie@benjibakes.com), or{" "}
+                            <a
+                                href="https://venmo.com/benjibakes"
+                                target="_blank"
+                                className="underline "
+                            >
+                                Venmo (@benjibakes)
+                            </a>
+                            .
+                        </p>
+                    </div>
+                    <div className="w-full md:w-5/12 px-6">
+                        <figure>
+                            <Image
+                                src="/thank-you-benji.png"
+                                alt="Benji says thank you"
+                                width={200}
+                                height={200}
+                                className="w-full"
+                            />
+                        </figure>
+                    </div>
+                </div>
             </div>
         </main>
     );

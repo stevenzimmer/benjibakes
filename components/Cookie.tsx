@@ -1,6 +1,5 @@
 "use client";
 import {useParallax} from "react-scroll-parallax";
-
 import Image from "next/image";
 
 export default function Cookie({
@@ -13,7 +12,7 @@ export default function Cookie({
     y: number;
 }): JSX.Element {
     const cookieParallax = useParallax({
-        translateY: [0, 200],
+        translateY: [0, Math.floor(Math.random() * 200)],
         rotate: [0, Math.floor(Math.random() * 360)],
     });
     return (
