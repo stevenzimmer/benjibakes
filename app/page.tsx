@@ -120,7 +120,7 @@ export default function Home() {
                             good cookies.
                         </p>
                         <p>
-                            See our our menu and order information below, and be
+                            See our menu and order information below, and be
                             sure to check back often as we swap in new cookies
                             monthly!
                         </p>
