@@ -4,21 +4,9 @@ import Image from "next/image";
 import {useCartStore} from "@/store";
 import {motion, AnimatePresence} from "framer-motion";
 import {Price} from "@/types/Cart";
-export default function ProductCard({
-    item,
-}: {
-    item: {
-        name: string;
-        id: string;
-        unit_amount: number;
-        image: string;
-        menu_label: string;
-        description: string;
-        price_nickname: string;
-        price_id: string;
-        prices: Price[];
-    };
-}): JSX.Element {
+import {Plus, Minus} from "lucide-react";
+
+export default function ProductCard({item}: {item: any}): JSX.Element {
     const {prices} = item;
     const cartStore = useCartStore();
     const handleAddToCart = (priceIndex: number) => {
@@ -66,7 +54,7 @@ export default function ProductCard({
                         <h4 className="text-lg  font-semibold">Add to cart</h4>
                     </div>
                     <div className="flex items-center flex-wrap -mx-2">
-                        {prices.map((price, i) => {
+                        {prices.map((price: any, i: number) => {
                             const cartItem = cartStore.cart.find((item) => {
                                 return item.price_id === price.id;
                             });
@@ -99,7 +87,7 @@ export default function ProductCard({
                                                 i={i}
                                                 state="decrement"
                                             >
-                                                -
+                                                <Minus />
                                             </QuantityButton>
                                         )}
 
@@ -118,7 +106,7 @@ export default function ProductCard({
                                             i={i}
                                             state="increment"
                                         >
-                                            +
+                                            <Plus />
                                         </QuantityButton>
                                     </div>
                                 </div>

@@ -17,13 +17,14 @@ import CheckoutForm from "@/components/CheckoutForm";
 export default function Checkout() {
     const cartStore = useCartStore();
     // const router = useRouter();
-    const {setCheckoutState} = useContext(ThemeContext);
+    // const {setCheckoutState} = useContext(ThemeContext);
 
     // const [clientSecret, setClientSecret] = useState("");
     // const [paymentIntent, setPaymentIntent] = useState("");
 
     async function getPaymentIntent() {
         if (!cartStore.paymentIntent || !cartStore.clientSecret) {
+            console.log("------creating payment intent------");
             const response = await fetch("/api/create-payment-intent", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
@@ -49,9 +50,12 @@ export default function Checkout() {
         }
     }
 
-    if (!cartStore.clientSecret || !cartStore.paymentIntent) {
-        getPaymentIntent();
-    }
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+        if (!cartStore.clientSecret) {
+            getPaymentIntent();
+        }
+    }, []);
 
     const options: StripeElementsOptions = {
         clientSecret: cartStore.clientSecret,
@@ -69,7 +73,6 @@ export default function Checkout() {
         <>
             {cartStore.clientSecret && (
                 <div className="mb-12">
-                    <p className="mb-6 text-center">Checkout</p>
                     <Elements options={options} stripe={stripePromise}>
                         <CheckoutForm clientSecret={cartStore.clientSecret} />
                     </Elements>

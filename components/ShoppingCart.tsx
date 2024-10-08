@@ -5,12 +5,13 @@ import formatPrice from "@/utils/formatPrice";
 
 import {useContext} from "react";
 import ThemeContext from "@/context/ThemeContext";
-import {IoAddCircle, IoRemoveCircle} from "react-icons/io5";
+// import {IoAddCircle, IoRemoveCircle} from "react-icons/io5";
 import {Button} from "@/components/ui/button";
-import {ArrowRight} from "lucide-react";
+import {ArrowRight, CirclePlus, CircleMinus} from "lucide-react";
+
 export default function ShoppingCart() {
     const cartStore = useCartStore();
-    const {checkoutError, setCheckoutState} = useContext(ThemeContext);
+    const {setCheckoutState} = useContext(ThemeContext);
     const totalPrice = cartStore.cart.reduce((acc, item) => {
         // console.log({item});
         return acc + item.unit_amount! * item.quantity!;
@@ -45,7 +46,8 @@ export default function ShoppingCart() {
                                         }}
                                         className="text-red-300 text-2xl"
                                     >
-                                        <IoRemoveCircle />
+                                        {/* <IoRemoveCircle /> */}
+                                        <CircleMinus />
                                     </button>
                                     <button
                                         onClick={() =>
@@ -53,7 +55,8 @@ export default function ShoppingCart() {
                                         }
                                         className="text-green-300 text-2xl"
                                     >
-                                        <IoAddCircle />
+                                        <CirclePlus />
+                                        {/* <IoAddCircle /> */}
                                     </button>
                                 </div>
                             </div>

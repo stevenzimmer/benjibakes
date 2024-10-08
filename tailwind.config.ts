@@ -11,7 +11,7 @@ const config: Config = {
   	extend: {
   		fontFamily: {
   			roboto: ["Roboto","sans-serif"],
-  			pw: ['Playwrite US Trad"', "cursive"]
+  			pw: ['"Playwrite US Trad"', "cursive"]
   		},
   		colors: {
   			bb: {
@@ -20,7 +20,7 @@ const config: Config = {
   			}
   		},
   		backgroundImage: {
-  			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+  			'gradiedsnt-radial': 'radial-gradient(var(--tw-gradient-stops))',
   			'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
   		},
   		borderRadius: {

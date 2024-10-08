@@ -1,7 +1,7 @@
 "use client";
-import {useEffect, useState, useRef} from "react";
+import {useState, useRef} from "react";
 import {format} from "date-fns";
-import {Calendar as CalendarIcon} from "lucide-react";
+import {Calendar as CalendarIcon, ArrowRight} from "lucide-react";
 
 import {cn} from "@/lib/utils";
 import {Button} from "@/components/ui/button";
@@ -10,10 +10,9 @@ import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
 import {useContext} from "react";
 import ThemeContext from "@/context/ThemeContext";
 import {useCartStore} from "@/store";
-import {ArrowRight} from "lucide-react";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
-
+import {Separator} from "@/components/ui/separator";
 export default function PickupDate() {
     const cartStore = useCartStore();
     const [date, setDate] = useState<Date>();
@@ -106,7 +105,7 @@ export default function PickupDate() {
     };
 
     return (
-        <div className="py-6">
+        <div className="pb-6">
             <div className="mb-6">
                 <Label
                     htmlFor="email"
@@ -134,10 +133,9 @@ export default function PickupDate() {
                     )}
                 </div>
                 {cartStore.email && (
-                    <div className="flex items-center px-6">
-                        <p className="mr-6">Not you?</p>
+                    <div className="flex items-center justify-end px-6">
                         <Button onClick={handleChangeEmail}>
-                            Change your email address
+                            Revise your email address
                         </Button>
                     </div>
                 )}
@@ -148,6 +146,8 @@ export default function PickupDate() {
                     {checkoutError}, please try again
                 </div>
             )}
+            <Separator className="my-6" />
+
             <div className="mb-12">
                 <p className="font-semibold mb-3">Select your pickup date:</p>
                 <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
@@ -188,13 +188,19 @@ export default function PickupDate() {
                         />
                     </PopoverContent>
                 </Popover>
+                {cartStore.pickupDate && (
+                    <div className="p-6 bg-slate-100 rounded-lg mt-3">
+                        <strong>Current selected pickup date</strong>:{" "}
+                        {cartStore.pickupDate}
+                    </div>
+                )}
             </div>
             <Button
                 variant={"ghost"}
                 onClick={() => setCheckoutState("checkout")}
                 disabled={!cartStore.email || !cartStore.pickupDate}
             >
-                Finalize Checkout{" "}
+                Proceed to checkout{" "}
                 <ArrowRight
                     className="ml-3 group-hover:translate-x-1 transition-transform duration-200"
                     size={20}
@@ -203,67 +209,3 @@ export default function PickupDate() {
         </div>
     );
 }
-
-// import {SetStateAction, useState} from "react";
-// import DatePicker from "react-date-picker";
-
-// import "react-date-picker/dist/DatePicker.css";
-// import "react-calendar/dist/Calendar.css";
-// import CheckoutButton from "./CheckoutButton";
-
-// export default function PickupDate() {
-
-//     const [value, setValue] = useState<Date>(new Date());
-//
-
-//     const handleChange = (value: SetStateAction<Date>) => {
-//         console.log({value});
-
-//         setValue(value);
-//         cartStore.setPickupDateTime(value ? value.toString() : "");
-//     };
-
-//     const handleBackToCart = () => {
-//         setCheckoutState("cart");
-//     };
-
-//     const handleSetEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-//         // setEmail(e.target.value);
-//         cartStore.setEmail(email);
-//     };
-
-//     return (
-//         <div className="mb-6">
-//             <button onClick={handleBackToCart}>Back to cart</button>
-
-//             {!cartStore.email && (
-//                 <>
-//                     <p>Enter your email</p>
-//                     <input
-//                         type="text"
-//                         onChange={(e) => setEmail(e.target.value)}
-//                         value={email}
-//                     />
-//                     <button onClick={handleSetEmail}>Set email</button>
-//                 </>
-//             )}
-//             <div>Email: {cartStore.email}</div>
-//             <div onClick={() => cartStore.setEmail("")}>Change Email</div>
-//             <p className="mb-3">Step 2: Select your pickup date</p>
-//             <DatePicker
-//                 className={`block`}
-//                 onChange={handleChange}
-//                 value={value}
-//             />
-//             {cartStore.pickupDateTime && (
-//                 <div className="my-6">
-//                     Pickup Date:{" "}
-//                     {new Intl.DateTimeFormat("en-US").format(
-//                         new Date(cartStore.pickupDateTime)
-//                     )}
-//                 </div>
-//             )}
-//             <CheckoutButton />
-//         </div>
-//     );
-// }

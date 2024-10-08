@@ -1,5 +1,5 @@
 "use client";
-import {AiFillShopping} from "react-icons/ai";
+// import {AiFillShopping} from "react-icons/ai";
 import {motion, AnimatePresence} from "framer-motion";
 import {useCartStore} from "@/store";
 import {useContext} from "react";
@@ -19,7 +19,7 @@ export default function ShoppingCartButton() {
             className="text-5xl text-bb-blue flex items-end relative ml-6"
             // title={`${showSidebar ? "Close" : "View"} Shopping Cart`}
         >
-            <AiFillShopping />
+            {/* <AiFillShopping /> */}
             <AnimatePresence>
                 {cartStore.cart.length > 0 && (
                     <motion.span

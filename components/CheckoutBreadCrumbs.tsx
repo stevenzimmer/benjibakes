@@ -8,16 +8,23 @@ import {
 
 import {useContext} from "react";
 import ThemeContext from "@/context/ThemeContext";
+import {useCartStore} from "@/store";
 
 export default function CheckoutBreadCrumbs() {
-    const {setCheckoutState} = useContext(ThemeContext);
+    const {setCheckoutState, checkoutState} = useContext(ThemeContext);
 
+    const cartStore = useCartStore();
+    const canProceedToCheckout = cartStore.pickupDate && cartStore.email;
     return (
-        <Breadcrumb className="mb-6 p-6 bg-slate-200">
+        <Breadcrumb className="mb-6 p-6 bg-slate-100 rounded-lg">
             <BreadcrumbList>
                 <BreadcrumbItem>
                     <BreadcrumbLink
-                        className="cursor-pointer"
+                        className={`${
+                            checkoutState === "cart"
+                                ? "font-semibold text-neutral-950"
+                                : "cursor-pointer"
+                        }`}
                         onClick={(e) => {
                             e.preventDefault();
                             setCheckoutState("cart");
@@ -30,7 +37,11 @@ export default function CheckoutBreadCrumbs() {
 
                 <BreadcrumbItem>
                     <BreadcrumbLink
-                        className="cursor-pointer"
+                        className={`${
+                            checkoutState === "pickupDate"
+                                ? "font-semibold text-neutral-950"
+                                : "cursor-pointer"
+                        }`}
                         onClick={(e) => {
                             e.preventDefault();
                             setCheckoutState("pickupDate");
@@ -42,10 +53,20 @@ export default function CheckoutBreadCrumbs() {
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
                     <BreadcrumbLink
-                        className="cursor-pointer"
+                        className={`${
+                            checkoutState === "checkout"
+                                ? "font-semibold text-neutral-950"
+                                : "cursor-pointer"
+                        } ${
+                            canProceedToCheckout
+                                ? ""
+                                : "text-neutral-300 cursor-not-allowed"
+                        }`}
                         onClick={(e) => {
                             e.preventDefault();
-                            setCheckoutState("checkout");
+                            if (canProceedToCheckout) {
+                                setCheckoutState("checkout");
+                            }
                         }}
                     >
                         Checkout

@@ -35,12 +35,13 @@ export default function SheetSidebar() {
             case "cart":
                 setSheetTitle("Step 1: Review your shopping cart");
                 break;
-            case "checkout":
-                setSheetTitle("Final Step: Complete your Checkout");
-                break;
             case "pickupDate":
-                setSheetTitle("Step 2: Provide your customer Details");
+                setSheetTitle("Step 2: Provide order details");
                 break;
+            case "checkout":
+                setSheetTitle("Final Step: Complete checkout");
+                break;
+
             case "success":
                 setSheetTitle("Order Complete");
                 break;
@@ -70,7 +71,7 @@ export default function SheetSidebar() {
             </SheetTrigger>
             <SheetContent className="w-11/12 sm:w-[600px] sm:max-w-full">
                 <CheckoutBreadCrumbs />
-                <SheetTitle>{sheetTitle}</SheetTitle>
+                <SheetTitle className="mb-6">{sheetTitle}</SheetTitle>
                 {checkoutState === "cart" && (
                     <>
                         {cartStore.cart.length > 0 ? (
