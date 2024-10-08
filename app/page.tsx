@@ -4,24 +4,24 @@ const menuItems = [
         label: "Benji Bakes' Famous",
         title: "Brown Butter Chocolate Chip Cookie",
         description:
-            "A giant chocolate chip cookie made with toasty brown butter, topped with Maldon sea salt flakes for sweet and salty perfection. Add walnuts for small charge!",
-        price: "6 for $12 | 12 for $22 | 24 for $38",
+            "Our best-seller, the Brown Butter Chocolate Chip Cookie, offers a rich twist on the classic. Made with perfectly browned butter, gooey chocolate chips, and topped with flaky sea salt, these cookies have a depth of flavor that's irresistible.",
+        price: "12 for $24 | 24 for $40",
         image: "/bb-choco-chip.png",
     },
     {
-        label: "Seasonal Special",
-        title: "Pumpkin Snickerdoodle",
-        description:
-            "A large, chewy snickerdoodle made with brown butter, real pumpkin and cinnamon to ring in the beginning of fall.",
-        price: "6 for $14  |  12 for $25",
-        image: "/pumpkin-snickerdoodle.png",
+        label: "Halloween Special",
+        title: "Monster Cookie",
+        description: `Introducing our spooktacular October special, the "Monster Cookie"! Packed with M&Ms, pretzels, oats, and chocolate chips, this sweet and salty treat is the perfect addition to your Halloween celebrations. Add them to your boo baskets for a fun and festive surprise!`,
+        price: "6 for $13  |  12 for $25",
+        image: "/monster-cookie.png",
+        special: true,
     },
     {
         label: "Rotating Favorite",
         title: "Celebration Cookie",
         description:
-            "A soft, chewy sugar cookie loaded with colorful sprinkles…perfect for any celebration.",
-        price: "6 for $12  |  12 for $22",
+            "Celebrate life's sweet moments with our vibrant Celebration Cookie! Packed with colorful sprinkles and soft, chewy goodness, these cookies are the ultimate party treat. Whether it's a birthday, anniversary, or any occasion, this cookie will make every celebration sweeter.",
+        price: "6 for $12  |  12 for $23",
         image: "/celebration.png",
     },
 ];
@@ -113,16 +113,22 @@ export default function Home() {
 
                 <div className="text-center">
                     <div className=" max-w-2xl mx-auto text-xl leading-normal">
+                        <h2 className="font-semibold text-2xl mb-3">
+                            Welcome to Benji Bakes!
+                        </h2>
                         <p>
-                            Welcome to Benji Bakes, we&apos;re so happy you
-                            found us! We are an at-home bakery located in
-                            Rocklin, California with a passion for <i>really</i>{" "}
-                            good cookies.
-                        </p>
-                        <p>
-                            See our menu and order information below, and be
-                            sure to check back often as we swap in new cookies
-                            monthly!
+                            We&apos;re happy you found us! We are an at-home
+                            bakery located in Rocklin, California with a passion
+                            for <i>really</i> good home-made cookies.{" "}
+                            <a href="#menu" className="underline">
+                                See our menu
+                            </a>{" "}
+                            and{" "}
+                            <a href="#order" className="underline">
+                                order information
+                            </a>{" "}
+                            below, and be sure to check back often as we swap in
+                            new cookies monthly!
                         </p>
                     </div>
                 </div>
@@ -136,7 +142,9 @@ export default function Home() {
                 {menuItems.map((item, i) => (
                     <div
                         key={i}
-                        className="bg-slate-100 md:px-12 py-12 w-full rounded-lg mb-6 group"
+                        className={` md:px-12 py-12 w-full rounded-lg mb-6 group relative overflow-hidden ${
+                            item.special ? "bg-orange-100" : "bg-blue-50"
+                        }`}
                     >
                         <div className="flex justify-center items-center flex-wrap w-full">
                             <div className="w-full md:w-1/2 lg:w-1/3 px-12 md:px-6 mb-6">
@@ -161,6 +169,15 @@ export default function Home() {
                                 </p>
                             </div>
                         </div>
+                        {item.special && (
+                            <Image
+                                src="/benji-boo.png"
+                                alt="Boo Benji Special"
+                                width={150}
+                                height={150}
+                                className="absolute bottom-0 right-0 translate-x-full group-hover:translate-x-0 transition-transform duration-200 w-[100px] md:w-[150px]"
+                            />
+                        )}
                     </div>
                 ))}
             </div>
