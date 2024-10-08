@@ -3,6 +3,9 @@
   html, body {
     smooth-scroll-behavior: smooth;
   }
+  :root {
+    --radius: 0.5rem;
+  }
 }
 @tailwind components;
 @tailwind utilities;
