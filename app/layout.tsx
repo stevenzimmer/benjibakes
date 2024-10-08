@@ -5,10 +5,24 @@ import "./globals.css";
 const roboto = Roboto({ weight: ["400",'700'], subsets: ["latin"] });
 import CookieBackground from "@/components/CookieBackground";
 
-
 export const metadata: Metadata = {
-  title: "Benji Bakes",
-  description: "Home of the best brown butter chocolate chip cookies in Rocklin, Ca",
+  metadataBase: new URL('https://www.benjibakes.com'),
+  alternates: {
+    canonical: '/',
+  },
+  title: "Benji Bakes - Homemade Cookies & Seasonal Treats",
+  description: "Benji Bakes offers delicious homemade cookies, including our signature Brown Butter Chocolate Chip Cookie and festive seasonal treats like the Monster Cookie. Perfect for celebrations and special moments, our cookies are made with high-quality ingredients and baked fresh to order.",
+  keywords: ["homemade cookies, brown butter chocolate chip cookies, seasonal cookies, monster cookies, Benji Bakes, fresh baked cookies, best homemade cookies, celebration cookies, Halloween cookies, cookie delivery"],
+  openGraph: {
+    images: '/logo-horizontal.png',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: '/bb-letters.png',
+  },
 };
 
 export default function RootLayout({

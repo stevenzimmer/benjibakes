@@ -119,7 +119,7 @@ export default function Home() {
                         <p>
                             We&apos;re happy you found us! We are an at-home
                             bakery located in Rocklin, California with a passion
-                            for <i>really</i> good home-made cookies.{" "}
+                            for <i>really</i> good homemade cookies.{" "}
                             <a href="#menu" className="underline">
                                 See our menu
                             </a>{" "}
