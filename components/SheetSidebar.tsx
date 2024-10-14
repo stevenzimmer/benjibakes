@@ -69,8 +69,8 @@ export default function SheetSidebar() {
                     </AnimatePresence>
                 </div>
             </SheetTrigger>
-            <SheetContent className="w-11/12 sm:w-[600px] sm:max-w-full">
-                <CheckoutBreadCrumbs />
+            <SheetContent className="w-11/12 sm:w-[600px] sm:max-w-full overflow-scroll">
+                {checkoutState !== "success" && <CheckoutBreadCrumbs />}
                 <SheetTitle className="mb-6">{sheetTitle}</SheetTitle>
                 {checkoutState === "cart" && (
                     <>

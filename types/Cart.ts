@@ -26,6 +26,8 @@ export type CartState = {
     setEmail: (val: string) => void;
     customerId: string;
     setCustomerId: (val: string) => void;
+    checkoutLineItems: AddCartType[];
+    setCheckoutLineItems: (val: AddCartType[]) => void;
 };
 
 export type Price = {

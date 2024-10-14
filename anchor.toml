@@ -1,0 +1,10 @@
+[lcl-host]
+realm-apid = 'localhost'
+
+[org]
+apid = 'stevenzimmer'
+
+[service]
+apid = 'benji-bakes'
+category = 'javascript'
+cert-style = 'acme'

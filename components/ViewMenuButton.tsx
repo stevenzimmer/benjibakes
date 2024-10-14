@@ -11,6 +11,7 @@ export default function ViewMenuButton() {
             onClick={(e) => {
                 setSheetOpen(false);
             }}
+            className="border-bb-brown border-2 text-bb-brown font-semibold hover:bg-bb-brown/10 hover:text-bb-brown"
             asChild
         >
             <a href="#menu">View our {season} Menu</a>

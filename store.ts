@@ -18,6 +18,9 @@ export const useCartStore = create<CartState>()(
             setPickupDate: (val: string) => set((state) => ({pickupDate: val})),
             email: "",
             setEmail: (val: string) => set((state) => ({email: val})),
+            checkoutLineItems: [],
+            setCheckoutLineItems: (val) =>
+                set((state) => ({checkoutLineItems: val})),
             customerId: "",
             setCustomerId: (val: string) => set((state) => ({customerId: val})),
             addProduct: (item) =>

@@ -2,6 +2,9 @@
 import {useState, useEffect} from "react";
 import {PaymentElement, useStripe, useElements} from "@stripe/react-stripe-js";
 
+import {useRouter} from "next/navigation";
+
+import {AnimatePresence, motion} from "framer-motion";
 import formatPrice from "@/utils/formatPrice";
 import {Button} from "./ui/button";
 import {useCartStore} from "@/store";
@@ -10,19 +13,11 @@ import ThemeContext from "@/context/ThemeContext";
 export default function CheckoutForm({clientSecret}: {clientSecret: string}) {
     const stripe = useStripe();
     const elements = useElements();
+    const router = useRouter();
 
-    // useEffect(() => {
-    //     //  Create payment intent as soon as page loads
-    //     if (!stripe) {
-    //         return;
-    //     }
+    console.log({router});
 
-    //     if (!clientSecret) {
-    //         return;
-    //     }
-    // }, [stripe, clientSecret]);
-
-    const {setCheckoutState, setCheckoutError, checkoutError} = useContext(
+    const {setCheckoutError, checkoutError, setShowSidebar} = useContext(
         ThemeContext
     );
 
@@ -34,31 +29,50 @@ export default function CheckoutForm({clientSecret}: {clientSecret: string}) {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setCheckoutError("");
         if (!stripe || !elements) {
             return;
         }
+        setCheckoutError("");
         setIsLoading(true);
-        stripe
-            .confirmPayment({
-                elements,
-                redirect: "if_required",
-            })
-            .then((res: any) => {
-                console.log({res});
-                if (res.error) {
-                    console.log(res.error);
-                    setCheckoutError(res.error.message);
-                    setIsLoading(false);
-                }
-                if (res.paymentIntent?.status === "succeeded") {
-                    setCheckoutState("success");
-                    cartStore.clearCart();
-                    cartStore.setPaymentIntent("");
-                    cartStore.setClientSecret("");
-                    setIsLoading(false);
-                }
-            });
+
+        const {error: submitError} = await elements.submit();
+
+        if (submitError) {
+            console.log({submitError});
+            setCheckoutError(submitError?.message as string);
+            setIsLoading(false);
+            return;
+        }
+
+        const {error, paymentIntent} = await stripe.confirmPayment({
+            elements,
+            clientSecret,
+            redirect: "if_required",
+        });
+
+        if (error) {
+            setCheckoutError(error.message as string);
+            setIsLoading(false);
+            return;
+        }
+
+        if (paymentIntent?.status === "succeeded") {
+            console.log("checkout Cart", cartStore.cart);
+            cartStore.setCheckoutLineItems(cartStore.cart);
+            cartStore.clearCart();
+            cartStore.setCheckoutStatus("cart");
+            setShowSidebar(false);
+
+            cartStore.setPickupDate("");
+            cartStore.setClientSecret("");
+            cartStore.setPaymentIntent("");
+            setIsLoading(false);
+            console.log("confirm payment complete");
+            setIsLoading(false);
+            router.push(`/success?id=${paymentIntent.id}`);
+        }
+
+        setCheckoutError("Something went wrong. Please try again.");
     };
 
     const formattedPrice = formatPrice(totalPrice);
@@ -72,7 +86,16 @@ export default function CheckoutForm({clientSecret}: {clientSecret: string}) {
                 }}
             />
             {checkoutError && (
-                <div className="text-red-500 text-sm mt-2">{checkoutError}</div>
+                <AnimatePresence>
+                    <motion.p
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        exit={{opacity: 0}}
+                        className="text-red-500 py-3"
+                    >
+                        {checkoutError}
+                    </motion.p>
+                </AnimatePresence>
             )}
             <div className="my-6 text-xl bg-slate-100 p-6 rounded-lg">
                 <p className="mb-3 ">
@@ -83,12 +106,14 @@ export default function CheckoutForm({clientSecret}: {clientSecret: string}) {
                 </p>
             </div>
             <Button
-                className="w-full bg-bb-blue disabled:opacity-25 text-white hover:bg-bb-blue/80 transition-all duration-200"
+                className="w-full bg-bb-blue disabled:opacity-25 text-white hover:bg-bb-blue/80 transition-all duration-200 text-2xl py-10 disabled:cursor-not-allowed disabled:animate-pulse"
                 id="submit"
                 type="submit"
                 disabled={isLoading || !stripe || !elements}
             >
-                <span>{isLoading ? "Processing..." : "Pay now"}</span>
+                <span>
+                    {isLoading ? "Processing..." : `Pay ${formattedPrice}`}
+                </span>
             </Button>
         </form>
     );

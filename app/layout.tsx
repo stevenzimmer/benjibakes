@@ -5,7 +5,7 @@ import "./globals.css";
 const roboto = Roboto({ weight: ["400",'700'], subsets: ["latin"] });
 import CookieBackground from "@/components/CookieBackground";
 import ThemeProvider from "@/providers/ThemeProvider";
-
+import Nav from "@/components/Nav";
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.benjibakes.com'),
   alternates: {
@@ -83,7 +83,10 @@ export default function RootLayout({
         <ThemeProvider>
           <ParallaxProviders>
             <CookieBackground />
+            <main className="px-6 pb-12 lg:px-16 lg:pb-16 bg-white max-w-6xl mx-auto rounded-lg relative  md:py-6 py-3">
+            <Nav />
             {children}
+            </main>
           </ParallaxProviders>
         </ThemeProvider>
         </body>

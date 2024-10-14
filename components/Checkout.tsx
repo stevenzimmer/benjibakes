@@ -2,7 +2,6 @@ import {loadStripe, StripeElementsOptions} from "@stripe/stripe-js";
 import {Elements} from "@stripe/react-stripe-js";
 import {useCartStore} from "@/store";
 import {useState, useEffect} from "react";
-import {AnimatePresence, motion} from "framer-motion";
 import {useContext} from "react";
 import ThemeContext from "@/context/ThemeContext";
 // import {Button} from "./ui/button";
@@ -17,13 +16,14 @@ import CheckoutForm from "@/components/CheckoutForm";
 export default function Checkout() {
     const cartStore = useCartStore();
     // const router = useRouter();
-    // const {setCheckoutState} = useContext(ThemeContext);
+    const {setCheckoutError, checkoutError} = useContext(ThemeContext);
 
     // const [clientSecret, setClientSecret] = useState("");
     // const [paymentIntent, setPaymentIntent] = useState("");
 
     async function getPaymentIntent() {
         if (!cartStore.paymentIntent || !cartStore.clientSecret) {
+            setCheckoutError("");
             console.log("------creating payment intent------");
             const response = await fetch("/api/create-payment-intent", {
                 method: "POST",
@@ -39,6 +39,13 @@ export default function Checkout() {
             const data = await response.json();
 
             console.log({data});
+
+            if (data.error) {
+                cartStore.setCheckoutStatus("error");
+                setCheckoutError(data.error);
+
+                return;
+            }
 
             if (data.paymentIntent.status === "succeeded") {
                 cartStore.setCheckoutStatus("success");

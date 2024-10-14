@@ -1,4 +1,5 @@
 "use client";
+import {AddCartType} from "@/types/Cart";
 import {createContext} from "react";
 
 const ThemeContext = createContext({
