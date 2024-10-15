@@ -1,10 +1,13 @@
 import {motion} from "framer-motion";
 import Image from "next/image";
 import formatPrice from "@/utils/formatPrice";
-
+// import {CircleMinus, CirclePlus} from "lucide-react";
 import type {AddCartType} from "@/types/Cart";
+// import { useCartStore } from "@/store";
 export default function CartItem({item}: {item: AddCartType}) {
-
+    // const cartStore = useCartStore();
+    // cartStore.clearCart();
+    console.log({item})
     return (
         <motion.div
             layout
@@ -14,7 +17,7 @@ export default function CartItem({item}: {item: AddCartType}) {
                 <Image
                     src={item.image!}
                     className="w-full  border-bb-blue object-cover mx-auto"
-                    alt={item.name}
+                    alt={item.title}
                     width={100}
                     height={100}
                 />
@@ -37,17 +40,17 @@ export default function CartItem({item}: {item: AddCartType}) {
             </div>
 
             <div className="w-3/4 px-3">
-                <p className="text-xl font-semibold mb-2">{item.name}</p>
+                <p className="text-xl font-semibold mb-2">{item.title}</p>
                 <p className="mb-2">
                     <span className="font-semibold">{item.quantity}</span> box
                     {item.quantity && item?.quantity > 1 && "es"} of{" "}
-                    {item.price_nickname} cookies
+                    {item.number} cookies
                 </p>
 
                 <p>
                     Total:{" "}
                     <span className="font-semibold">
-                        {formatPrice(item.unit_amount! * item.quantity!)}
+                        {formatPrice(item.cost! * item.quantity!)}
                     </span>
                 </p>
             </div>

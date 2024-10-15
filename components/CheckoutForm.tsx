@@ -17,14 +17,17 @@ export default function CheckoutForm({clientSecret}: {clientSecret: string}) {
 
     console.log({router});
 
-    const {setCheckoutError, checkoutError, setShowSidebar} = useContext(
-        ThemeContext
-    );
+    const {
+        setCheckoutError,
+        checkoutError,
+        setShowSidebar,
+        setCheckoutState,
+    } = useContext(ThemeContext);
 
     const [isLoading, setIsLoading] = useState(false);
     const cartStore = useCartStore();
     const totalPrice = cartStore.cart.reduce((acc, item) => {
-        return acc + item.unit_amount! * item.quantity!;
+        return acc + item.cost! * item.quantity!;
     }, 0);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -58,15 +61,15 @@ export default function CheckoutForm({clientSecret}: {clientSecret: string}) {
 
         if (paymentIntent?.status === "succeeded") {
             console.log("checkout Cart", cartStore.cart);
+            setShowSidebar(false);
             cartStore.setCheckoutLineItems(cartStore.cart);
             cartStore.clearCart();
-            cartStore.setCheckoutStatus("cart");
-            setShowSidebar(false);
+            setCheckoutState("cart");
 
             cartStore.setPickupDate("");
             cartStore.setClientSecret("");
             cartStore.setPaymentIntent("");
-            setIsLoading(false);
+
             console.log("confirm payment complete");
             setIsLoading(false);
             router.push(`/success?id=${paymentIntent.id}`);

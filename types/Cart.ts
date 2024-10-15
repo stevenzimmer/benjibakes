@@ -1,12 +1,12 @@
 export type AddCartType = {
-    name: string;
+    title: string;
     image?: string;
     id: string;
     quantity?: number | 1;
-    unit_amount: number | null;
+    cost: number | null;
     price_nickname?: string;
     price_id: string;
-    nickname?: string;
+    number?: string;
 };
 
 export type CartState = {

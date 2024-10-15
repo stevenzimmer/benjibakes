@@ -13,6 +13,7 @@ import {useCartStore} from "@/store";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {Separator} from "@/components/ui/separator";
+import {Check, X} from "lucide-react";
 export default function PickupDate() {
     const cartStore = useCartStore();
     const [date, setDate] = useState<Date>();
@@ -54,7 +55,6 @@ export default function PickupDate() {
 
     const handleSetEmail = async (e: any) => {
         handleFetchCustomer(email);
-
         cartStore.setCustomerId("");
         cartStore.setPickupDate("");
         cartStore.setPaymentIntent("");
@@ -115,30 +115,38 @@ export default function PickupDate() {
                 </Label>
                 <div className="relative">
                     <Input
+                        ref={ref}
                         id={"email"}
                         type="email"
                         placeholder="Email"
                         value={email}
                         disabled={!!cartStore.email}
-                        className="mb-3 text-lg py-6 block w-full disabled:bg-slate-100"
+                        className={`mb-3 text-lg py-6 block w-full disabled:bg-slate-100 ${cartStore.email &&
+                            "border-green-400"}`}
                         onChange={(e) => setEmail(e.target.value)}
                     />
+
                     {!cartStore.email && (
                         <Button
                             onClick={handleSetEmail}
-                            className="absolute right-0 top-0 h-full"
+                            title="Set email address"
+                            className="absolute right-0 top-0 h-full bg-green-400 hover:bg-green/50 "
+                            aria-label="Set email address"
                         >
-                            Set email
+                            <Check />
+                        </Button>
+                    )}
+                    {cartStore.email && (
+                        <Button
+                            className="absolute right-0 top-0 h-full bg-red-400 hover:bg-red-400/50"
+                            onClick={handleChangeEmail}
+                            title="Change email address"
+                            aria-label="Change email address"
+                        >
+                            <X />
                         </Button>
                     )}
                 </div>
-                {cartStore.email && (
-                    <div className="flex items-center justify-end px-6">
-                        <Button onClick={handleChangeEmail}>
-                            Revise your email address
-                        </Button>
-                    </div>
-                )}
             </div>
 
             {checkoutError && (
@@ -156,7 +164,8 @@ export default function PickupDate() {
                             variant={"outline"}
                             className={cn(
                                 "w-full justify-start text-left font-normal text-lg py-6",
-                                !date && "text-muted-foreground"
+                                !date && "bg-slate-100",
+                                date && "border-green-400 bg-slate-100"
                             )}
                         >
                             <CalendarIcon className="mr-3 h-5 w-5" />

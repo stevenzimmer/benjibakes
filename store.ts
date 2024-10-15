@@ -28,7 +28,7 @@ export const useCartStore = create<CartState>()(
                     const existingItem = state.cart.find(
                         (cartItem) => cartItem.price_id === item.price_id
                     );
-                    // console.log({existingItem});
+                    console.log({existingItem});
 
                     if (existingItem) {
                         const updatedCart = state.cart.map((cartItem) => {
@@ -44,7 +44,7 @@ export const useCartStore = create<CartState>()(
 
                         return {cart: updatedCart};
                     } else {
-                        // console.log({item});
+                        console.log({item});
                         return {
                             cart: [
                                 ...state.cart,

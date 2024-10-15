@@ -11,14 +11,14 @@ import {metadata} from "@/app/layout";
 type Item = {
     name: string;
     description: string;
-    unit_amount: number;
+    cost: number;
     image: string;
     quantity: number;
 };
 
 const calculateOrderAmount = (items: Item[]) => {
     const totalPrice = items.reduce((acc, item) => {
-        return acc + item.unit_amount! * item.quantity!;
+        return acc + item.cost! * item.quantity!;
     }, 0);
     return totalPrice;
 };
@@ -42,13 +42,25 @@ export async function POST(req: NextRequest) {
 
     console.log("-----------------------");
 
-    console.log({pickupDate});
+    // console.log({items});
 
-    console.log({payment_intent_id});
+    // console.log({pickupDate});
 
-    console.log({customerId});
+    // console.log({payment_intent_id});
+
+    // console.log({customerId});
 
     const total = calculateOrderAmount(items);
+
+    const orderInfo = items
+        .map((item: AddCartType) => {
+            return `(${item.quantity}) ${item.price_id} | `;
+        })
+        .toString();
+
+    console.log({orderInfo});
+
+    // console.log({total});
 
     if (payment_intent_id) {
         console.log("A payment intent id exists");
@@ -76,6 +88,7 @@ export async function POST(req: NextRequest) {
                         amount: total,
                         metadata: {
                             pickupDate,
+                            orderInfo,
                         },
                         customer: customerId,
                     }
@@ -144,6 +157,7 @@ export async function POST(req: NextRequest) {
                 },
                 metadata: {
                     pickupDate,
+                    orderInfo,
                 },
                 customer: customerId,
             });
