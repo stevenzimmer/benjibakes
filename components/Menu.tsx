@@ -1,6 +1,7 @@
 import season from "@/utils/getSeason";
 import ProductCard from "@/components/ProductCard";
 import {products} from "@/utils/products";
+import ViewCartButton from "./ViewCartButton";
 
 export default async function Menu() {
     return (
@@ -12,6 +13,7 @@ export default async function Menu() {
             {products.map((item, i) => (
                 <ProductCard item={item} key={i} />
             ))}
+            <ViewCartButton />
         </div>
     );
 }

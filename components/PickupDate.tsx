@@ -208,6 +208,12 @@ export default function PickupDate() {
                 variant={"ghost"}
                 onClick={() => setCheckoutState("checkout")}
                 disabled={!cartStore.email || !cartStore.pickupDate}
+                className="disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed bg-green-400 hover:bg-green-400/80  font-semibold text-lg py-6"
+                title={`${
+                    !cartStore.email || !cartStore.pickupDate
+                        ? "Please select a pickup date and email address"
+                        : "Proceed to checkout"
+                }`}
             >
                 Proceed to checkout{" "}
                 <ArrowRight

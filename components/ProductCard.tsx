@@ -33,15 +33,19 @@ export default function ProductCard({item}: {item: any}): JSX.Element {
         });
     };
     return (
-        <div className="bg-slate-100 md:px-12 py-12 w-full rounded-lg mb-6 group">
-            <div className="flex justify-center items-center flex-wrap w-full">
-                <div className="w-full md:w-1/2 lg:w-2/5 px-12 md:px-6 mb-6">
+        <div
+            className={` md:px-12 py-12 w-full rounded-lg mb-6 group overflow-hidden relative ${
+                item.special ? "bg-orange-100" : "bg-blue-50"
+            }`}
+        >
+            <div className="flex justify-center flex-wrap w-full">
+                <div className="w-full md:w-1/2 lg:w-2/5 px-12 md:px-6 mb-6 md:mb-0">
                     <Image
                         src={item.image}
                         alt={item.name}
                         width={200}
                         height={200}
-                        className="rounded-lg w-full h-full object-contain group-hover:rotate-90 transition-transform duration-200"
+                        className="w-full group-hover:rotate-90 transition-transform duration-200"
                     />
                 </div>
                 <div className="w-full md:w-1/2 lg:w-3/5 px-6">
@@ -104,8 +108,59 @@ export default function ProductCard({item}: {item: any}): JSX.Element {
                     </div>
                 </div>
             </div>
+            {item.special && (
+                <Image
+                    src="/benji-boo.png"
+                    alt="Boo Benji Special"
+                    width={150}
+                    height={150}
+                    className="absolute bottom-0 left-0 -translate-x-full group-hover:translate-x-0 transition-transform duration-200 w-[100px] md:w-[200px] "
+                />
+            )}
         </div>
     );
+}
+
+{
+    /* <div
+                        key={i}
+                        className={` md:px-12 py-12 w-full rounded-lg mb-6 group relative overflow-hidden ${
+                            item.special ? "bg-orange-100" : "bg-blue-50"
+                        }`}
+                    >
+                        <div className="flex justify-center items-center flex-wrap w-full">
+                            <div className="w-full md:w-1/2 lg:w-1/3 px-12 md:px-6 mb-6">
+                                <Image
+                                    src={item.image}
+                                    alt={item.title}
+                                    width={200}
+                                    height={200}
+                                    className="rounded-lg w-full h-full object-contain group-hover:rotate-90 transition-transform duration-200"
+                                />
+                            </div>
+                            <div className="w-full md:w-1/2 lg:w-2/3 px-6">
+                                <p className="italic mb-2">{item.label}</p>
+                                <h3 className="text-2xl mb-2 font-light">
+                                    {item.title}
+                                </h3>
+                                <p className="italic mb-2">
+                                    {item.description}
+                                </p>
+                                <p className="font-semibold text-lg italic">
+                                    {item.price}
+                                </p>
+                            </div>
+                        </div>
+                        {item.special && (
+                            <Image
+                                src="/benji-boo.png"
+                                alt="Boo Benji Special"
+                                width={150}
+                                height={150}
+                                className="absolute bottom-0 right-0 translate-x-full group-hover:translate-x-0 transition-transform duration-200 w-[100px] md:w-[150px]"
+                            />
+                        )}
+                    </div> */
 }
 
 function QuantityButton({
