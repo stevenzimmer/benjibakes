@@ -157,7 +157,7 @@ export default function PickupDate() {
             <Separator className="my-6" />
 
             <div className="mb-12">
-                <p className="font-semibold mb-3">Select your pickup date:</p>
+                {/* <p className="font-semibold mb-3">Select your pickup date:</p> */}
                 <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
                     <PopoverTrigger asChild>
                         <Button
@@ -172,7 +172,7 @@ export default function PickupDate() {
                             {date ? (
                                 format(date, "PPP")
                             ) : (
-                                <span>Select a new pickup date</span>
+                                <span>Select a pickup date</span>
                             )}
                         </Button>
                     </PopoverTrigger>

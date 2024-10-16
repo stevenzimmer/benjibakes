@@ -15,6 +15,8 @@ export default function CheckoutBreadCrumbs() {
 
     const cartStore = useCartStore();
     const canProceedToCheckout = cartStore.pickupDate && cartStore.email;
+    const canProceedToPickupDate = cartStore.cart.length > 0;
+    console.log({canProceedToPickupDate});
     return (
         <Breadcrumb className="mb-6 p-6 bg-slate-100 rounded-lg">
             <BreadcrumbList>
@@ -40,11 +42,17 @@ export default function CheckoutBreadCrumbs() {
                         className={`${
                             checkoutState === "pickupDate"
                                 ? "font-semibold text-neutral-950"
-                                : "cursor-pointer"
+                                : ""
+                        } ${
+                            canProceedToPickupDate
+                                ? "cursor-pointer"
+                                : "cursor-not-allowed text-neutral-300 hover:text-neutral-300"
                         }`}
                         onClick={(e) => {
                             e.preventDefault();
-                            setCheckoutState("pickupDate");
+                            if (canProceedToPickupDate) {
+                                setCheckoutState("pickupDate");
+                            }
                         }}
                     >
                         Customer Details
@@ -58,13 +66,16 @@ export default function CheckoutBreadCrumbs() {
                                 ? "font-semibold text-neutral-950"
                                 : "cursor-pointer"
                         } ${
-                            canProceedToCheckout
+                            canProceedToCheckout && canProceedToPickupDate
                                 ? ""
-                                : "text-neutral-300 cursor-not-allowed"
+                                : "text-neutral-300 cursor-not-allowed hover:text-neutral-300"
                         }`}
                         onClick={(e) => {
                             e.preventDefault();
-                            if (canProceedToCheckout) {
+                            if (
+                                canProceedToCheckout &&
+                                canProceedToPickupDate
+                            ) {
                                 setCheckoutState("checkout");
                             }
                         }}

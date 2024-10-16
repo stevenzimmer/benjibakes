@@ -68,7 +68,7 @@ export default function ProductCard({item}: {item: any}): JSX.Element {
                             return (
                                 <div
                                     key={i}
-                                    className="px-2 py-3 relative flex items-center "
+                                    className="px-2 py-3 relative flex items-center border-b last:border-b-0"
                                 >
                                     <div className="relative py-3 lg:w-7/12">
                                         <span className="whitespace-nowrap select-none text-xl font-semibold">
@@ -77,7 +77,7 @@ export default function ProductCard({item}: {item: any}): JSX.Element {
                                         </span>
                                     </div>
 
-                                    <div className="lg:w-5/12 flex items-center justify-center font-semibold text-lg relative group/prices mx-6 border bg-white p-3 rounded-lg">
+                                    <div className="lg:w-5/12 flex items-center justify-center font-semibold text-lg relative group/prices ">
                                         <QuantityButton
                                             onClick={() =>
                                                 handleRemoveFromCart(i)
@@ -175,7 +175,7 @@ function QuantityButton({
     onClick: (i: number) => void;
     price: Price;
     item: {
-        name: string;
+        title: string;
         image: string;
     };
     i: number;
@@ -185,13 +185,13 @@ function QuantityButton({
         <button
             className={`${
                 state === "increment"
-                    ? "bg-green-200 hover:border-green-300 right-0"
-                    : "bg-red-200 hover:border-red-300 left-0"
-            } border-2 border-transparent p-3 rounded-lg`}
+                    ? " hover:border-green-300 right-0"
+                    : " hover:border-red-300 left-0"
+            } bg-slate-100 border-2 border-transparent p-3 rounded-lg`}
             onClick={() => onClick(i)}
             title={`${state === "increment" ? "Add" : "Remove"} ${
-                price.nickname
-            } ${item.name} ${state === "increment" ? "to" : "from"} cart`}
+                price.number
+            } ${item.title} ${state === "increment" ? "to" : "from"} cart`}
         >
             {children}
         </button>

@@ -32,6 +32,6 @@ export type CartState = {
 
 export type Price = {
     id: string;
-    unit_amount: number;
-    nickname: string;
+    cost: number;
+    number: string;
 };
