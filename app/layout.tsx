@@ -3,6 +3,7 @@ import { ParallaxProviders } from "./ParallaxProvider";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 const roboto = Roboto({ weight: ["400",'700'], subsets: ["latin"] });
+import { GoogleAnalytics } from '@next/third-parties/google'
 import CookieBackground from "@/components/CookieBackground";
 
 export const metadata: Metadata = {
@@ -85,6 +86,7 @@ export default function RootLayout({
         {children}
         </ParallaxProviders>
         </body>
+        <GoogleAnalytics gaId="G-XCT71CMV8P" />
     </html>
   );
 }
