@@ -24,9 +24,11 @@ export default async function SuccessPage({
 
     return (
         <div className="flex flex-wrap justify-between w-full h-full">
-            <div className="w-full lg:w-5/12 px-6">
+            <div className="w-full lg:w-5/12 lg:px-6">
                 <div className="mb-6">
-                    <h1 className="font-semibold text-4xl mb-6">Thank you!</h1>
+                    <h1 className="font-semibold text-3xl lg:text-4xl mb-6">
+                        Thank you!
+                    </h1>
                     <p className="mb-5">
                         We have sent an order confirmation email to{" "}
                         <span className="font-semibold">
@@ -35,11 +37,11 @@ export default async function SuccessPage({
                         with your order details.
                     </p>
 
-                    <p className="mb-3 text-xl">
+                    <p className="mb-3 text-lg lg:text-xl">
                         <span className="font-semibold">Total</span>:{" "}
                         {formatPrice(charge.amount)}
                     </p>
-                    <p className="mb-3 text-xl">
+                    <p className="mb-3 text-lg lg:text-xl">
                         <span className="font-semibold">Pickup Date</span>:{" "}
                         {charge.metadata.pickupDate}
                     </p>
@@ -61,7 +63,7 @@ export default async function SuccessPage({
                     </p>
                 </div>
             </div>
-            <div className="w-full lg:w-6/12 px-6">
+            <div className="w-full lg:w-6/12 lg:px-6">
                 <h2 className="font-semibold text-2xl">Your order Details</h2>
                 <p className="my-3 text-sm text-slate-600">
                     Order #: {charge.id}

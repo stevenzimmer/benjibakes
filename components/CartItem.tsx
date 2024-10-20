@@ -11,7 +11,7 @@ export default function CartItem({item}: {item: AddCartType}) {
     return (
         <motion.div
             layout
-            className="flex items-center py-4  border-b border-bb-brown"
+            className="flex lg:items-center py-4  border-b border-bb-brown w-full"
         >
             <div className="w-1/4 px-3">
                 <Image
@@ -40,14 +40,14 @@ export default function CartItem({item}: {item: AddCartType}) {
             </div>
 
             <div className="w-3/4 px-3">
-                <p className="text-xl font-semibold mb-2">{item.title}</p>
-                <p className="mb-2">
-                    <span className="font-semibold">{item.quantity}</span> box
+                <p className="text-base lg:text-xl font-semibold mb-2">{item.title}</p>
+                <p className="mb-2 text-xs lg:text-base">
+                    <span className="font-semibold ">{item.quantity}</span> box
                     {item.quantity && item?.quantity > 1 && "es"} of{" "}
                     {item.number} cookies
                 </p>
 
-                <p>
+                <p className="text-xs lg:text-base">
                     Total:{" "}
                     <span className="font-semibold">
                         {formatPrice(item.cost! * item.quantity!)}

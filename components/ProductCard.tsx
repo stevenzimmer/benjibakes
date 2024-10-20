@@ -67,16 +67,16 @@ export default function ProductCard({item}: {item: any}): JSX.Element {
                             return (
                                 <div
                                     key={i}
-                                    className="px-2 py-3 relative flex items-center border-b last:border-b-0"
+                                    className="px-2 py-3 relative flex items-center flex-wrap border-b last:border-b-0"
                                 >
-                                    <div className="relative py-3 lg:w-7/12">
-                                        <span className="whitespace-nowrap select-none text-xl font-semibold">
+                                    <div className="relative py-3 w-full lg:w-7/12">
+                                        <span className="whitespace-nowrap select-none text-xl font-semibold text-center lg:text-left">
                                             {price.number} cookies for{" "}
                                             {formatPrice(price?.cost ?? 0)}
                                         </span>
                                     </div>
 
-                                    <div className="lg:w-5/12 flex items-center justify-center font-semibold text-lg relative group/prices ">
+                                    <div className="w-full lg:w-5/12 flex items-center justify-center font-semibold text-lg relative group/prices ">
                                         <QuantityButton
                                             onClick={() =>
                                                 handleRemoveFromCart(i)
