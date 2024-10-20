@@ -1,7 +1,7 @@
 import {loadStripe, StripeElementsOptions} from "@stripe/stripe-js";
 import {Elements} from "@stripe/react-stripe-js";
 import {useCartStore} from "@/store";
-import {useState, useEffect} from "react";
+import {useEffect} from "react";
 import {useContext} from "react";
 import ThemeContext from "@/context/ThemeContext";
 // import {Button} from "./ui/button";
@@ -16,7 +16,7 @@ import CheckoutForm from "@/components/CheckoutForm";
 export default function Checkout() {
     const cartStore = useCartStore();
     // const router = useRouter();
-    const {setCheckoutError, checkoutError} = useContext(ThemeContext);
+    const {setCheckoutError, setCheckoutState} = useContext(ThemeContext);
 
     // const [clientSecret, setClientSecret] = useState("");
     // const [paymentIntent, setPaymentIntent] = useState("");
@@ -41,14 +41,13 @@ export default function Checkout() {
             // console.log({data});
 
             if (data.error) {
-                cartStore.setCheckoutStatus("error");
+                setCheckoutState("error");
                 setCheckoutError(data.error);
-
                 return;
             }
 
             if (data.paymentIntent.status === "succeeded") {
-                cartStore.setCheckoutStatus("success");
+                setCheckoutState("success");
             } else {
                 cartStore.setClientSecret(data.paymentIntent.client_secret);
                 // setPaymentIntent(data.paymentIntent.id);
@@ -72,9 +71,7 @@ export default function Checkout() {
         },
     };
 
-    // console.log("payment intent", cartStore.paymentIntent);
-
-    // console.log("client secret", cartStore.clientSecret);
+    console.log({cartStore});
 
     return (
         <>

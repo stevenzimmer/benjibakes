@@ -10,16 +10,15 @@ export type AddCartType = {
 };
 
 export type CartState = {
+    clearStore: () => void;
     cart: AddCartType[];
     addProduct: (item: AddCartType) => void;
     removeProduct: (item: AddCartType) => void;
     clearCart: () => void;
-    onCheckout: string;
     paymentIntent: string;
     setPaymentIntent: (val: string) => void;
     clientSecret: string;
     setClientSecret: (val: string) => void;
-    setCheckoutStatus: (val: string) => void;
     pickupDate: string;
     setPickupDate: (val: string) => void;
     email: string;

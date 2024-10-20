@@ -8,7 +8,6 @@ import {Plus, Minus} from "lucide-react";
 export default function ProductCard({item}: {item: any}): JSX.Element {
     const {prices} = item;
     const cartStore = useCartStore();
-    // cartStore.clearCart();
     const handleAddToCart = (priceIndex: number) => {
         cartStore.addProduct({
             title: `${item.title}`,

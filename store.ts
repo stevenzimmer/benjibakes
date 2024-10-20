@@ -6,10 +6,15 @@ import {CartState} from "./types/Cart";
 export const useCartStore = create<CartState>()(
     persist(
         (set) => ({
+            clearStore: () =>
+                set((state) => ({
+                    cart: [],
+                    paymentIntent: "",
+                    clientSecret: "",
+                    pickupDate: "",
+                })),
             cart: [],
             clearCart: () => set((state) => ({cart: []})),
-            onCheckout: "cart",
-            setCheckoutStatus: (val) => set((state) => ({onCheckout: val})),
             paymentIntent: "",
             setPaymentIntent: (val) => set((state) => ({paymentIntent: val})),
             clientSecret: "",

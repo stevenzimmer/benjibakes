@@ -102,6 +102,8 @@ export default function PickupDate() {
         cartStore.setCustomerId(data.customer.id);
     };
 
+    console.log({cartStore});
+
     return (
         <div className="pb-6">
             <div className="mb-6">
@@ -122,6 +124,13 @@ export default function PickupDate() {
                         className={`mb-3 text-lg py-6 block w-full disabled:bg-slate-100 ${cartStore.email &&
                             "border-green-400"}`}
                         onChange={(e) => setEmail(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                                if (email) {
+                                    handleSetEmail(email);
+                                }
+                            }
+                        }}
                     />
 
                     {!cartStore.email && (
@@ -206,7 +215,7 @@ export default function PickupDate() {
                 variant={"ghost"}
                 onClick={() => setCheckoutState("checkout")}
                 disabled={!cartStore.email || !cartStore.pickupDate}
-                className="disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed bg-green-400 hover:bg-green-400/80  font-semibold text-lg py-6"
+                className="group disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold text-lg py-6 hover:text-bb-brown"
                 title={`${
                     !cartStore.email || !cartStore.pickupDate
                         ? "Please select a pickup date and email address"

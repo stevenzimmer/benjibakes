@@ -1,5 +1,5 @@
 "use client";
-import {useState, useEffect} from "react";
+import {useState} from "react";
 import {PaymentElement, useStripe, useElements} from "@stripe/react-stripe-js";
 
 import {useRouter} from "next/navigation";
@@ -14,8 +14,6 @@ export default function CheckoutForm({clientSecret}: {clientSecret: string}) {
     const stripe = useStripe();
     const elements = useElements();
     const router = useRouter();
-
-    // console.log({router});
 
     const {
         setCheckoutError,
@@ -82,21 +80,14 @@ export default function CheckoutForm({clientSecret}: {clientSecret: string}) {
                 setCheckoutError(error);
                 return;
             }
-
-            console.log({result});
-            cartStore.clearCart();
+            // console.log({result});
+            setShowSidebar(false);
+            cartStore.clearStore();
             setCheckoutState("cart");
 
-            cartStore.setPickupDate("");
-            cartStore.setClientSecret("");
-            cartStore.setPaymentIntent("");
-
-            // console.log("confirm payment complete");
             setIsLoading(false);
             router.push(`/success?id=${paymentIntent.id}`);
         }
-
-        setCheckoutError("Something went wrong. Please try again.");
     };
 
     const formattedPrice = formatPrice(totalPrice);

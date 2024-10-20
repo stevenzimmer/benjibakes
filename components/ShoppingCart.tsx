@@ -30,11 +30,11 @@ export default function ShoppingCart() {
             </p>
 
             <Button
-                className="group text-lg border-2 border-bb-brown text-bb-brown py-6"
+                className="group disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold text-lg py-6 hover:text-bb-brown"
                 variant={"ghost"}
                 onClick={handleSelectPickupDate}
             >
-                Next Step: Provide customer details and pickup date{" "}
+                Provide customer details and pickup date{" "}
                 <ArrowRight
                     className="ml-3 group-hover:translate-x-1 transition-transform duration-200"
                     size={20}
