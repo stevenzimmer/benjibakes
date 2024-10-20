@@ -74,8 +74,8 @@ export default function PickupDate() {
 
     const handleFetchCustomer = async (email: string) => {
         setCheckoutError("");
-        console.log("fetching customer email", email);
-        console.log("fetching customer id", cartStore.customerId);
+        // console.log("fetching customer email", email);
+        // console.log("fetching customer id", cartStore.customerId);
         if (!email) return;
         if (cartStore.customerId) return;
         const response = await fetch("/api/fetch-customer", {
@@ -89,7 +89,7 @@ export default function PickupDate() {
         const data = await response.json();
 
         if (data.error) {
-            console.error(data.error);
+            // console.error(data.error);
             setEmail("");
             cartStore.setEmail("");
             ref.current && ref?.current.focus();
@@ -98,8 +98,6 @@ export default function PickupDate() {
         }
 
         cartStore.setEmail(data.customer.email);
-
-        console.log(data.customer);
 
         cartStore.setCustomerId(data.customer.id);
     };
@@ -151,7 +149,7 @@ export default function PickupDate() {
 
             {checkoutError && (
                 <div className="text-red-500 p-6 bg-red-200 mb-6 rounded-lg">
-                    {checkoutError}, please try again
+                    {checkoutError}
                 </div>
             )}
             <Separator className="my-6" />

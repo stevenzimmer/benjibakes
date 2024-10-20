@@ -24,31 +24,7 @@ const calculateOrderAmount = (items: Item[]) => {
 };
 
 export async function POST(req: NextRequest) {
-    // console.log(req.body);
-    // const request = await req.json();
-    // console.log({request})
-    // const userSession = await getServerSession(authOptions);
-
-    // if (!userSession) {
-    //     return NextResponse.json(
-    //         {message: "You must be logged in."},
-    //         {
-    //             status: 403,
-    //         }
-    //     );
-    // }
-
     const {items, payment_intent_id, pickupDate, customerId} = await req.json();
-
-    console.log("-----------------------");
-
-    // console.log({items});
-
-    // console.log({pickupDate});
-
-    // console.log({payment_intent_id});
-
-    // console.log({customerId});
 
     const total = calculateOrderAmount(items);
 
@@ -58,20 +34,12 @@ export async function POST(req: NextRequest) {
         })
         .toString();
 
-    console.log({orderInfo});
-
-    // console.log({total});
-
     if (payment_intent_id) {
-        console.log("A payment intent id exists");
         const current_intent = await stripe.paymentIntents.retrieve(
             payment_intent_id
         );
 
         if (current_intent) {
-            console.log("current intent");
-
-            console.log({current_intent});
             if (current_intent.status === "succeeded") {
                 return NextResponse.json(
                     {
@@ -93,8 +61,6 @@ export async function POST(req: NextRequest) {
                         customer: customerId,
                     }
                 );
-
-                console.log({updated_intent});
 
                 //Fetch order with product ids
                 // const [existing_order, updated_order] = await Promise.all([
@@ -120,10 +86,6 @@ export async function POST(req: NextRequest) {
                 //     }),
                 // ]);
 
-                // console.log({existing_order});
-
-                // console.log({updated_order});
-
                 // if (!existing_order) {
                 //     return NextResponse.json(
                 //         {
@@ -147,7 +109,7 @@ export async function POST(req: NextRequest) {
         }
     } else {
         try {
-            console.log("No payment intent id exists, create one...");
+            // console.log("No payment intent id exists, create one...");
             // const retrieveCustomer = await stripe.customers.retrieve();
             const paymentIntent = await stripe.paymentIntents.create({
                 amount: calculateOrderAmount(items),
@@ -170,8 +132,6 @@ export async function POST(req: NextRequest) {
 
             // console.log({newOrder});
 
-            console.log({paymentIntent});
-
             return NextResponse.json(
                 {
                     paymentIntent,
@@ -181,7 +141,6 @@ export async function POST(req: NextRequest) {
                 }
             );
         } catch (error) {
-            console.error({error});
             return NextResponse.json(
                 {
                     error: "Error creating payment intent",

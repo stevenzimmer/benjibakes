@@ -61,7 +61,7 @@ export default function ProductCard({item}: {item: any}): JSX.Element {
                     </div>
                     <div className="bg-white px-6 rounded-lg border">
                         {item.prices.map((price: any, i: number) => {
-                            console.log({price});
+                            // console.log({price});
                             const cartItem = cartStore.cart.find(
                                 (item) => item.price_id === price.id
                             );

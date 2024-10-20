@@ -24,7 +24,7 @@ export default function Checkout() {
     async function getPaymentIntent() {
         if (!cartStore.paymentIntent || !cartStore.clientSecret) {
             setCheckoutError("");
-            console.log("------creating payment intent------");
+            // console.log("------creating payment intent------");
             const response = await fetch("/api/create-payment-intent", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
@@ -38,7 +38,7 @@ export default function Checkout() {
 
             const data = await response.json();
 
-            console.log({data});
+            // console.log({data});
 
             if (data.error) {
                 cartStore.setCheckoutStatus("error");
@@ -72,9 +72,9 @@ export default function Checkout() {
         },
     };
 
-    console.log("payment intent", cartStore.paymentIntent);
+    // console.log("payment intent", cartStore.paymentIntent);
 
-    console.log("client secret", cartStore.clientSecret);
+    // console.log("client secret", cartStore.clientSecret);
 
     return (
         <>

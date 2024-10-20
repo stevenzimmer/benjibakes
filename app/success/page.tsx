@@ -1,8 +1,8 @@
+// "use client";
 import {redirect} from "next/navigation";
 import {stripe} from "@/utils/stripe";
 import {Button} from "@/components/ui/button";
 import formatPrice from "@/utils/formatPrice";
-
 import CheckoutItems from "@/components/CheckoutItems";
 
 export default async function SuccessPage({
@@ -20,7 +20,7 @@ export default async function SuccessPage({
         payment.latest_charge as string
     );
 
-    console.log({charge});
+    // console.log({charge});
 
     return (
         <div className="flex flex-wrap justify-between w-full h-full">

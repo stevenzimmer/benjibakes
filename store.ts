@@ -28,7 +28,6 @@ export const useCartStore = create<CartState>()(
                     const existingItem = state.cart.find(
                         (cartItem) => cartItem.price_id === item.price_id
                     );
-                    console.log({existingItem});
 
                     if (existingItem) {
                         const updatedCart = state.cart.map((cartItem) => {
@@ -44,7 +43,6 @@ export const useCartStore = create<CartState>()(
 
                         return {cart: updatedCart};
                     } else {
-                        console.log({item});
                         return {
                             cart: [
                                 ...state.cart,
@@ -58,12 +56,9 @@ export const useCartStore = create<CartState>()(
                 }),
             removeProduct: (item) =>
                 set((state) => {
-                    // console.log("removeProduct", item);
                     const existingItem = state.cart.find((cartItem) => {
-                        // console.log({cartItem});
                         return cartItem.price_id === item.price_id;
                     });
-                    // console.log({existingItem});
 
                     if (existingItem && existingItem.quantity! > 1) {
                         const updatedCart = state.cart.map((cartItem) => {
@@ -79,7 +74,6 @@ export const useCartStore = create<CartState>()(
                     } else {
                         // Remove Item from cart
                         const filteredCart = state.cart.filter((cartItem) => {
-                            // console.log({cartItem});
                             return cartItem.price_id !== item.price_id;
                         });
                         return {cart: filteredCart};

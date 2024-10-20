@@ -16,7 +16,7 @@ export default function CheckoutBreadCrumbs() {
     const cartStore = useCartStore();
     const canProceedToCheckout = cartStore.pickupDate && cartStore.email;
     const canProceedToPickupDate = cartStore.cart.length > 0;
-    console.log({canProceedToPickupDate});
+    // console.log({canProceedToPickupDate});
     return (
         <Breadcrumb className="mb-6 p-6 bg-slate-100 rounded-lg">
             <BreadcrumbList>

@@ -15,7 +15,7 @@ export default function CheckoutForm({clientSecret}: {clientSecret: string}) {
     const elements = useElements();
     const router = useRouter();
 
-    console.log({router});
+    // console.log({router});
 
     const {
         setCheckoutError,
@@ -41,7 +41,7 @@ export default function CheckoutForm({clientSecret}: {clientSecret: string}) {
         const {error: submitError} = await elements.submit();
 
         if (submitError) {
-            console.log({submitError});
+            // console.log({submitError});
             setCheckoutError(submitError?.message as string);
             setIsLoading(false);
             return;
@@ -60,9 +60,30 @@ export default function CheckoutForm({clientSecret}: {clientSecret: string}) {
         }
 
         if (paymentIntent?.status === "succeeded") {
-            console.log("checkout Cart", cartStore.cart);
+            // console.log("checkout Cart", cartStore.cart);
             setShowSidebar(false);
             cartStore.setCheckoutLineItems(cartStore.cart);
+            const res = await fetch("/api/send-email", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    cart: cartStore.cart,
+                    email: cartStore.email,
+                    pickupDate: cartStore.pickupDate,
+                    paymentIntentId: paymentIntent.id,
+                }),
+            });
+
+            const {result, error} = await res.json();
+
+            if (error) {
+                setCheckoutError(error);
+                return;
+            }
+
+            console.log({result});
             cartStore.clearCart();
             setCheckoutState("cart");
 
@@ -70,7 +91,7 @@ export default function CheckoutForm({clientSecret}: {clientSecret: string}) {
             cartStore.setClientSecret("");
             cartStore.setPaymentIntent("");
 
-            console.log("confirm payment complete");
+            // console.log("confirm payment complete");
             setIsLoading(false);
             router.push(`/success?id=${paymentIntent.id}`);
         }

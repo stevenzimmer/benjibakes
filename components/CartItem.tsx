@@ -7,7 +7,7 @@ import type {AddCartType} from "@/types/Cart";
 export default function CartItem({item}: {item: AddCartType}) {
     // const cartStore = useCartStore();
     // cartStore.clearCart();
-    console.log({item})
+    // console.log({item})
     return (
         <motion.div
             layout

@@ -30,7 +30,7 @@ export default function ShoppingCart() {
             </p>
 
             <Button
-                className="group "
+                className="group text-lg border-2 border-bb-brown text-bb-brown py-6"
                 variant={"ghost"}
                 onClick={handleSelectPickupDate}
             >

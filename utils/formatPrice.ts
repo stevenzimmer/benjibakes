@@ -1,5 +1,5 @@
 const formatPrice = (amount: number) => {
-    console.log({amount});
+    // console.log({amount});
     return new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
