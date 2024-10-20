@@ -3,6 +3,7 @@ import { ParallaxProviders } from "./ParallaxProvider";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 const roboto = Roboto({ weight: ["400",'700'], subsets: ["latin"] });
+import { GoogleAnalytics } from '@next/third-parties/google'
 import CookieBackground from "@/components/CookieBackground";
 import ThemeProvider from "@/providers/ThemeProvider";
 import Nav from "@/components/Nav";
@@ -79,7 +80,7 @@ export default function RootLayout({
     dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
   />
       </head>
-      <body className={`${roboto.className} bg-bb-blue !px-6 lg:!px-12 relative`}>
+      <body className={`${roboto.className} bg-bb-blue !px-6 lg:!px-12 relative overflow-x-hidden`}>
         <ThemeProvider>
           <ParallaxProviders>
             <CookieBackground />
@@ -90,6 +91,7 @@ export default function RootLayout({
           </ParallaxProviders>
         </ThemeProvider>
         </body>
+        <GoogleAnalytics gaId="G-XCT71CMV8P" />
     </html>
   );
 }
