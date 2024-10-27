@@ -50,7 +50,7 @@ export default function SheetSidebar() {
 
     return (
         <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
-            <SheetContent className="w-11/12 sm:w-[800px] sm:max-w-full overflow-scroll py-16">
+            <SheetContent className="w-full sm:w-[800px] sm:max-w-full overflow-scroll py-16">
                 {checkoutState !== "success" && cartStore.cart.length > 0 && (
                     <CheckoutBreadCrumbs />
                 )}

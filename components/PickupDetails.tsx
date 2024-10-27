@@ -108,7 +108,6 @@ export default function PickupDetails() {
                                     return e;
                                 })
                             }
-                            initialFocus
                             defaultMonth={date}
                             disabled={setDisabledPickupDates}
                         />
