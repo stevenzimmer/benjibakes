@@ -151,10 +151,10 @@ const cookieBackgrounds = [
 
 export default function CookieBackground() {
     return (
-        <>
+        <div className="hidden md:block">
             {cookieBackgrounds.map(({size, x, y}, i) => {
                 return <Cookie key={i} size={size} x={x} y={y} />;
             })}
-        </>
+        </div>
     );
 }

@@ -43,7 +43,7 @@ export default function ProductCard({item}: {item: any}): JSX.Element {
     };
     return (
         <div
-            className={` md:px-12 py-12 w-full rounded-lg mb-6 group overflow-hidden relative ${
+            className={`xl:px-12 py-12 w-full rounded-lg mb-6 group overflow-hidden relative ${
                 item.special ? "bg-orange-100" : "bg-blue-50"
             }`}
         >
@@ -54,16 +54,19 @@ export default function ProductCard({item}: {item: any}): JSX.Element {
                         alt={item.name}
                         width={200}
                         height={200}
-                        className="w-full group-hover:rotate-90 transition-transform duration-200"
+                        className="w-full group-hover:rotate-90 transition-transform duration-200 max-w-lg mx-auto"
                     />
                 </div>
-                <div className="w-full md:w-1/2 lg:w-3/5 px-6">
-                    <p className="italic mb-2">{item.label}</p>
-                    <h3 className="text-2xl mb-2 font-light">{item.title}</h3>
-                    {item.description && (
-                        <p className="italic mb-2">{item.description}</p>
-                    )}
-
+                <div className="w-full md:w-1/2 lg:w-3/5 md:px-6">
+                    <div className="px-6 md:px-0">
+                        <p className="italic mb-2">{item.label}</p>
+                        <h3 className="text-2xl mb-2 font-light">
+                            {item.title}
+                        </h3>
+                        {item.description && (
+                            <p className="italic mb-2">{item.description}</p>
+                        )}
+                    </div>
                     <div className="bg-white p-3 md:p-6 rounded-lg border mt-6">
                         <h4 className="text-lg px-2 underline underline-offset-4 font-semibold">
                             Add to cart
@@ -76,16 +79,16 @@ export default function ProductCard({item}: {item: any}): JSX.Element {
                             return (
                                 <div
                                     key={i}
-                                    className="px-2 py-3 relative flex items-center flex-wrap border-b last:border-b-0"
+                                    className="px-2 py-3 relative flex items-center justify-between flex-wrap border-b last:border-b-0"
                                 >
-                                    <div className="relative py-3 w-full lg:w-7/12 text-center lg:text-left">
-                                        <span className="whitespace-nowrap select-none xl:text-xl font-semibold">
+                                    <div className="relative py-3 w-6/12 lg:w-7/12 text-left">
+                                        <span className=" select-none xl:text-xl font-semibold">
                                             {price.number} cookies for{" "}
                                             {formatPrice(price?.cost ?? 0)}
                                         </span>
                                     </div>
 
-                                    <div className="w-full lg:w-5/12 flex items-center justify-center font-semibold text-lg relative group/prices ">
+                                    <div className="w-6/12 lg:w-5/12 flex items-center justify-end font-semibold text-lg relative group/prices ">
                                         <QuantityButton
                                             onClick={() =>
                                                 handleRemoveFromCart(i)
@@ -153,7 +156,7 @@ function QuantityButton({
                 state === "increment"
                     ? " hover:border-green-300"
                     : " hover:border-red-300"
-            } bg-slate-100 border-2 border-transparent p-1 md:p-3 rounded-lg`}
+            } bg-slate-100 border-2 border-transparent p-1 lg:p-2 xl:p-3 rounded-lg`}
             onClick={() => onClick(i)}
             title={`${state === "increment" ? "Add" : "Remove"} ${
                 price.number
