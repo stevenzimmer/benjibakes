@@ -63,7 +63,7 @@ export default function Checkout() {
         },
     };
 
-    console.log({cartStore});
+    // console.log({cartStore});
 
     return (
         <>

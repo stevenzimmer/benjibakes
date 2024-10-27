@@ -19,8 +19,6 @@ export default function SheetSidebar() {
 
     const [sheetTitle, setSheetTitle] = useState("Review your shopping cart");
 
-    console.log({checkoutState});
-
     useEffect(() => {
         switch (checkoutState) {
             case "cart":

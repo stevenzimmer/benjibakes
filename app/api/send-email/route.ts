@@ -28,7 +28,6 @@ export async function POST(req: Request, res: NextApiResponse) {
     try {
         const {result} = await sendEmail({
             to: process.env.SMTP_ORDER_EMAIL!,
-            name: "Steven",
             subject: `Order from ${name}`,
             body: html,
         });

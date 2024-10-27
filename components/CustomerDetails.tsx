@@ -64,7 +64,7 @@ export default function CustomerDetails() {
 
         setIsFetching(false);
 
-        console.log({data});
+        // console.log({data});
 
         setEmail(data.customer.email);
         setName(data.customer.name);
@@ -87,8 +87,6 @@ export default function CustomerDetails() {
         cartStore.email === email &&
         cartStore.name === name &&
         cartStore.customerId;
-
-    console.log({canProceed});
 
     return (
         <div>
@@ -183,7 +181,7 @@ export default function CustomerDetails() {
                                 cy="12"
                                 r="10"
                                 stroke="currentColor"
-                                stroke-width="4"
+                                strokeWidth="4"
                             ></circle>
                             <path
                                 className="opacity-75"

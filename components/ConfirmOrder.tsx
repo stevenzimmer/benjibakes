@@ -5,12 +5,12 @@ import formatPrice from "@/utils/formatPrice";
 import {useContext, useState} from "react";
 import ThemeContext from "@/context/ThemeContext";
 import {useToast} from "@/hooks/use-toast";
+import {useRouter} from "next/navigation";
 
 export default function ConfirmOrder() {
     const cartStore = useCartStore();
-    // console.log({cartStore});
     const {toast} = useToast();
-
+    const router = useRouter();
     const {setCheckoutError, setCheckoutState, setShowSidebar} = useContext(
         ThemeContext
     );
@@ -52,12 +52,16 @@ export default function ConfirmOrder() {
         setIsSent(true);
         setShowSidebar(false);
         setCheckoutState("cart");
+        cartStore.setCheckoutLineItems(cartStore.cart);
+        cartStore.setCheckoutPickupDate(cartStore.pickupDate);
         cartStore.clearStore();
         toast({
             title: "Order sent",
             description:
                 "Your order has been sent and you will receive an email confirmation shortly.",
         });
+
+        router.push(`/success?pay_later=true`);
     };
 
     const totalPrice = cartStore.cart.reduce((acc, item) => {
@@ -74,7 +78,7 @@ export default function ConfirmOrder() {
                             <CartItem key={i} item={item} />
                         ))}
                     </div>
-                    <div className="p-3 bg-blue-50 rounded-lg mt-6">
+                    <div className="p-3 bg-blue-50 rounded-lg my-6">
                         <p className="mb-3">
                             <span className="font-semibold">
                                 Customer name:
@@ -122,7 +126,7 @@ export default function ConfirmOrder() {
                                         cy="12"
                                         r="10"
                                         stroke="currentColor"
-                                        stroke-width="4"
+                                        strokeWidth="4"
                                     ></circle>
                                     <path
                                         className="opacity-75"

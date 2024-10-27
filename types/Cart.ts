@@ -21,6 +21,8 @@ export type CartState = {
     setClientSecret: (val: string) => void;
     pickupDate: string;
     setPickupDate: (val: string) => void;
+    checkoutPickupDate: string;
+    setCheckoutPickupDate: (val: string) => void;
     email: string;
     setEmail: (val: string) => void;
     paymentDetails: string;

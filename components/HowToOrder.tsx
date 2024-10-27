@@ -86,10 +86,10 @@ export default function HowToOrder() {
                         Email{" "}
                         <a
                             className="text-bb-blue text-xl md:text-2xl leading-loose font-light mb-6 underline "
-                            href={`mailto:{process.env.NEXT_PUBLIC_SMTP_ORDER_EMAIL}`}
+                            href={`mailto:${process.env.NEXT_PUBLIC_SMTP_ORDER_EMAIL}`}
                         >
                             {process.env.NEXT_PUBLIC_SMTP_ORDER_EMAIL}
-                        </a>
+                        </a>{" "}
                         if you have any questions
                     </p>
                 </div>

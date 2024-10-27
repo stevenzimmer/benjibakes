@@ -2,43 +2,39 @@ import nodemailer from "nodemailer";
 
 export async function sendEmail({
     to,
-    name,
     subject,
     body,
 }: {
     to: string;
-    name: string;
     subject: string;
     body: string;
 }) {
-    const {SMTP_PASSWORD, SMTP_EMAIL} = process.env;
+    const {SMTP_PASSWORD, SMTP_ORDER_EMAIL} = process.env;
 
     const transport = nodemailer.createTransport({
         host: "smtp.gmail.com",
         service: "gmail",
         secure: true,
         auth: {
-            user: SMTP_EMAIL,
+            user: SMTP_ORDER_EMAIL,
             pass: SMTP_PASSWORD,
         },
     });
 
-    try {
-        const testResult = await transport.verify();
-        console.log({testResult});
-    } catch (error) {
-        return {
-            error: error instanceof Error && error.message,
-            status: "error",
-        };
-    }
+    // try {
+    //     const testResult = await transport.verify();
+    // } catch (error) {
+    //     return {
+    //         error: error instanceof Error && error.message,
+    //         status: "error",
+    //     };
+    // }
 
     try {
         const sendResult = await transport.sendMail({
-            from: `Benji <${SMTP_EMAIL}>`,
+            from: `Benji Bakes <${SMTP_ORDER_EMAIL}>`,
             to,
             subject,
-            text: `Hey ${name}, how ya doin?`,
             html: body,
         });
 
@@ -46,8 +42,6 @@ export async function sendEmail({
             result: sendResult,
             status: "success",
         };
-
-        console.log({sendResult});
     } catch (error) {
         return {
             error: error instanceof Error && error.message,

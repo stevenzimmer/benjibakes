@@ -20,19 +20,19 @@ export default function SheetTrigger() {
         >
             <Box className="text-white" size={32} />
 
-            <div className="w-6">
-                {cartStore.cart.length > 0 && (
-                    <AnimatePresence>
-                        <motion.span
-                            animate={{scale: 1}}
-                            initial={{scale: 0}}
-                            className="text-white font-semibold"
-                        >
+            {cartStore.cart.length > 0 && (
+                <AnimatePresence>
+                    <motion.div
+                        animate={{scale: 1}}
+                        initial={{scale: 0}}
+                        className="w-6"
+                    >
+                        <span className="text-white font-semibold">
                             {totalQuanity > 9 ? "9+" : totalQuanity}
-                        </motion.span>
-                    </AnimatePresence>
-                )}
-            </div>
+                        </span>
+                    </motion.div>
+                </AnimatePresence>
+            )}
         </button>
     );
 }

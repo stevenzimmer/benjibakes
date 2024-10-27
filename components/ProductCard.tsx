@@ -76,7 +76,7 @@ export default function ProductCard({item}: {item: any}): JSX.Element {
                             return (
                                 <div
                                     key={i}
-                                    className="px-2 pb-3 relative flex items-center flex-wrap border-b last:border-b-0"
+                                    className="px-2 py-3 relative flex items-center flex-wrap border-b last:border-b-0"
                                 >
                                     <div className="relative py-3 w-full lg:w-7/12 text-center lg:text-left">
                                         <span className="whitespace-nowrap select-none xl:text-xl font-semibold">

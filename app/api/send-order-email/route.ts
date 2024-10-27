@@ -11,7 +11,7 @@ export async function POST(req: Request, res: NextApiResponse) {
     const cartItems = cart.reduce((str: string, item: AddCartType) => {
         return (
             str +
-            `<li>${item.quantity} order${item.quantity! > 1 && "s"} of (${
+            `<li>${item.quantity} order${item.quantity! > 1 ? "s" : ""} of (${
                 item.number
             }) ${item.title}</li>`
         );
@@ -21,7 +21,6 @@ export async function POST(req: Request, res: NextApiResponse) {
 
     const htmlStore = `
         <h1>Order Summary</h1>
-        <h2>Items:</h2>
         <ul>
             ${cartItems}
         </ul>
@@ -33,18 +32,18 @@ export async function POST(req: Request, res: NextApiResponse) {
 
     const htmlCustomer = `
         <h1>Thank you for your order!</h1>
-        <h2>Items:</h2>
         <ul>
             ${cartItems}
         </ul>
-        <p>Amount due on pickup: ${formatPrice(total)}</p>
-        
-        <p>Your order will be ready for pick up anytime between 3pm and 6pm on ${pickupDate}</p>
-        <p>Pick up location:</p>
+        <h2>Amount due on pickup: ${formatPrice(total)}</h2>
+        <p>We accept cash, Venmo, or Zelle Payments on pickup.</p>
+        <p>Your order will be ready for pick up anytime between <strong>3pm - 6pm</strong> on <strong>${pickupDate}</strong></p>
+        <h3>Pick up location:</h3>
         <p>Benji Bakes</p>
         <p>4535 Mountaingate Dr.</p>
         <p>Rocklin, Ca 95765</p>
         <p><a href="https://www.google.com/maps/place/4535+Mountaingate+Dr,+Rocklin,+CA+95765/@38.8288284,-121.2527969,17z/data=!3m1!4b1!4m6!3m5!1s0x809b1897ec277435:0x31e0224be2fb318c!8m2!3d38.8288284!4d-121.250222!16s%2Fg%2F11c2gc8b9g?entry=ttu&g_ep=EgoyMDI0MTAyMy4wIKXMDSoASAFQAw%3D%3D" target="_blank">View on map</a></p>
+        <h3>Support</h3>
         <p>Please reply to this email or reach out to us at allie@benjibakes.com if you have any questions or need to make changes to your order.</p>
         <p>Thank you for choosing Benji Bakes!</p>
     `;
@@ -52,9 +51,7 @@ export async function POST(req: Request, res: NextApiResponse) {
     try {
         // Send email to the store
         const {result} = await sendEmail({
-            // to: process.env.SMTP_ORDER_EMAIL!,
-            to: "webdevzim@gmail.com",
-            name: "Steven",
+            to: process.env.SMTP_ORDER_EMAIL!,
             subject: `Pay on pickup Order from ${name}`,
             body: htmlStore,
         });
@@ -62,12 +59,9 @@ export async function POST(req: Request, res: NextApiResponse) {
         // Send email to the customer
         const {result: resultCustomer} = await sendEmail({
             to: email,
-            name,
             subject: `Benji Bakes order`,
             body: htmlCustomer,
         });
-
-        console.log({result});
 
         return NextResponse.json(
             {result, resultCustomer},

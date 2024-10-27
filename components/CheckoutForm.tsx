@@ -74,7 +74,7 @@ export default function CheckoutForm({clientSecret}: {clientSecret: string}) {
                 }),
             });
 
-            const {result, error} = await res.json();
+            const {error} = await res.json();
 
             if (error) {
                 setCheckoutError(error);
