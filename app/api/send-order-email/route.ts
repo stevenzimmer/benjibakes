@@ -11,9 +11,9 @@ export async function POST(req: Request, res: NextApiResponse) {
     const cartItems = cart.reduce((str: string, item: AddCartType) => {
         return (
             str +
-            `<li>${item.quantity} order${item.quantity &&
-                item.quantity > 1 &&
-                "s"} of (${item.number}) ${item.title}</li>`
+            `<li>${item.quantity} order${item.quantity! > 1 && "s"} of (${
+                item.number
+            }) ${item.title}</li>`
         );
     }, "");
 
