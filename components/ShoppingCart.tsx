@@ -29,7 +29,7 @@ export default function ShoppingCart() {
             </p>
             <div className="sticky bottom-0 left-0 right-0 shadow-lg">
                 <Button
-                    className="group border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold text-lg py-6 hover:text-bb-brown w-full"
+                    className="group border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold py-6 hover:text-bb-brown w-full text-sm md:text-lg bg-white"
                     variant="outline"
                     onClick={handleSelectPickupDate}
                 >

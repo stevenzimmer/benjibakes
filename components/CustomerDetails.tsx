@@ -113,7 +113,7 @@ export default function CustomerDetails() {
                     />
 
                     {canProceed && (
-                        <div className="absolute right-0 top-0 bottom w-24 flex items-center justify-center h-full bg-green-400 rounded-lg ">
+                        <div className="absolute right-0 top-0 bottom w-16 md:w-24 flex items-center justify-center h-full bg-green-400 rounded-lg ">
                             <Check className="text-white" />
                         </div>
                     )}
@@ -140,7 +140,7 @@ export default function CustomerDetails() {
                     />
 
                     {canProceed && (
-                        <div className="absolute right-0 top-0 bottom w-24 flex items-center justify-center h-full bg-green-400 rounded-lg ">
+                        <div className="absolute right-0 top-0 bottom w-16 md:w-24 flex items-center justify-center h-full bg-green-400 rounded-lg">
                             <Check className="text-white" />
                         </div>
                     )}
@@ -154,7 +154,7 @@ export default function CustomerDetails() {
             )}
             {!canProceed ? (
                 <Button
-                    className="group disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold text-lg py-6 hover:text-bb-brown disabled:border-bb-brown/20"
+                    className="group disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold text-lg py-6 hover:text-bb-brown disabled:border-bb-brown/20 bg-white"
                     variant={"ghost"}
                     disabled={!email || !name || isFetching}
                     onClick={() => {
@@ -205,13 +205,13 @@ export default function CustomerDetails() {
                     </p>
                     <div className="sticky bottom-0 left-0 right-0 shadow-lg">
                         <Button
-                            className="group disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold text-lg py-6 hover:text-bb-brown w-full"
+                            className="group disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold text-sm md:text-lg py-6 hover:text-bb-brown w-full bg-white"
                             variant="outline"
                             onClick={() => {
                                 setCheckoutState("pickupDate");
                             }}
                         >
-                            Next: Provide pickup and payment details{" "}
+                            Provide pickup and payment details{" "}
                             <ArrowRight
                                 className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
                                 size={16}

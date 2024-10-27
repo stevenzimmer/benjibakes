@@ -64,7 +64,7 @@ export default function ProductCard({item}: {item: any}): JSX.Element {
                         <p className="italic mb-2">{item.description}</p>
                     )}
 
-                    <div className="bg-white px-6 py-6 rounded-lg border mt-6">
+                    <div className="bg-white p-3 md:p-6 rounded-lg border mt-6">
                         <h4 className="text-lg px-2 underline underline-offset-4 font-semibold">
                             Add to cart
                         </h4>
@@ -76,7 +76,7 @@ export default function ProductCard({item}: {item: any}): JSX.Element {
                             return (
                                 <div
                                     key={i}
-                                    className="px-2 py-3 relative flex items-center flex-wrap border-b last:border-b-0"
+                                    className="px-2 pb-3 relative flex items-center flex-wrap border-b last:border-b-0"
                                 >
                                     <div className="relative py-3 w-full lg:w-7/12 text-center lg:text-left">
                                         <span className="whitespace-nowrap select-none xl:text-xl font-semibold">
@@ -151,9 +151,9 @@ function QuantityButton({
         <button
             className={`${
                 state === "increment"
-                    ? " hover:border-green-300 right-0"
-                    : " hover:border-red-300 left-0"
-            } bg-slate-100 border-2 border-transparent p-3 rounded-lg`}
+                    ? " hover:border-green-300"
+                    : " hover:border-red-300"
+            } bg-slate-100 border-2 border-transparent p-1 md:p-3 rounded-lg`}
             onClick={() => onClick(i)}
             title={`${state === "increment" ? "Add" : "Remove"} ${
                 price.number
