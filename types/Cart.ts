@@ -23,6 +23,10 @@ export type CartState = {
     setPickupDate: (val: string) => void;
     email: string;
     setEmail: (val: string) => void;
+    paymentDetails: string;
+    setPaymentDetails: (val: string) => void;
+    name: string;
+    setName: (val: string) => void;
     customerId: string;
     setCustomerId: (val: string) => void;
     checkoutLineItems: AddCartType[];

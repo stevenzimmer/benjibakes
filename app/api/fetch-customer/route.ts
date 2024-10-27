@@ -24,7 +24,7 @@ import {metadata} from "@/app/layout";
 // };
 
 export async function POST(req: Request) {
-    const {email} = await req.json();
+    const {email, name} = await req.json();
 
     try {
         const searchCustomers = await stripe.customers.search({
@@ -33,15 +33,20 @@ export async function POST(req: Request) {
 
         let newCustomer;
 
+        let isNewCustomer = false;
+
         if (!searchCustomers.data.length) {
+            isNewCustomer = true;
             newCustomer = await stripe.customers.create({
                 email,
+                name,
             });
         }
 
         return NextResponse.json(
             {
                 customer: newCustomer || searchCustomers.data[0],
+                isNewCustomer,
             },
             {
                 status: 200,

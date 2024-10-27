@@ -5,7 +5,7 @@ import {sendEmail} from "@/utils/sendEmail";
 import {AddCartType} from "@/types/Cart";
 
 export async function POST(req: Request, res: NextApiResponse) {
-    const {cart, email, pickupDate, paymentIntentId} = await req.json();
+    const {cart, email, pickupDate, paymentIntentId, name} = await req.json();
 
     const cartItems = cart.reduce((str: string, item: AddCartType) => {
         return (
@@ -20,6 +20,7 @@ export async function POST(req: Request, res: NextApiResponse) {
         <ul>
             ${cartItems}
         </ul>
+        <p>Customer Name: ${name}</p>
         <p>Customer Email: ${email}</p>
         <p>Pick up Date: ${pickupDate}</p>
     `;
@@ -28,7 +29,7 @@ export async function POST(req: Request, res: NextApiResponse) {
         const {result} = await sendEmail({
             to: process.env.SMTP_ORDER_EMAIL!,
             name: "Steven",
-            subject: `Order from ${email}`,
+            subject: `Order from ${name}`,
             body: html,
         });
 

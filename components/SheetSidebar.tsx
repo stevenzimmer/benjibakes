@@ -2,7 +2,8 @@
 import {Sheet, SheetContent, SheetTitle} from "@/components/ui/sheet";
 
 import {useCartStore} from "@/store";
-import PickupDate from "./PickupDate";
+import PickupDetails from "./PickupDetails";
+import CustomerDetails from "./CustomerDetails";
 import ShoppingCart from "./ShoppingCart";
 import Checkout from "./Checkout";
 import {useContext, useState, useEffect} from "react";
@@ -10,6 +11,7 @@ import ThemeContext from "@/context/ThemeContext";
 import EmptyCart from "./EmptyCart";
 import Success from "./Success";
 import CheckoutBreadCrumbs from "./CheckoutBreadCrumbs";
+import ConfirmOrder from "./ConfirmOrder";
 
 export default function SheetSidebar() {
     const cartStore = useCartStore();
@@ -17,16 +19,25 @@ export default function SheetSidebar() {
 
     const [sheetTitle, setSheetTitle] = useState("Review your shopping cart");
 
+    console.log({checkoutState});
+
     useEffect(() => {
         switch (checkoutState) {
             case "cart":
                 setSheetTitle("Step 1: Review your shopping cart");
                 break;
+            case "customerDetails":
+                setSheetTitle("Step 2: Provide your information");
+                break;
             case "pickupDate":
-                setSheetTitle("Step 2: Provide order details");
+                setSheetTitle("Step 3: Provide pickup details");
                 break;
             case "checkout":
-                setSheetTitle("Final Step: Complete checkout");
+                setSheetTitle("Final Step: Complete payment");
+                break;
+
+            case "confirmOrder":
+                setSheetTitle("Final Step: Confirm and send your order");
                 break;
 
             case "success":
@@ -39,21 +50,30 @@ export default function SheetSidebar() {
 
     return (
         <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
-            <SheetContent className="w-11/12 sm:w-[600px] sm:max-w-full overflow-scroll">
-                {checkoutState !== "success" && <CheckoutBreadCrumbs />}
-                <SheetTitle className="mb-6">{sheetTitle}</SheetTitle>
+            <SheetContent className="w-11/12 sm:w-[800px] sm:max-w-full overflow-scroll py-16">
+                {checkoutState !== "success" && cartStore.cart.length > 0 && (
+                    <CheckoutBreadCrumbs />
+                )}
+                {cartStore.cart.length > 0 && (
+                    <SheetTitle className="mb-6">{sheetTitle}</SheetTitle>
+                )}
                 {checkoutState === "cart" && (
                     <>
                         {cartStore.cart.length > 0 ? (
-                            <ShoppingCart />
+                            <>
+                                <ShoppingCart />
+                            </>
                         ) : (
-                            <EmptyCart />
+                            <div className="flex items-center flex-col justify-center h-full">
+                                <EmptyCart />
+                            </div>
                         )}
                     </>
                 )}
-
+                {checkoutState === "customerDetails" && <CustomerDetails />}
+                {checkoutState === "pickupDate" && <PickupDetails />}
                 {checkoutState === "checkout" && <Checkout />}
-                {checkoutState === "pickupDate" && <PickupDate />}
+                {checkoutState === "confirmOrder" && <ConfirmOrder />}
                 {checkoutState === "success" && <Success />}
             </SheetContent>
         </Sheet>

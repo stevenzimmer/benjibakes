@@ -7,6 +7,8 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import CookieBackground from "@/components/CookieBackground";
 import ThemeProvider from "@/providers/ThemeProvider";
 import Nav from "@/components/Nav";
+import { Toaster } from "@/components/ui/toaster"
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.benjibakes.com'),
   alternates: {
@@ -88,6 +90,7 @@ export default function RootLayout({
             <Nav />
             {children}
             </main>
+            <Toaster />
           </ParallaxProviders>
         </ThemeProvider>
         </body>

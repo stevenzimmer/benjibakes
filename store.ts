@@ -2,7 +2,7 @@ import {create} from "zustand";
 import {persist} from "zustand/middleware";
 
 import {CartState} from "./types/Cart";
-
+import {useToast} from "@/hooks/use-toast";
 export const useCartStore = create<CartState>()(
     persist(
         (set) => ({
@@ -12,6 +12,7 @@ export const useCartStore = create<CartState>()(
                     paymentIntent: "",
                     clientSecret: "",
                     pickupDate: "",
+                    paymentDetails: "",
                 })),
             cart: [],
             clearCart: () => set((state) => ({cart: []})),
@@ -23,6 +24,11 @@ export const useCartStore = create<CartState>()(
             setPickupDate: (val: string) => set((state) => ({pickupDate: val})),
             email: "",
             setEmail: (val: string) => set((state) => ({email: val})),
+            name: "",
+            setName: (val: string) => set((state) => ({name: val})),
+            paymentDetails: "",
+            setPaymentDetails: (val: string) =>
+                set((state) => ({paymentDetails: val})),
             checkoutLineItems: [],
             setCheckoutLineItems: (val) =>
                 set((state) => ({checkoutLineItems: val})),

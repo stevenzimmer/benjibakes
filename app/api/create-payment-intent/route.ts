@@ -1,27 +1,8 @@
 import {stripe} from "@/utils/stripe";
 
 import {NextRequest, NextResponse} from "next/server";
-// import {getServerSession} from "next-auth/next";
-// import {authOptions} from "../auth/[...nextauth]/route";
-
-// import {prisma} from "@/lib/prisma";
 import {AddCartType} from "@/types/Cart";
-import {metadata} from "@/app/layout";
-
-type Item = {
-    name: string;
-    description: string;
-    cost: number;
-    image: string;
-    quantity: number;
-};
-
-const calculateOrderAmount = (items: Item[]) => {
-    const totalPrice = items.reduce((acc, item) => {
-        return acc + item.cost! * item.quantity!;
-    }, 0);
-    return totalPrice;
-};
+import {calculateOrderAmount} from "@/utils/calculateOrderAmount";
 
 export async function POST(req: NextRequest) {
     const {items, payment_intent_id, pickupDate, customerId} = await req.json();

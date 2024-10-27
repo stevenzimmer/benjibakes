@@ -13,23 +13,26 @@ export default function SheetTrigger() {
         0
     );
     return (
-        <div className="relative ">
-            <Box
-                onClick={() => setSheetOpen(!sheetOpen)}
-                className="md:ml-6 text-bb-brown"
-                size={32}
-            />
-            <AnimatePresence>
+        <button
+            aria-label="Open shopping cart"
+            className="relative bg-bb-brown md:ml-6  rounded-full px-3 py-1 flex items-center"
+            onClick={() => setSheetOpen(!sheetOpen)}
+        >
+            <Box className="text-white" size={32} />
+
+            <div className="w-6">
                 {cartStore.cart.length > 0 && (
-                    <motion.span
-                        animate={{scale: 1}}
-                        initial={{scale: 0}}
-                        className="absolute -top-2 -right-2 bg-bb-blue text-white font-semibold w-5 h-5 rounded-full text-center flex items-center justify-center text-xs"
-                    >
-                        {totalQuanity > 9 ? "9+" : totalQuanity}
-                    </motion.span>
+                    <AnimatePresence>
+                        <motion.span
+                            animate={{scale: 1}}
+                            initial={{scale: 0}}
+                            className="text-white font-semibold"
+                        >
+                            {totalQuanity > 9 ? "9+" : totalQuanity}
+                        </motion.span>
+                    </AnimatePresence>
                 )}
-            </AnimatePresence>
-        </div>
+            </div>
+        </button>
     );
 }

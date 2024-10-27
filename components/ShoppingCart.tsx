@@ -15,8 +15,7 @@ export default function ShoppingCart() {
         return acc + item.cost! * item.quantity!;
     }, 0);
     const handleSelectPickupDate = () => {
-        setCheckoutState("pickupDate");
-        // cartStore.setPickupDate("");
+        setCheckoutState("customerDetails");
     };
     return (
         <>
@@ -26,20 +25,21 @@ export default function ShoppingCart() {
                 })}
             </div>
             <p className="mb-6 font-semibold text-xl">
-                Cart Total: {formatPrice(totalPrice)}
+                Order Total: {formatPrice(totalPrice)}
             </p>
-
-            <Button
-                className="group disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold text-lg py-6 hover:text-bb-brown"
-                variant={"ghost"}
-                onClick={handleSelectPickupDate}
-            >
-                Provide customer details and pickup date{" "}
-                <ArrowRight
-                    className="ml-3 group-hover:translate-x-1 transition-transform duration-200"
-                    size={20}
-                />
-            </Button>
+            <div className="sticky bottom-0 left-0 right-0 shadow-lg">
+                <Button
+                    className="group border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold text-lg py-6 hover:text-bb-brown w-full"
+                    variant="outline"
+                    onClick={handleSelectPickupDate}
+                >
+                    Provide customer details{" "}
+                    <ArrowRight
+                        className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
+                        size={16}
+                    />
+                </Button>
+            </div>
         </>
     );
 }

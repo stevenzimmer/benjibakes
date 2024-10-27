@@ -15,16 +15,11 @@ import CheckoutForm from "@/components/CheckoutForm";
 
 export default function Checkout() {
     const cartStore = useCartStore();
-    // const router = useRouter();
     const {setCheckoutError, setCheckoutState} = useContext(ThemeContext);
-
-    // const [clientSecret, setClientSecret] = useState("");
-    // const [paymentIntent, setPaymentIntent] = useState("");
 
     async function getPaymentIntent() {
         if (!cartStore.paymentIntent || !cartStore.clientSecret) {
             setCheckoutError("");
-            // console.log("------creating payment intent------");
             const response = await fetch("/api/create-payment-intent", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
@@ -38,8 +33,6 @@ export default function Checkout() {
 
             const data = await response.json();
 
-            // console.log({data});
-
             if (data.error) {
                 setCheckoutState("error");
                 setCheckoutError(data.error);
@@ -50,7 +43,6 @@ export default function Checkout() {
                 setCheckoutState("success");
             } else {
                 cartStore.setClientSecret(data.paymentIntent.client_secret);
-                // setPaymentIntent(data.paymentIntent.id);
                 cartStore.setPaymentIntent(data.paymentIntent.id);
             }
         }
