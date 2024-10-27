@@ -69,6 +69,7 @@ export default function CheckoutForm({clientSecret}: {clientSecret: string}) {
                 body: JSON.stringify({
                     cart: cartStore.cart,
                     email: cartStore.email,
+                    name: cartStore.name,
                     pickupDate: cartStore.pickupDate,
                     paymentIntentId: paymentIntent.id,
                 }),

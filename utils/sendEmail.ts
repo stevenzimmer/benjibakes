@@ -21,15 +21,6 @@ export async function sendEmail({
         },
     });
 
-    // try {
-    //     const testResult = await transport.verify();
-    // } catch (error) {
-    //     return {
-    //         error: error instanceof Error && error.message,
-    //         status: "error",
-    //     };
-    // }
-
     try {
         const sendResult = await transport.sendMail({
             from: `Benji Bakes <${SMTP_ORDER_EMAIL}>`,
