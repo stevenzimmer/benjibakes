@@ -51,7 +51,7 @@ export default function ConfirmOrder() {
         setIsSendingOrder(false);
         setIsSent(true);
         setShowSidebar(false);
-        setCheckoutState("cart");
+
         cartStore.setCheckoutLineItems(cartStore.cart);
         cartStore.setCheckoutPickupDate(cartStore.pickupDate);
         cartStore.clearStore();
@@ -60,8 +60,8 @@ export default function ConfirmOrder() {
             description:
                 "Your order has been sent and you will receive an email confirmation shortly.",
         });
-
         router.push(`/success?pay_later=true`);
+        setCheckoutState("cart");
     };
 
     const totalPrice = cartStore.cart.reduce((acc, item) => {
@@ -95,6 +95,7 @@ export default function ConfirmOrder() {
                             <span className="font-semibold">Pickup Date:</span>{" "}
                             {cartStore.pickupDate}
                         </p>
+
                         <p>
                             <span className="font-semibold">
                                 Amount due on pickup:

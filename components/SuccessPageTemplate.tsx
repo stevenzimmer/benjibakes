@@ -4,6 +4,7 @@ import formatPrice from "@/utils/formatPrice";
 import CheckoutItems from "@/components/CheckoutItems";
 import {useCartStore} from "@/store";
 import {calculateOrderAmount} from "@/utils/calculateOrderAmount";
+import BakeryAddress from "./BakeryAddress";
 
 export default function SuccessPageTemplate({
     serializedCharge,
@@ -39,6 +40,8 @@ export default function SuccessPageTemplate({
                             ? charge.metadata.pickupDate
                             : checkoutPickupDate}
                     </p>
+                    <BakeryAddress />
+
                     {charge && (
                         <Button variant="default">
                             <a
