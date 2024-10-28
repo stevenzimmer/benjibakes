@@ -72,7 +72,6 @@ export default function ProductCard({item}: {item: any}): JSX.Element {
                             Add to cart
                         </h4>
                         {item.prices.map((price: any, i: number) => {
-                            // console.log({price});
                             const cartItem = cartStore.cart.find(
                                 (item) => item.price_id === price.id
                             );

@@ -12,18 +12,14 @@ export const getStripeProducts = async () => {
             parseInt(b.metadata.menu_order, 10)
     );
 
-    // console.log({products});
-
     const productsWithPrices = await Promise.all(
         products.map(async (product) => {
-            // console.log({product});
             const getPrices = await stripe.prices.list({product: product.id});
 
             // Sort prices by unit_amount
             const prices = getPrices.data.sort(
                 (a, b) => (a?.unit_amount ?? 0) - (b?.unit_amount ?? 0)
             );
-            // console.log({prices});
             return {
                 id: product.id,
                 menu_label: product.metadata.menu_label,

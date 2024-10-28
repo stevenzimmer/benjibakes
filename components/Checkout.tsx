@@ -4,18 +4,17 @@ import {useCartStore} from "@/store";
 import {useEffect} from "react";
 import {useContext} from "react";
 import ThemeContext from "@/context/ThemeContext";
-// import {Button} from "./ui/button";
-// import {MoveLeft} from "lucide-react";
-// import {prisma} from "@/lib/prisma";
 const stripePromise = loadStripe(
-    process.env.NEXT_PUBLIC_STRIPE_TEST_PUBLISHABLE_KEY!
+    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
 );
 
+import {useToast} from "@/hooks/use-toast";
 import CheckoutForm from "@/components/CheckoutForm";
 
 export default function Checkout() {
     const cartStore = useCartStore();
     const {setCheckoutError, setCheckoutState} = useContext(ThemeContext);
+    const {toast} = useToast();
 
     async function getPaymentIntent() {
         if (!cartStore.paymentIntent || !cartStore.clientSecret) {
@@ -33,9 +32,15 @@ export default function Checkout() {
 
             const data = await response.json();
 
+            console.log({data});
             if (data.error) {
                 setCheckoutState("error");
                 setCheckoutError(data.error);
+                toast({
+                    title: "Error",
+                    description: data.error,
+                    variant: "destructive",
+                });
                 return;
             }
 
@@ -62,8 +67,6 @@ export default function Checkout() {
             labels: "floating",
         },
     };
-
-    // console.log({cartStore});
 
     return (
         <>

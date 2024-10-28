@@ -19,7 +19,6 @@ export default function ConfirmOrder() {
     const [isSendingOrder, setIsSendingOrder] = useState(false);
 
     const handleOrderSend = async () => {
-        // console.log("Order sent");
         setIsSendingOrder(true);
 
         const res = await fetch("/api/send-order-email", {
@@ -46,8 +45,6 @@ export default function ConfirmOrder() {
             });
             return;
         }
-
-        console.log({result});
         setIsSendingOrder(false);
         setIsSent(true);
         setShowSidebar(false);
@@ -65,7 +62,6 @@ export default function ConfirmOrder() {
     };
 
     const totalPrice = cartStore.cart.reduce((acc, item) => {
-        // console.log({item});
         return acc + item.cost! * item.quantity!;
     }, 0);
     return (

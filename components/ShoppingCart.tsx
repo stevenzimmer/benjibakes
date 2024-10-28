@@ -11,7 +11,6 @@ export default function ShoppingCart() {
     const cartStore = useCartStore();
     const {setCheckoutState} = useContext(ThemeContext);
     const totalPrice = cartStore.cart.reduce((acc, item) => {
-        // console.log({item});
         return acc + item.cost! * item.quantity!;
     }, 0);
     const handleSelectPickupDate = () => {

@@ -35,7 +35,6 @@ export default function PickupDetails() {
             disabledPickupDates.some((disabledDate) => {
                 // Convert disabled date to local timezone
                 const disabledDateObj = new Date(disabledDate);
-                // console.log({disabledDateObj});
                 const disabledDateTZOffset = disabledDateObj.getTimezoneOffset();
 
                 const disabledDateLocal = new Date(
@@ -85,17 +84,13 @@ export default function PickupDetails() {
                         <Calendar
                             mode="single"
                             selected={date}
-                            onSelect={(e) =>
-                                setDate(() => {
-                                    // console.log({e});
-                                    // console.log({state});
-                                    cartStore.setPickupDate(
-                                        format(e as Date, "PPP")
-                                    );
-                                    setIsCalendarOpen(false);
-                                    return e;
-                                })
-                            }
+                            onSelect={(e) => {
+                                cartStore.setPickupDate(
+                                    format(e as Date, "PPP")
+                                );
+                                setDate(e);
+                                setIsCalendarOpen(false);
+                            }}
                             defaultMonth={date}
                             disabled={setDisabledPickupDates}
                         />

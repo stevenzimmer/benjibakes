@@ -9,6 +9,12 @@ export async function POST(req: NextRequest) {
 
     const total = calculateOrderAmount(items);
 
+    console.log({total});
+
+    console.log({payment_intent_id});
+
+    console.log({customerId});
+
     const orderInfo = items
         .map((item: AddCartType) => {
             return `(${item.quantity}) ${item.price_id} | `;
@@ -43,41 +49,6 @@ export async function POST(req: NextRequest) {
                     }
                 );
 
-                //Fetch order with product ids
-                // const [existing_order, updated_order] = await Promise.all([
-                //     prisma.order.findFirst({
-                //         where: {paymentIntentID: updated_intent.id},
-                //         include: {products: true},
-                //     }),
-                //     prisma.order.update({
-                //         where: {paymentIntentID: updated_intent.id},
-                //         data: {
-                //             amount: total,
-                //             products: {
-                //                 deleteMany: {},
-                //                 create: items.map((item) => ({
-                //                     name: item.name,
-                //                     description: item.description || null,
-                //                     unit_amount: parseFloat(item.unit_amount),
-                //                     image: item.image,
-                //                     quantity: item.quantity,
-                //                 })),
-                //             },
-                //         },
-                //     }),
-                // ]);
-
-                // if (!existing_order) {
-                //     return NextResponse.json(
-                //         {
-                //             message: "Invalid Payment Intent",
-                //         },
-                //         {
-                //             status: 400,
-                //         }
-                //     );
-                // }
-
                 return NextResponse.json(
                     {
                         paymentIntent: updated_intent,
@@ -89,9 +60,8 @@ export async function POST(req: NextRequest) {
             }
         }
     } else {
+        console.log("Creating new payment intent");
         try {
-            // console.log("No payment intent id exists, create one...");
-            // const retrieveCustomer = await stripe.customers.retrieve();
             const paymentIntent = await stripe.paymentIntents.create({
                 amount: calculateOrderAmount(items),
                 currency: "usd",
@@ -104,14 +74,6 @@ export async function POST(req: NextRequest) {
                 },
                 customer: customerId,
             });
-
-            // orderData.paymentIntentID = paymentIntent.id;
-
-            // const newOrder = await prisma.order.create({
-            //     data: orderData,
-            // });
-
-            // console.log({newOrder});
 
             return NextResponse.json(
                 {

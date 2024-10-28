@@ -32,10 +32,7 @@ export default function CustomerDetails() {
     }) => {
         setCheckoutError("");
         setIsFetching(true);
-        // console.log("fetching customer email", email);
-        // console.log("fetching customer id", cartStore.customerId);
         if (!email) return;
-        // if (cartStore.customerId) return;
         const response = await fetch("/api/fetch-customer", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -48,8 +45,6 @@ export default function CustomerDetails() {
         const data = await response.json();
 
         if (data.error) {
-            // console.error(data.error);
-            // setEmail("");
             cartStore.setEmail("");
             ref.current && ref?.current.focus();
             setCheckoutError(data.error);
@@ -63,8 +58,6 @@ export default function CustomerDetails() {
         }
 
         setIsFetching(false);
-
-        // console.log({data});
 
         setEmail(data.customer.email);
         setName(data.customer.name);

@@ -12,10 +12,16 @@ import EmptyCart from "./EmptyCart";
 import Success from "./Success";
 import CheckoutBreadCrumbs from "./CheckoutBreadCrumbs";
 import ConfirmOrder from "./ConfirmOrder";
+import {Button} from "./ui/button";
 
 export default function SheetSidebar() {
     const cartStore = useCartStore();
-    const {checkoutState, sheetOpen, setSheetOpen} = useContext(ThemeContext);
+    const {
+        checkoutState,
+        sheetOpen,
+        setSheetOpen,
+        setCheckoutState,
+    } = useContext(ThemeContext);
 
     const [sheetTitle, setSheetTitle] = useState("Review your shopping cart");
 
@@ -40,6 +46,11 @@ export default function SheetSidebar() {
 
             case "success":
                 setSheetTitle("Order Complete");
+                break;
+            case "error":
+                setSheetTitle(
+                    "There was an error creating your order. Please try again."
+                );
                 break;
             default:
                 setSheetTitle("Review your shopping cart");
@@ -73,6 +84,17 @@ export default function SheetSidebar() {
                 {checkoutState === "checkout" && <Checkout />}
                 {checkoutState === "confirmOrder" && <ConfirmOrder />}
                 {checkoutState === "success" && <Success />}
+                {checkoutState === "error" && (
+                    <div>
+                        <Button
+                            onClick={() => {
+                                setCheckoutState("cart");
+                            }}
+                        >
+                            Back to Cart
+                        </Button>
+                    </div>
+                )}
             </SheetContent>
         </Sheet>
     );

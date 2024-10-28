@@ -5,9 +5,6 @@ import formatPrice from "@/utils/formatPrice";
 import type {AddCartType} from "@/types/Cart";
 // import { useCartStore } from "@/store";
 export default function CartItem({item}: {item: AddCartType}) {
-    // const cartStore = useCartStore();
-    // cartStore.clearCart();
-    // console.log({item})
     return (
         <motion.div
             layout
@@ -21,22 +18,6 @@ export default function CartItem({item}: {item: AddCartType}) {
                     width={100}
                     height={100}
                 />
-                {/* <div className="flex items-center w-full justify-center mt-2">
-                    <button
-                        onClick={() => {
-                            cartStore.removeProduct(item);
-                        }}
-                        className="text-red-300 text-2xl"
-                    >
-                        <CircleMinus />
-                    </button>
-                    <button
-                        onClick={() => cartStore.addProduct(item)}
-                        className="text-green-300 text-2xl"
-                    >
-                        <CirclePlus />
-                    </button>
-                </div> */}
             </div>
 
             <div className="w-3/4 px-3">

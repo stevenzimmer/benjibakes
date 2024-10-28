@@ -1,8 +1,7 @@
 import {create} from "zustand";
 import {persist} from "zustand/middleware";
-
 import {CartState} from "./types/Cart";
-import {useToast} from "@/hooks/use-toast";
+
 export const useCartStore = create<CartState>()(
     persist(
         (set) => ({

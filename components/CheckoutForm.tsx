@@ -39,7 +39,6 @@ export default function CheckoutForm({clientSecret}: {clientSecret: string}) {
         const {error: submitError} = await elements.submit();
 
         if (submitError) {
-            // console.log({submitError});
             setCheckoutError(submitError?.message as string);
             setIsLoading(false);
             return;
@@ -58,7 +57,6 @@ export default function CheckoutForm({clientSecret}: {clientSecret: string}) {
         }
 
         if (paymentIntent?.status === "succeeded") {
-            // console.log("checkout Cart", cartStore.cart);
             setShowSidebar(false);
             cartStore.setCheckoutLineItems(cartStore.cart);
             const res = await fetch("/api/send-email", {
@@ -81,7 +79,6 @@ export default function CheckoutForm({clientSecret}: {clientSecret: string}) {
                 setCheckoutError(error);
                 return;
             }
-            // console.log({result});
             setShowSidebar(false);
             cartStore.clearStore();
             setCheckoutState("cart");
