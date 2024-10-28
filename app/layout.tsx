@@ -5,6 +5,9 @@ import "./globals.css";
 const roboto = Roboto({ weight: ["400",'700'], subsets: ["latin"] });
 import { GoogleAnalytics } from '@next/third-parties/google'
 import CookieBackground from "@/components/CookieBackground";
+import ThemeProvider from "@/providers/ThemeProvider";
+import Nav from "@/components/Nav";
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.benjibakes.com'),
@@ -79,12 +82,17 @@ export default function RootLayout({
     dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
   />
       </head>
-      <body className={`${roboto.className} bg-bb-blue px-6 lg:px-12 relative`}>
-        {/* Generate Random number of different sized images that are positioned randomly throughout the background and sized randomly*/}
-        <ParallaxProviders>
-        <CookieBackground />
-        {children}
-        </ParallaxProviders>
+      <body className={`${roboto.className} bg-bb-blue !px-3 md:!px-6 lg:!px-12 relative overflow-x-hidden`}>
+        <ThemeProvider>
+          <ParallaxProviders>
+            <CookieBackground />
+            <main className="px-6 md:px-6 pb-12 lg:px-16 lg:pb-16 bg-white max-w-6xl mx-auto rounded-lg relative  md:py-6 py-3">
+            <Nav />
+            {children}
+            </main>
+            <Toaster />
+          </ParallaxProviders>
+        </ThemeProvider>
         </body>
         <GoogleAnalytics gaId="G-XCT71CMV8P" />
     </html>
