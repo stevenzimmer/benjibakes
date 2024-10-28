@@ -11,10 +11,10 @@ export default function HowToOrder() {
             </div>
             <div className="flex items-end flex-wrap  -mx-6 pt-6 pb-12">
                 <div className="w-full md:w-7/12 px-6 mb-12 lg:mb-0">
-                    <ol className=" text-lg md:text-xl text-bb-brown list-decimal pl-6 mb-6">
+                    <ol className=" text-lg md:text-xl text-bb-brown list-decimal pl-6 mb-4">
                         <li>
                             <span className="font-semibold">
-                                Choose your cookies
+                                Choose cookies
                             </span>{" "}
                             from our seasonal{" "}
                             <a
@@ -27,15 +27,16 @@ export default function HowToOrder() {
                         </li>
                         <li>
                             <span className="font-semibold">
-                                View your shopping cart
+                                View shopping cart
                             </span>{" "}
                             and confirm your order.
                         </li>
                         <li>
                             <span className="font-semibold">
-                                Provide your email address and select a date
-                            </span>{" "}
-                            which you&apos;d to pickup the cookies.
+                                Provide your name, email address
+                            </span>
+                            , and select a{" "}
+                            <span className="font-semibold">pickup date</span>.
                         </li>
                         <li>
                             <span className="font-semibold">
