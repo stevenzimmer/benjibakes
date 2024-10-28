@@ -2,7 +2,7 @@
 import {Sheet, SheetContent, SheetTitle} from "@/components/ui/sheet";
 
 import {useCartStore} from "@/store";
-import PickupDetails from "./PickupDetails";
+import OrderDetails from "./OrderDetails";
 import CustomerDetails from "./CustomerDetails";
 import ShoppingCart from "./ShoppingCart";
 import Checkout from "./Checkout";
@@ -33,8 +33,8 @@ export default function SheetSidebar() {
             case "customerDetails":
                 setSheetTitle("Step 2: Provide your information");
                 break;
-            case "pickupDate":
-                setSheetTitle("Step 3: Provide pickup details");
+            case "orderDetails":
+                setSheetTitle("Step 3: Provide order details");
                 break;
             case "checkout":
                 setSheetTitle("Final Step: Complete payment");
@@ -80,7 +80,7 @@ export default function SheetSidebar() {
                     </>
                 )}
                 {checkoutState === "customerDetails" && <CustomerDetails />}
-                {checkoutState === "pickupDate" && <PickupDetails />}
+                {checkoutState === "orderDetails" && <OrderDetails />}
                 {checkoutState === "checkout" && <Checkout />}
                 {checkoutState === "confirmOrder" && <ConfirmOrder />}
                 {checkoutState === "success" && <Success />}

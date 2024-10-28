@@ -9,9 +9,8 @@ export default function NavItems() {
             >
                 How to order
             </a>
-            <div className="hidden md:block">
-                <ViewMenuButton />
-            </div>
+
+            <ViewMenuButton />
             <SheetTrigger />
         </>
     );

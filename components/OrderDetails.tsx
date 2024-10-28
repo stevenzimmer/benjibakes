@@ -14,7 +14,7 @@ import {Separator} from "@/components/ui/separator";
 import {RadioGroup, RadioGroupItem} from "@/components/ui/radio-group";
 import BakeryAddress from "./BakeryAddress";
 
-export default function PickupDetails() {
+export default function OrderDetails() {
     const cartStore = useCartStore();
     const [date, setDate] = useState<Date>();
     const [isCalendarOpen, setIsCalendarOpen] = useState(false);
@@ -145,7 +145,7 @@ export default function PickupDetails() {
                                 !cartStore.pickupDate ||
                                 !cartStore.paymentDetails
                             }
-                            className="group disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold text-sm md:text-lg bg-white py-6 hover:text-bb-brown w-full"
+                            className="group disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold text-base md:text-lg bg-white py-6 hover:text-bb-brown w-full"
                             title={buttonDetails}
                             aria-label={buttonDetails}
                         >

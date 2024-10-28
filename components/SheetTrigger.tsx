@@ -14,7 +14,7 @@ export default function SheetTrigger() {
     return (
         <button
             aria-label="Open shopping cart"
-            className="relative bg-bb-brown md:ml-6  rounded-full p-1 flex items-center"
+            className="relative bg-bb-brown ml-3 sm:ml-6  rounded-full p-1 flex items-center"
             onClick={() => setSheetOpen(!sheetOpen)}
         >
             <Cookie className="text-white" />

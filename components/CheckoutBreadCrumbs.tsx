@@ -16,11 +16,11 @@ export default function CheckoutBreadCrumbs() {
     const cartStore = useCartStore();
 
     const canProceedToCustomerDetails = cartStore.cart.length > 0;
-    const canProceedToPickupDate = cartStore.email && cartStore.name;
+    const canProceedToOrderDetails = cartStore.email && cartStore.name;
 
     const canProceedToCheckout =
         canProceedToCustomerDetails &&
-        canProceedToPickupDate &&
+        canProceedToOrderDetails &&
         cartStore.pickupDate;
 
     return (
@@ -68,22 +68,22 @@ export default function CheckoutBreadCrumbs() {
                 <BreadcrumbItem>
                     <BreadcrumbLink
                         className={`${
-                            checkoutState === "pickupDate"
+                            checkoutState === "orderDetails"
                                 ? "font-semibold text-neutral-950"
                                 : ""
                         } ${
-                            canProceedToPickupDate
+                            canProceedToOrderDetails
                                 ? "cursor-pointer"
                                 : "cursor-not-allowed text-neutral-300 hover:text-neutral-300"
                         }`}
                         onClick={(e) => {
                             e.preventDefault();
-                            if (canProceedToPickupDate) {
-                                setCheckoutState("pickupDate");
+                            if (canProceedToOrderDetails) {
+                                setCheckoutState("orderDetails");
                             }
                         }}
                     >
-                        Pickup Details
+                        Order Details
                     </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
@@ -95,7 +95,7 @@ export default function CheckoutBreadCrumbs() {
                                 ? "font-semibold text-neutral-950"
                                 : "cursor-pointer"
                         } ${
-                            canProceedToCheckout && canProceedToPickupDate
+                            canProceedToCheckout && canProceedToOrderDetails
                                 ? ""
                                 : "text-neutral-300 cursor-not-allowed hover:text-neutral-300"
                         }`}
@@ -103,7 +103,7 @@ export default function CheckoutBreadCrumbs() {
                             e.preventDefault();
                             if (
                                 canProceedToCheckout &&
-                                canProceedToPickupDate
+                                canProceedToOrderDetails
                             ) {
                                 setCheckoutState(
                                     cartStore.paymentDetails === "pay-now"

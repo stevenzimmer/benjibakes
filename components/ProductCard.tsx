@@ -43,22 +43,22 @@ export default function ProductCard({item}: {item: any}): JSX.Element {
     };
     return (
         <div
-            className={`xl:px-12 py-12 w-full rounded-lg mb-6 group overflow-hidden relative ${
+            className={`xl:px-12 pt-6 md:py-12 w-full rounded-lg mb-12 md:mb-6 group overflow-hidden relative ${
                 item.special ? "bg-orange-100" : "bg-blue-50"
             }`}
         >
-            <div className="flex xl:items-center justify-center flex-wrap w-full">
+            <div className="flex justify-center flex-wrap w-full">
                 <div className="w-full md:w-1/2 lg:w-2/5 px-12 md:px-6 mb-6 md:mb-0">
                     <Image
                         src={item.image}
                         alt={item.name}
                         width={200}
                         height={200}
-                        className="w-full group-hover:rotate-90 transition-transform duration-200 max-w-lg mx-auto"
+                        className="w-full group-hover:rotate-90 transition-transform duration-200 max-w-md mx-auto"
                     />
                 </div>
-                <div className="w-full md:w-1/2 lg:w-3/5 md:px-6">
-                    <div className="px-6 md:px-0">
+                <div className="w-full md:w-1/2 lg:w-3/5 p-2 md:px-6">
+                    <div className="px-4 md:px-0">
                         <p className="italic mb-2">{item.label}</p>
                         <h3 className="text-2xl mb-2 font-light">
                             {item.title}
@@ -67,9 +67,9 @@ export default function ProductCard({item}: {item: any}): JSX.Element {
                             <p className="italic mb-2">{item.description}</p>
                         )}
                     </div>
-                    <div className="bg-white p-3 md:p-6 rounded-lg border mt-6">
-                        <h4 className="text-lg px-2 underline underline-offset-4 font-semibold">
-                            Add to cart
+                    <div className="bg-white p-3 md:p-6 rounded-lg border mt-6 shadow-lg">
+                        <h4 className="md:text-lg px-2 font-semibold">
+                            Add {item.title} to cart
                         </h4>
                         {item.prices.map((price: any, i: number) => {
                             const cartItem = cartStore.cart.find(
@@ -81,7 +81,10 @@ export default function ProductCard({item}: {item: any}): JSX.Element {
                                     className="px-2 py-3 relative flex items-center justify-between flex-wrap border-b last:border-b-0"
                                 >
                                     <div className="relative py-3 w-6/12 lg:w-7/12 text-left">
-                                        <span className=" select-none xl:text-xl font-semibold">
+                                        <span
+                                            className=" select-none
+                                        sm:text-lg md:text-base lg:text-xl font-semibold"
+                                        >
                                             {price.number} cookies for{" "}
                                             {formatPrice(price?.cost ?? 0)}
                                         </span>

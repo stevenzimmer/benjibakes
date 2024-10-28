@@ -73,7 +73,7 @@ export default function CustomerDetails() {
                 "Next step is to provide a pickup date and payment preference.",
         });
 
-        setCheckoutState("pickupDate");
+        setCheckoutState("orderDetails");
     };
 
     const canProceed =
@@ -145,7 +145,7 @@ export default function CustomerDetails() {
             )}
             {!canProceed ? (
                 <Button
-                    className="group disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold text-lg py-6 hover:text-bb-brown disabled:border-bb-brown/20 bg-white"
+                    className="group disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold text-base md:text-lg py-6 hover:text-bb-brown disabled:border-bb-brown/20 bg-white"
                     variant={"ghost"}
                     disabled={!email || !name || isFetching}
                     onClick={() => {
@@ -155,7 +155,7 @@ export default function CustomerDetails() {
                         });
                     }}
                 >
-                    Set pickup details{" "}
+                    Set order details{" "}
                     {!isFetching ? (
                         <ArrowRight
                             className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
@@ -196,13 +196,13 @@ export default function CustomerDetails() {
                     </p>
                     <div className="sticky bottom-0 left-0 right-0 shadow-lg">
                         <Button
-                            className="group disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold text-sm md:text-lg py-6 hover:text-bb-brown w-full bg-white"
+                            className="group disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold text-base md:text-lg py-6 hover:text-bb-brown w-full bg-white"
                             variant="outline"
                             onClick={() => {
                                 setCheckoutState("pickupDate");
                             }}
                         >
-                            Provide pickup and payment details{" "}
+                            Provide order details{" "}
                             <ArrowRight
                                 className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
                                 size={16}
