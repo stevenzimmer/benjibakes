@@ -4,7 +4,7 @@ export default function BakeryAddress() {
     return (
         <div className="bg-blue-50 p-3 rounded-lg">
             <p className="mb-2">
-                Orders are picked up between 3pm - 6pm at our home bakery:
+                Orders can be picked up between 3pm - 6pm at our home bakery:
             </p>
             <div className="px-3">
                 <p>4535 Mountaingate Dr.</p>

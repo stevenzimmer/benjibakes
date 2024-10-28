@@ -1,6 +1,6 @@
 import Image from "next/image";
 import {Separator} from "./ui/separator";
-
+import BakeryAddress from "./BakeryAddress";
 export default function HowToOrder() {
     return (
         <div className="scroll-my-32" id="order">
@@ -46,20 +46,11 @@ export default function HowToOrder() {
                     </ol>
 
                     <p className=" text-lg md:text-xl text-bb-brown mb-6">
-                        We will send you a confirmation email with the order and
-                        payment details.
+                        After order is completed, we will send you a
+                        confirmation email with the order details.
                     </p>
+                    <BakeryAddress />
 
-                    <p className=" text-lg md:text-xl text-bb-brown mb-12">
-                        If you&apos;d prefer to pay when you pickup your order,
-                        please just email your order to{" "}
-                        <a
-                            className="underline"
-                            href={`mailto:${process.env.NEXT_PUBLIC_SMTP_ORDER_EMAIL}`}
-                        >
-                            {process.env.NEXT_PUBLIC_SMTP_ORDER_EMAIL}
-                        </a>
-                    </p>
                     <Separator className="my-12 border-bb-brown" />
 
                     <p className=" text-lg md:text-xl text-bb-brown mb-3">
