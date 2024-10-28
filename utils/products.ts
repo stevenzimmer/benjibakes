@@ -6,8 +6,8 @@ export const products = [
         description:
             "Our best-seller, the Brown Butter Chocolate Chip Cookie, offers a rich twist on the classic. Made with perfectly browned butter, gooey chocolate chips, and topped with flaky sea salt, these cookies have a depth of flavor that's irresistible.",
         prices: [
-            {id: "bb-choco-chip-12", number: 12, cost: 2400},
-            {id: "bb-choco-chip-24", number: 24, cost: 4000},
+            {id: "bb-choco-chip-12", number: 12, cost: 2500},
+            {id: "bb-choco-chip-24", number: 24, cost: 4400},
         ],
         image: "/bb-choco-chip.png",
     },
