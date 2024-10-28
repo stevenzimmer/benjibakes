@@ -9,12 +9,6 @@ export async function POST(req: NextRequest) {
 
     const total = calculateOrderAmount(items);
 
-    console.log({total});
-
-    console.log({payment_intent_id});
-
-    console.log({customerId});
-
     const orderInfo = items
         .map((item: AddCartType) => {
             return `(${item.quantity}) ${item.price_id} | `;
@@ -60,7 +54,6 @@ export async function POST(req: NextRequest) {
             }
         }
     } else {
-        console.log("Creating new payment intent");
         try {
             const paymentIntent = await stripe.paymentIntents.create({
                 amount: calculateOrderAmount(items),

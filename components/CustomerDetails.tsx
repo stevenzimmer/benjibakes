@@ -199,7 +199,7 @@ export default function CustomerDetails() {
                             className="group disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold text-base md:text-lg py-6 hover:text-bb-brown w-full bg-white"
                             variant="outline"
                             onClick={() => {
-                                setCheckoutState("pickupDate");
+                                setCheckoutState("orderDetails");
                             }}
                         >
                             Provide order details{" "}

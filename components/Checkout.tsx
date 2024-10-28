@@ -32,7 +32,6 @@ export default function Checkout() {
 
             const data = await response.json();
 
-            console.log({data});
             if (data.error) {
                 setCheckoutState("error");
                 setCheckoutError(data.error);
