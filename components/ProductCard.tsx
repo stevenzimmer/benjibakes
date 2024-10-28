@@ -102,7 +102,7 @@ export default function ProductCard({item}: {item: any}): JSX.Element {
                                         >
                                             <Minus />
                                         </QuantityButton>
-                                        <p className="mx-6">
+                                        <p className="mx-3 lg:mx-6">
                                             {cartItem?.quantity ?? 0}
                                         </p>
                                         <QuantityButton
