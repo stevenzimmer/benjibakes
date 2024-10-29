@@ -144,46 +144,48 @@ export default function CustomerDetails() {
                 </div>
             )}
             {!canProceed ? (
-                <Button
-                    className="group disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold text-base md:text-lg py-6 hover:text-bb-brown disabled:border-bb-brown/20 bg-white"
-                    variant={"ghost"}
-                    disabled={!email || !name || isFetching}
-                    onClick={() => {
-                        handleFetchCustomer({
-                            email,
-                            name,
-                        });
-                    }}
-                >
-                    Set order details{" "}
-                    {!isFetching ? (
-                        <ArrowRight
-                            className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
-                            size={16}
-                        />
-                    ) : (
-                        <svg
-                            className="animate-spin ml-2 h-5 w-5 text-bb-blue"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                        >
-                            <circle
-                                className="opacity-25"
-                                cx="12"
-                                cy="12"
-                                r="10"
-                                stroke="currentColor"
-                                strokeWidth="4"
-                            ></circle>
-                            <path
-                                className="opacity-75"
-                                fill="currentColor"
-                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                            ></path>
-                        </svg>
-                    )}
-                </Button>
+                <div className="flex justify-end">
+                    <Button
+                        className="disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed group text-bb-brown  font-semibold py-6 hover:text-bb-brown text-base md:text-lg  flex justify-end bg-bb-brown-10 hover:bg-bb-brown-20 shadow-lg"
+                        variant="ghost"
+                        disabled={!email || !name || isFetching}
+                        onClick={() => {
+                            handleFetchCustomer({
+                                email,
+                                name,
+                            });
+                        }}
+                    >
+                        Set order details{" "}
+                        {!isFetching ? (
+                            <ArrowRight
+                                className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
+                                size={16}
+                            />
+                        ) : (
+                            <svg
+                                className="animate-spin ml-2 h-5 w-5 text-bb-blue"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                <circle
+                                    className="opacity-25"
+                                    cx="12"
+                                    cy="12"
+                                    r="10"
+                                    stroke="currentColor"
+                                    strokeWidth="4"
+                                ></circle>
+                                <path
+                                    className="opacity-75"
+                                    fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                ></path>
+                            </svg>
+                        )}
+                    </Button>
+                </div>
             ) : (
                 <>
                     <Separator className="my-8" />
@@ -194,10 +196,10 @@ export default function CustomerDetails() {
                         Next step is to provide a pickup date and payment
                         preference.
                     </p>
-                    <div className="sticky bottom-0 left-0 right-0 shadow-lg">
+                    <div className="sticky bottom-0 left-0 right-0 flex justify-end">
                         <Button
-                            className="group disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold text-base md:text-lg py-6 hover:text-bb-brown w-full bg-white"
-                            variant="outline"
+                            className=" disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed group text-bb-brown  font-semibold py-6 hover:text-bb-brown text-base md:text-lg flex justify-end bg-bb-brown-10 hover:bg-bb-brown-20 shadow-lg"
+                            variant="ghost"
                             onClick={() => {
                                 setCheckoutState("orderDetails");
                             }}

@@ -34,7 +34,7 @@ export default function ConfirmOrder() {
             }),
         });
 
-        const {result, error} = await res.json();
+        const {error} = await res.json();
 
         if (error) {
             setCheckoutError(error);

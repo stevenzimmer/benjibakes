@@ -16,7 +16,9 @@ const config: Config = {
   		colors: {
   			bb: {
   				blue: '#5cbbf0',
-  				brown: '#d9a361'
+					"brown-10": '#FBF6EF', 
+					"brown-20": '#F7EDDF',
+  				brown: '#d9a361',
   			}
   		},
   		backgroundImage: {

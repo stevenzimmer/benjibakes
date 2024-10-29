@@ -26,10 +26,10 @@ export default function ShoppingCart() {
             <p className="mb-6 font-semibold text-xl">
                 Order Total: {formatPrice(totalPrice)}
             </p>
-            <div className="sticky bottom-0 left-0 right-0 shadow-lg">
+            <div className="sticky bottom-0 right-0 flex justify-end">
                 <Button
-                    className="group border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold py-6 hover:text-bb-brown w-full text-base md:text-lg bg-white"
-                    variant="outline"
+                    className="group text-bb-brown  font-semibold py-6 text-base md:text-lg flex justify-end bg-bb-brown-10 hover:bg-bb-brown-20 hover:text-bb-brown shadow-lg"
+                    variant="ghost"
                     onClick={handleSelectPickupDate}
                 >
                     Provide customer details{" "}

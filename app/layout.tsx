@@ -86,7 +86,7 @@ export default function RootLayout({
         <ThemeProvider>
           <ParallaxProviders>
             <CookieBackground />
-            <main className="px-6 md:px-6 pb-12 lg:px-16 lg:pb-16 bg-white max-w-6xl mx-auto rounded-lg relative  md:py-6 py-3">
+            <main className="px-3 md:px-6 pb-12 lg:px-16 lg:pb-16 bg-white max-w-6xl mx-auto rounded-lg relative  md:py-6 py-3">
             <Nav />
             {children}
             </main>

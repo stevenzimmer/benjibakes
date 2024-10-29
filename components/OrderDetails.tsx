@@ -57,8 +57,7 @@ export default function OrderDetails() {
     return (
         <div className="pb-6">
             <BakeryAddress />
-            <Separator className="my-8" />
-            <div className="">
+            <div className="mt-6">
                 <p className="font-semibold text-lg mb-2">
                     Select your pickup date:
                 </p>
@@ -98,7 +97,7 @@ export default function OrderDetails() {
                 </Popover>
                 {cartStore.pickupDate && (
                     <div className="p-3 bg-blue-50 rounded-lg mt-3">
-                        <strong>Current selected pickup date</strong>:{" "}
+                        <strong>Selected pickup date</strong>:{" "}
                         {cartStore.pickupDate}
                     </div>
                 )}
@@ -131,9 +130,9 @@ export default function OrderDetails() {
             {canProceed && (
                 <>
                     <Separator className="my-8" />
-                    <div className="sticky bottom-0 left-0 right-0 shadow-lg">
+                    <div className="sticky bottom-0 left-0 right-0 flex justify-end">
                         <Button
-                            variant={"ghost"}
+                            variant="ghost"
                             onClick={() =>
                                 setCheckoutState(
                                     cartStore.paymentDetails === "pay-now"
@@ -145,7 +144,7 @@ export default function OrderDetails() {
                                 !cartStore.pickupDate ||
                                 !cartStore.paymentDetails
                             }
-                            className="group disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed border-2 text-bb-brown border-bb-brown hover:border-bb-brown/80 font-semibold text-base md:text-lg bg-white py-6 hover:text-bb-brown w-full"
+                            className="disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed group text-bb-brown hover:text-bb-brown  font-semibold py-6  text-base md:text-lg  flex justify-end bg-bb-brown-10 hover:bg-bb-brown-20 shadow-lg"
                             title={buttonDetails}
                             aria-label={buttonDetails}
                         >

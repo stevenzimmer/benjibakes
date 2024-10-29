@@ -52,7 +52,7 @@ export default function HowToOrder() {
                     </p>
                     <BakeryAddress />
 
-                    <Separator className="my-12 border-bb-brown" />
+                    <Separator className="my-8 border-bb-brown" />
 
                     <p className=" text-lg md:text-xl text-bb-brown mb-3">
                         <span className="font-semibold">
