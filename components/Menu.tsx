@@ -11,7 +11,7 @@ export default async function Menu() {
             </h2>
 
             {products.map((item, i) => (
-                <ProductCard item={item} key={i} />
+                <ProductCard item={item} i={i} key={i} />
             ))}
             <ViewCartButton />
         </div>

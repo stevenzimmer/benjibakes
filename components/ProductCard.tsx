@@ -6,7 +6,13 @@ import {Price} from "@/types/Cart";
 import {Plus, Minus} from "lucide-react";
 import {useToast} from "@/hooks/use-toast";
 
-export default function ProductCard({item}: {item: any}): JSX.Element {
+export default function ProductCard({
+    item,
+    i,
+}: {
+    item: any;
+    i: number;
+}): JSX.Element {
     const {prices} = item;
     const {toast} = useToast();
     const cartStore = useCartStore();
@@ -47,7 +53,11 @@ export default function ProductCard({item}: {item: any}): JSX.Element {
                 item.special ? "bg-orange-100" : "bg-blue-50"
             }`}
         >
-            <div className="flex justify-center flex-wrap w-full">
+            <div
+                className={`flex justify-center flex-wrap w-full ${
+                    i % 2 !== 0 ? "flex-row-reverse" : ""
+                }`}
+            >
                 <div className="w-full md:w-1/2 lg:w-2/5 px-12 md:px-6 mb-6 md:mb-0">
                     <Image
                         src={item.image}

@@ -35,9 +35,22 @@ export default function Hero() {
                             good cookies.
                         </p>
                         <p>
-                            See our menu and order information below, and be
-                            sure to check back often as we swap in new cookies
-                            monthly!
+                            See our{" "}
+                            <a
+                                href="#menu"
+                                className="underline font-semibold underline-offset-2"
+                            >
+                                menu
+                            </a>{" "}
+                            and{" "}
+                            <a
+                                href="#order"
+                                className="underline font-semibold underline-offset-2"
+                            >
+                                order
+                            </a>{" "}
+                            information below, and be sure to check back often
+                            as we swap in new cookies monthly!
                         </p>
                     </div>
                 </div>
