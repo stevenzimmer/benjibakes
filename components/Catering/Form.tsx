@@ -48,7 +48,6 @@ export default function CateringForm() {
         defaultValues: {
             username: "",
             email: "",
-            eventDate: new Date(),
             details: "",
         },
     });

@@ -53,7 +53,7 @@ const cookies = [
 ]
 export default function CateringPage() {
     return (
-        <div className="">
+        <div className="w-full">
             <h1 className="font-semibold text-3xl text-center mb-12">
                 Benji Bakes Catering
             </h1>
@@ -88,21 +88,21 @@ export default function CateringPage() {
                     <Carousel
       opts={{
         align: "start",
+        loop: true,
+        
       }}
-      className="w-full my-6"
+      className="w-full my-6 px-6"
     >
       <CarouselContent className="flex items-center w-full">
-        {cookies.map((cookie, index) => (
-          <CarouselItem key={index} className="w-full max-w-md mx-auto">
-          
-
+        {cookies.map((cookie, i) => (
+          <CarouselItem key={i} className="w-full max-w-md mx-auto">
 <Image src={cookie.path} alt={cookie.caption} width={500} height={500} className="rounded-lg shadow-lg w-full" />
        <p className="text-center text-slate-800 mt-3">{cookie.caption}</p>
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious className="left-0 lg:-left-5 shadow-lg" />
+      <CarouselNext className="right-0 lg:-right-5 shadow-lg" />
     </Carousel>
                 </div>
                 <div className="w-full lg:w-5/12  lg:px-6 xl:px-12">
