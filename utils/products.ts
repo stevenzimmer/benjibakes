@@ -21,18 +21,18 @@ export const products = [
             {id: "bb-cinnamon-6", number: 6, cost: 1400},
             {id: "bb-cinnamon-12", number: 12, cost: 2700},
         ],
-        image: "/cinnamon-roll.png",
+        image: "/cinni-roll.png",
     },
     {
-        id: "bb-celebration",
+        id: "bb-holiday",
         label: "Rotating Favorite",
-        title: "Celebration Cookie",
+        title: "Holiday Sugar Cookie",
         description:
-            "Celebrate life's sweet moments with our vibrant Celebration Cookie! Packed with colorful sprinkles and soft, chewy goodness, these cookies are the ultimate party treat. Whether it's a birthday, anniversary, or any occasion, this cookie will make every celebration sweeter.",
+            "Celebrate life's sweet moments with our vibrant Holiday Sugar Cookie! Packed with colorful sprinkles and soft, chewy goodness, these cookies are the ultimate party treat. Whether it's a birthday, anniversary, or any occasion, this cookie will make every Christmas holiday sweeter.",
         prices: [
-            {id: "bb-celebration-6", number: 6, cost: 1300},
-            {id: "bb-celebration-12", number: 12, cost: 2400},
+            {id: "bb-holiday-6", number: 6, cost: 1300},
+            {id: "bb-holiday-12", number: 12, cost: 2400},
         ],
-        image: "/celebration.png",
+        image: "/holiday-sugar-cookie.png",
     },
 ];
