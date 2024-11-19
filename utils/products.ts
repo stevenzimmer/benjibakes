@@ -28,10 +28,10 @@ export const products = [
         label: "Rotating Favorite",
         title: "Holiday Sugar Cookie",
         description:
-            "Celebrate life's sweet moments with our vibrant Holiday Sugar Cookie! Packed with colorful sprinkles and soft, chewy goodness, these cookies are the ultimate party treat. Whether it's a birthday, anniversary, or any occasion, this cookie will make every Christmas holiday sweeter.",
+            "Celebrate life's sweet moments this season with our festive Holiday Sugar Cookie! Packed with red and green sprinkles and a soft, chewy center, these cookies are the ultimate holiday treat.",
         prices: [
             {id: "bb-holiday-6", number: 6, cost: 1300},
-            {id: "bb-holiday-12", number: 12, cost: 2400},
+            {id: "bb-holiday-12", number: 12, cost: 2500},
         ],
         image: "/holiday-sugar-cookie.png",
     },
