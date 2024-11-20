@@ -68,8 +68,6 @@ export default function CateringForm() {
     const {toast} = useToast();
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log({values});
-
         setIsLoading(true);
 
         const res = await fetch("/api/catering-request", {
@@ -83,8 +81,6 @@ export default function CateringForm() {
         const {error} = await res.json();
 
         if (error) {
-            // setCheckoutError(error);
-            console.log({error});
             return;
         }
 
@@ -106,7 +102,7 @@ export default function CateringForm() {
                         control={form.control}
                         name="username"
                         render={({field}) => (
-                            <FormItem>
+                            <FormItem className="space-y-0">
                                 <FormLabel className="font-semibold">
                                     Your name
                                 </FormLabel>
@@ -122,7 +118,7 @@ export default function CateringForm() {
                         control={form.control}
                         name="email"
                         render={({field}) => (
-                            <FormItem>
+                            <FormItem className="space-y-0">
                                 <FormLabel className="font-semibold">
                                     Your email address
                                 </FormLabel>
@@ -138,7 +134,7 @@ export default function CateringForm() {
                         control={form.control}
                         name="eventDate"
                         render={({field}) => (
-                            <FormItem className="flex flex-col">
+                            <FormItem className="flex flex-col space-y-1">
                                 <FormLabel className="font-semibold">
                                     Date of your event
                                 </FormLabel>
@@ -187,7 +183,7 @@ export default function CateringForm() {
                         control={form.control}
                         name="details"
                         render={({field}) => (
-                            <FormItem>
+                            <FormItem className="space-y-0">
                                 <FormLabel className="font-semibold">
                                     Catering details
                                 </FormLabel>

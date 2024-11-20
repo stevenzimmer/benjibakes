@@ -6,11 +6,6 @@ import {sendEmail} from "@/utils/sendEmail";
 export async function POST(req: Request, res: NextApiResponse) {
     const {details, email, eventDate, username} = await req.json();
 
-    console.log({details});
-    console.log({email});
-    console.log({eventDate});
-    console.log({username});
-
     const html = `
         <h1>Catering Request from ${username}</h1>
         <h2>Event Details</h2>
