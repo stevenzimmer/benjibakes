@@ -85,25 +85,14 @@ export default function CateringPage() {
                             and we’ll work together to make it happen!
                         </li>
                     </ul>
-                    <Carousel
-      opts={{
-        align: "start",
-        loop: true,
-        
-      }}
-      className="w-full my-6 px-6"
-    >
-      <CarouselContent className="flex items-center w-full">
-        {cookies.map((cookie, i) => (
-          <CarouselItem key={i} className="w-full max-w-md mx-auto">
+                    <div className="columns-1 sm:columns-2 gap-6">
+                    {cookies.map((cookie, i) => (
+          <div key={i} className="w-full mx-auto py-3">
 <Image src={cookie.path} alt={cookie.caption} width={500} height={500} className="rounded-lg shadow-lg w-full" />
-       <p className="text-center text-slate-800 mt-3">{cookie.caption}</p>
-          </CarouselItem>
+       <p className="text-center text-slate-800 mt-3 px-3">{cookie.caption}</p>
+          </div>
         ))}
-      </CarouselContent>
-      <CarouselPrevious className="left-0 lg:-left-5 shadow-lg" />
-      <CarouselNext className="right-0 lg:-right-5 shadow-lg" />
-    </Carousel>
+                    </div>
                 </div>
                 <div className="w-full lg:w-5/12  lg:px-6 xl:px-12">
                     <div className="bg-bb-brown-20 rounded-lg px-6 py-6 sticky top-24">
