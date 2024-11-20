@@ -24,12 +24,23 @@ import {Input} from "@/components/ui/input";
 const formSchema = z.object({
     username: z
         .string()
-        .min(2)
-        .max(50),
+        .min(2, {
+            message: "Please provide your first and last name.",
+        })
+        .max(50, {
+            message: "Please provide only your first and last name.",
+        }),
+    email: z
+        .string({
+            required_error: "An email address is required.",
+        })
+        .email({
+            message: "Please provide a valid email address.",
+        }),
     eventDate: z.date({
         required_error: "A date for the event is required.",
     }),
-    email: z.string().email(),
+
     details: z
         .string()
         .min(20, {

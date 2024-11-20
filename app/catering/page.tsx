@@ -54,7 +54,7 @@ const cookies = [
 export default function CateringPage() {
     return (
         <div className="w-full">
-            <h1 className="font-semibold text-3xl text-center mb-12">
+            <h1 className="font-semibold text-4xl text-center mb-12">
                 Benji Bakes Catering
             </h1>
             <div className="flex justify-between flex-wrap">
@@ -85,7 +85,7 @@ export default function CateringPage() {
                             and we’ll work together to make it happen!
                         </li>
                     </ul>
-                    <div className="columns-1 sm:columns-2 gap-6">
+                    <div className="columns-2 gap-6">
                     {cookies.map((cookie, i) => (
           <div key={i} className="w-full mx-auto py-3">
 <Image src={cookie.path} alt={cookie.caption} width={500} height={500} className="rounded-lg shadow-lg w-full" />
@@ -94,8 +94,8 @@ export default function CateringPage() {
         ))}
                     </div>
                 </div>
-                <div className="w-full lg:w-5/12  lg:px-6 xl:px-12">
-                    <div className="bg-bb-brown-20 rounded-lg px-6 py-6 sticky top-24">
+                <div className="w-full lg:w-5/12  lg:pl-6 xl:pl-12">
+                    <div className="bg-bb-brown-20 rounded-lg px-6 py-6 sticky top-24 shadow-lg">
                         <h3 className="font-semibold text-xl text-center mb-6">
                             Ready to elevate your event with Benji Bakes Catering?
                         </h3>
