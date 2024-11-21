@@ -87,7 +87,7 @@ export default function CateringPage() {
                     </ul>
                     <div className="columns-2 sm:gap-6">
                     {cookies.map((cookie, i) => (
-          <div key={i} className="w-full mx-auto py-6">
+          <div key={i} className="w-full mx-auto py-6 break-inside-avoid-column ">
 <Image src={cookie.path} alt={cookie.caption} width={500} height={500} className="rounded-lg shadow-lg w-full" />
        <p className="text-center text-slate-800 mt-3 px-3 text-sm sm:text-base">{cookie.caption}</p>
           </div>
