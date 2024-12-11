@@ -12,16 +12,16 @@ export const products = [
         image: "/bb-choco-chip.png",
     },
     {
-        id: "bb-cinnamon",
-        label: "Holiday Special",
-        title: "Cinnamon Roll Cookie",
+        id: "bb-peppermin-choco",
+        label: "Christmas Special",
+        title: "Double Chocolate Peppermint Cookie",
         description:
-            "Introducing the Cinnamon Roll cookie - our November special! A soft, chewy delight filled with pockets of cinnamon butter, topped with a vanilla drizzle and flaky sea salt. This cozy treat brings all the comforts of a cinnamon roll in cookie form - perfect for your holiday event, or Thanksgiving dessert!",
+            "Meet our December seasonal flavor - a rich chocolate cookie packed with peppermint and chocolate chips, dipped in peppermint white chocolate, and sprinkled with festive candy cane bits. This indulgent holiday treat is the perfect mix of chocolatey goodness and refreshing mint, ready to make your season merry and bright!",
         prices: [
-            {id: "bb-cinnamon-6", number: 6, cost: 1400},
-            {id: "bb-cinnamon-12", number: 12, cost: 2700},
+            {id: "bb-peppermin-choco-6", number: 6, cost: 1400},
+            {id: "bb-peppermin-choco-12", number: 12, cost: 2700},
         ],
-        image: "/cinni-roll.png",
+        image: "/peppermint-white-chocolate.png",
     },
     {
         id: "bb-holiday",
