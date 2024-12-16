@@ -12,14 +12,14 @@ export const products = [
         image: "/bb-choco-chip.png",
     },
     {
-        id: "bb-peppermin-choco",
+        id: "bb-peppermint-choco",
         label: "Christmas Special",
         title: "Double Chocolate Peppermint Cookie",
         description:
             "Meet our December seasonal flavor - a rich chocolate cookie packed with peppermint and chocolate chips, dipped in peppermint white chocolate, and sprinkled with festive candy cane bits. This indulgent holiday treat is the perfect mix of chocolatey goodness and refreshing mint, ready to make your season merry and bright!",
         prices: [
-            {id: "bb-peppermin-choco-6", number: 6, cost: 1400},
-            {id: "bb-peppermin-choco-12", number: 12, cost: 2700},
+            {id: "bb-peppermint-choco-6", number: 6, cost: 1400},
+            {id: "bb-peppermint-choco-12", number: 12, cost: 2700},
         ],
         image: "/peppermint-white-chocolate.png",
     },

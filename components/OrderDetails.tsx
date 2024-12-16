@@ -22,11 +22,14 @@ export default function OrderDetails() {
     const {setCheckoutState} = useContext(ThemeContext);
 
     const disabledPickupDates = [
-        "2024-11-05",
-        "2024-11-06",
-        "2024-10-15",
-        "2024-11-21",
-        "2024-11-22",
+        "2024-12-25",
+        "2025-02-25",
+        "2025-02-26",
+        "2025-02-27",
+        "2025-02-28",
+        "2025-02-28",
+        "2025-03-03",
+        "2025-03-04",
     ];
 
     const setDisabledPickupDates = (date: Date) => {
@@ -59,7 +62,7 @@ export default function OrderDetails() {
             <BakeryAddress />
             <div className="mt-6">
                 <p className="font-semibold text-lg mb-2">
-                    Select your pickup date:
+                    Select pickup date:
                 </p>
                 <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
                     <PopoverTrigger asChild>
