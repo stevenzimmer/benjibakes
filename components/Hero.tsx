@@ -47,10 +47,10 @@ export default function Hero() {
                                 href="#order"
                                 className="underline font-semibold underline-offset-2"
                             >
-                                order
+                                order information
                             </a>{" "}
-                            information below, and be sure to check back often
-                            as we swap in new cookies monthly!
+                            below, and be sure to check back often as we swap in
+                            new cookies monthly!
                         </p>
                     </div>
                 </div>

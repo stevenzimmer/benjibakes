@@ -22,7 +22,8 @@ export default function OrderDetails() {
     const {setCheckoutState} = useContext(ThemeContext);
 
     const disabledPickupDates = [
-        "2024-12-25",
+        "2025-02-07",
+        "2025-02-10",
         "2025-02-25",
         "2025-02-26",
         "2025-02-27",
@@ -33,29 +34,33 @@ export default function OrderDetails() {
     ];
 
     const setDisabledPickupDates = (date: Date) => {
+        const currentDate = new Date();
+        const tomorrowsDate = new Date(
+            currentDate.getTime() + 24 * 60 * 60 * 1000
+        );
         return (
-            date < new Date() ||
+            date < tomorrowsDate ||
             disabledPickupDates.some((disabledDate) => {
                 // Convert disabled date to local timezone
                 const disabledDateObj = new Date(disabledDate);
                 const disabledDateTZOffset = disabledDateObj.getTimezoneOffset();
-
                 const disabledDateLocal = new Date(
                     disabledDateObj.getTime() + disabledDateTZOffset * 100000
                 );
                 return date.toDateString() === disabledDateLocal.toDateString();
             }) ||
             date.getDay() === 0 || // Sunday
-            date.getDay() === 6 // Saturday
+            date.getDay() === 6 || // Saturday
+            date.getMonth() === 11 // December
         );
     };
 
-    const canProceed = !!cartStore.pickupDate && !!cartStore.paymentDetails;
+    const canProceed = !!cartStore.pickupDate;
 
-    const buttonDetails =
-        cartStore.paymentDetails === "pay-now"
-            ? "Proceed to checkout"
-            : "Review order";
+    const buttonDetails = "Proceed to online checkout";
+    // cartStore.paymentDetails === "pay-now"
+    //     ? "Proceed to online checkout"
+    //     : "Review order";
 
     return (
         <div className="pb-6">
@@ -105,7 +110,7 @@ export default function OrderDetails() {
                     </div>
                 )}
             </div>
-            <Separator className="my-8" />
+            {/* <Separator className="my-8" />
             <p className="font-semibold text-lg mb-2">
                 Would you like to pay now or when you pickup your order?
             </p>
@@ -129,24 +134,15 @@ export default function OrderDetails() {
                         </span>
                     </Label>
                 </div>
-            </RadioGroup>
+            </RadioGroup> */}
             {canProceed && (
                 <>
                     <Separator className="my-8" />
                     <div className="sticky bottom-0 left-0 right-0 flex justify-end">
                         <Button
                             variant="ghost"
-                            onClick={() =>
-                                setCheckoutState(
-                                    cartStore.paymentDetails === "pay-now"
-                                        ? "checkout"
-                                        : "confirmOrder"
-                                )
-                            }
-                            disabled={
-                                !cartStore.pickupDate ||
-                                !cartStore.paymentDetails
-                            }
+                            onClick={() => setCheckoutState("checkout")}
+                            disabled={!cartStore.pickupDate}
                             className="disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed group text-bb-brown hover:text-bb-brown  font-semibold py-6  text-base md:text-lg  flex justify-end bg-bb-brown-10 hover:bg-bb-brown-20 shadow-lg"
                             title={buttonDetails}
                             aria-label={buttonDetails}

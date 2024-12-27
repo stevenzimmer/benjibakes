@@ -24,8 +24,8 @@ export default function HowToOrder() {
                                 className="text-bb-brown underline font-semibold"
                             >
                                 menu
-                            </a>{" "}
-                            above.
+                            </a>
+                            .
                         </li>
                         <li>
                             <span className="font-semibold">
@@ -57,15 +57,16 @@ export default function HowToOrder() {
                     <Separator className="my-8 border-bb-brown" />
 
                     <p className=" text-lg md:text-xl text-bb-brown mb-3">
+                        If you are in need of something more custom than our
+                        provided menu options, we have{" "}
                         <Link
                             href="/catering"
                             className="font-semibold underline underline-offset-2"
                             title="Learn more about our Catering options"
                         >
-                            Catering available
+                            catering options available{" "}
                         </Link>
-                        ! Free delivery for Rocklin, Roseville, Lincoln, Granite
-                        Bay, and Loomis areas for catering orders over $75.
+                        as well!
                     </p>
 
                     <p className=" text-lg md:text-xl text-bb-brown mb-12">
