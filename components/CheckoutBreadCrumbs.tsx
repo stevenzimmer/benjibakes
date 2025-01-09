@@ -83,7 +83,7 @@ export default function CheckoutBreadCrumbs() {
                             }
                         }}
                     >
-                        Order Details
+                        Pickup Date
                     </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />

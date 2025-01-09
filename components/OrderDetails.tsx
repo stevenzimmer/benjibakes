@@ -64,11 +64,7 @@ export default function OrderDetails() {
 
     return (
         <div className="pb-6">
-            <BakeryAddress />
-            <div className="mt-6">
-                <p className="font-semibold text-lg mb-2">
-                    Select pickup date:
-                </p>
+            <div className="mb-6">
                 <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
                     <PopoverTrigger asChild>
                         <Button
@@ -110,6 +106,9 @@ export default function OrderDetails() {
                     </div>
                 )}
             </div>
+            <div className="mb-6">
+                <BakeryAddress />
+            </div>
             {/* <Separator className="my-8" />
             <p className="font-semibold text-lg mb-2">
                 Would you like to pay now or when you pickup your order?
@@ -136,25 +135,20 @@ export default function OrderDetails() {
                 </div>
             </RadioGroup> */}
             {canProceed && (
-                <>
-                    <Separator className="my-8" />
-                    <div className="sticky bottom-0 left-0 right-0 flex justify-end">
-                        <Button
-                            variant="ghost"
-                            onClick={() => setCheckoutState("checkout")}
-                            disabled={!cartStore.pickupDate}
-                            className="disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed group text-bb-brown hover:text-bb-brown  font-semibold py-6  text-base md:text-lg  flex justify-end bg-bb-brown-10 hover:bg-bb-brown-20 shadow-lg"
-                            title={buttonDetails}
-                            aria-label={buttonDetails}
-                        >
-                            {buttonDetails}
-                            <ArrowRight
-                                className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
-                                size={20}
-                            />
-                        </Button>
-                    </div>
-                </>
+                <Button
+                    variant="ghost"
+                    onClick={() => setCheckoutState("checkout")}
+                    disabled={!cartStore.pickupDate}
+                    className="disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed group text-bb-brown hover:text-bb-brown  font-semibold py-6  text-base md:text-lg  flex justify-end bg-bb-brown-10 hover:bg-bb-brown-20 shadow-lg"
+                    title={buttonDetails}
+                    aria-label={buttonDetails}
+                >
+                    {buttonDetails}
+                    <ArrowRight
+                        className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
+                        size={20}
+                    />
+                </Button>
             )}
         </div>
     );

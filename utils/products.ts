@@ -11,28 +11,52 @@ export const products = [
         ],
         image: "/bb-choco-chip.png",
     },
+    // {
+    //     id: "bb-peppermint-choco",
+    //     label: "Christmas Special",
+    //     title: "Double Chocolate Peppermint Cookie",
+    //     description:
+    //         "Meet our December seasonal flavor - a rich chocolate cookie packed with peppermint and chocolate chips, dipped in peppermint white chocolate, and sprinkled with festive candy cane bits. This indulgent holiday treat is the perfect mix of chocolatey goodness and refreshing mint, ready to make your season merry and bright!",
+    //     prices: [
+    //         {id: "bb-peppermint-choco-6", number: 6, cost: 1400},
+    //         {id: "bb-peppermint-choco-12", number: 12, cost: 2700},
+    //     ],
+    //     image: "/peppermint-white-chocolate.png",
+    // },
     {
-        id: "bb-peppermint-choco",
-        label: "Christmas Special",
-        title: "Double Chocolate Peppermint Cookie",
+        id: "bb-lemon",
+        label: "Winter Special",
+        title: "Lemon Burst Cookie",
         description:
-            "Meet our December seasonal flavor - a rich chocolate cookie packed with peppermint and chocolate chips, dipped in peppermint white chocolate, and sprinkled with festive candy cane bits. This indulgent holiday treat is the perfect mix of chocolatey goodness and refreshing mint, ready to make your season merry and bright!",
+            "It's citrus season, so say hello to the Lemon Burst Cookie—a perfectly balanced treat that’s crispy on the outside, soft on the inside, and bursting with bright, citrusy flavor. Made with fresh-squeezed lemon, white chocolate chips, and topped with a sprinkle of fresh lemon zest, it’s a fresh treat perfect for the new year!",
         prices: [
-            {id: "bb-peppermint-choco-6", number: 6, cost: 1400},
-            {id: "bb-peppermint-choco-12", number: 12, cost: 2700},
+            {id: "bb-lemon-6", number: 6, cost: 1400},
+            {id: "bb-lemon-12", number: 12, cost: 2700},
         ],
-        image: "/peppermint-white-chocolate.png",
+        image: "/bb-lemon.png",
     },
     {
-        id: "bb-holiday",
+        id: "bb-celebration",
         label: "Rotating Favorite",
-        title: "Holiday Sugar Cookie",
+        title: "Celebration Sugar Cookie",
         description:
-            "Celebrate life's sweet moments this season with our festive Holiday Sugar Cookie! Packed with red and green sprinkles and a soft, chewy center, these cookies are the ultimate holiday treat.",
+            "Celebrate life's sweet moments with our vibrant Celebration Sugar Cookie! Packed with colorful sprinkles and soft, chewy goodness, these cookies are the ultimate party treat. Whether it's a birthday, anniversary, or any occasion, this cookie will make every celebration sweeter.",
         prices: [
-            {id: "bb-holiday-6", number: 6, cost: 1300},
-            {id: "bb-holiday-12", number: 12, cost: 2500},
+            {id: "bb-celebration-6", number: 6, cost: 1300},
+            {id: "bb-celebration-12", number: 12, cost: 2500},
         ],
-        image: "/holiday-sugar-cookie.png",
+        image: "/celebration.png",
     },
+    // {
+    //     id: "bb-lemon",
+    //     label: "Rotating Favorite",
+    //     title: "Lemon Burst Cookie",
+    //     description:
+    //         "It's citrus season, so say hello to the Lemon Burst Cookie—a perfectly balanced treat that’s crispy on the outside, soft on the inside, and bursting with bright, citrusy flavor. Made with fresh-squeezed lemon, white chocolate chips, and topped with a sprinkle of fresh lemon zest, it’s a fresh treat perfect for the new year!",
+    //     prices: [
+    //         {id: "bb-holiday-6", number: 6, cost: 1300},
+    //         {id: "bb-holiday-12", number: 12, cost: 2500},
+    //     ],
+    //     image: "/holiday-sugar-cookie.png",
+    // },
 ];

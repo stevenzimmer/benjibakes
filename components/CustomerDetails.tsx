@@ -69,8 +69,7 @@ export default function CustomerDetails() {
 
         toast({
             title: `Welcome, ${data.customer.name}!`,
-            description:
-                "Next step is to provide a pickup date and payment preference.",
+            description: "Next step is to provide a pickup date.",
         });
 
         setCheckoutState("orderDetails");
@@ -192,11 +191,10 @@ export default function CustomerDetails() {
                     <h2 className="font-semibold mb-3 text-xl">
                         Welcome, {cartStore.name}!
                     </h2>
-                    <p className="mb-6">
-                        Next step is to provide a pickup date and payment
-                        preference.
+                    <p className="mb-3">
+                        Next step is to provide a pickup date.
                     </p>
-                    <div className="sticky bottom-0 left-0 right-0 flex justify-end">
+                    <div className="sticky bottom-0 left-0">
                         <Button
                             className=" disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed group text-bb-brown  font-semibold py-6 hover:text-bb-brown text-base md:text-lg flex justify-end bg-bb-brown-10 hover:bg-bb-brown-20 shadow-lg"
                             variant="ghost"
@@ -204,7 +202,7 @@ export default function CustomerDetails() {
                                 setCheckoutState("orderDetails");
                             }}
                         >
-                            Provide order details{" "}
+                            Select pickup date
                             <ArrowRight
                                 className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
                                 size={16}

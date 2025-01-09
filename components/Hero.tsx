@@ -20,8 +20,9 @@ export default function Hero() {
                     <Image
                         src="/cookie-stack-crop.png"
                         alt="Brown Butter Cookie Stack"
-                        width={600}
-                        height={600}
+                        title="Brown Butter Cookie Stack"
+                        width={1000}
+                        height={1000}
                         className="w-full"
                     />
                 </figure>

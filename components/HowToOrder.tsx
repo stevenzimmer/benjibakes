@@ -50,7 +50,8 @@ export default function HowToOrder() {
 
                     <p className=" text-lg md:text-xl text-bb-brown mb-6">
                         After order is completed, we will send you a
-                        confirmation email with the order details.
+                        confirmation email with the order details as well as a
+                        receipt.
                     </p>
                     <BakeryAddress />
 

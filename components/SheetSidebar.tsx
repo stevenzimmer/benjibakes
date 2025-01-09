@@ -34,7 +34,7 @@ export default function SheetSidebar() {
                 setSheetTitle("Step 2: Provide your information");
                 break;
             case "orderDetails":
-                setSheetTitle("Step 3: Provide order details");
+                setSheetTitle("Step 3: Set pickup date");
                 break;
             case "checkout":
                 setSheetTitle("Final Step: Complete payment");

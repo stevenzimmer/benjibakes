@@ -49,7 +49,7 @@ export default function ProductCard({
     };
     return (
         <div
-            className={`xl:px-12 pt-6 md:py-12 w-full rounded-lg mb-12 md:mb-6 group overflow-hidden relative ${
+            className={`pt-6 md:py-12 w-full rounded-lg mb-12 md:mb-6 group overflow-hidden relative ${
                 item.special ? "bg-orange-100" : "bg-blue-50"
             }`}
         >
@@ -58,16 +58,16 @@ export default function ProductCard({
                     i % 2 !== 0 ? "flex-row-reverse" : ""
                 }`}
             >
-                <div className="w-full md:w-1/2 lg:w-2/5 px-12 md:px-6 mb-6 md:mb-0">
+                <div className="w-full md:w-1/2 lg:w-5/12 px-12 md:px-6 mb-6 md:mb-0">
                     <Image
                         src={item.image}
                         alt={item.name}
-                        width={200}
-                        height={200}
+                        width={500}
+                        height={500}
                         className="w-full group-hover:rotate-90 transition-transform duration-200 max-w-md mx-auto"
                     />
                 </div>
-                <div className="w-full md:w-1/2 lg:w-3/5 p-2 md:px-6">
+                <div className="w-full md:w-1/2 lg:w-7/12 p-2 md:px-6">
                     <div className="px-4 md:px-0">
                         <p className="italic mb-2">{item.label}</p>
                         <h3 className="text-2xl mb-2 font-light">
