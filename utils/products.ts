@@ -1,5 +1,18 @@
 export const products = [
     {
+        id: "bb-red-velvet",
+        label: "Valentine's Special ❤️",
+        title: "Red Velvet Cookie",
+        description:
+            "Surprise your sweetheart (or treat yourself!) this Valentine's Day with our limited edition Red Velvet Cookie! This recipe captures the essence of red velvet cake with the irresistible texture of a cookie, loaded with white and semi-sweet chocolate chips. Only available through Valentine's Day Weekend, ending 2/16!",
+        prices: [
+            {id: "bb-red-velvet-6", number: 6, cost: 1400},
+            {id: "bb-red-velvet-12", number: 12, cost: 2600},
+        ],
+        image: "/red-velvet.png",
+        special: true,
+    },
+    {
         id: "bb-choco-chip",
         label: "Benji Bakes' Famous",
         title: "Brown Butter Chocolate Chip Cookie",
@@ -35,18 +48,18 @@ export const products = [
         ],
         image: "/bb-lemon.png",
     },
-    {
-        id: "bb-celebration",
-        label: "Rotating Favorite",
-        title: "Celebration Sugar Cookie",
-        description:
-            "Celebrate life's sweet moments with our vibrant Celebration Sugar Cookie! Packed with colorful sprinkles and soft, chewy goodness, these cookies are the ultimate party treat. Whether it's a birthday, anniversary, or any occasion, this cookie will make every celebration sweeter.",
-        prices: [
-            {id: "bb-celebration-6", number: 6, cost: 1300},
-            {id: "bb-celebration-12", number: 12, cost: 2500},
-        ],
-        image: "/celebration.png",
-    },
+    // {
+    //     id: "bb-celebration",
+    //     label: "Rotating Favorite",
+    //     title: "Celebration Sugar Cookie",
+    //     description:
+    //         "Celebrate life's sweet moments with our vibrant Celebration Sugar Cookie! Packed with colorful sprinkles and soft, chewy goodness, these cookies are the ultimate party treat. Whether it's a birthday, anniversary, or any occasion, this cookie will make every celebration sweeter.",
+    //     prices: [
+    //         {id: "bb-celebration-6", number: 6, cost: 1300},
+    //         {id: "bb-celebration-12", number: 12, cost: 2500},
+    //     ],
+    //     image: "/celebration.png",
+    // },
     // {
     //     id: "bb-lemon",
     //     label: "Rotating Favorite",

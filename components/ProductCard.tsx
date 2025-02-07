@@ -50,7 +50,7 @@ export default function ProductCard({
     return (
         <div
             className={`pt-6 md:py-12 w-full rounded-lg mb-12 md:mb-6 group overflow-hidden relative ${
-                item.special ? "bg-orange-100" : "bg-blue-50"
+                item.special ? "bg-pink-100" : "bg-blue-50"
             }`}
         >
             <div
@@ -131,15 +131,6 @@ export default function ProductCard({
                     </div>
                 </div>
             </div>
-            {item.special && (
-                <Image
-                    src="/benji-boo.png"
-                    alt="Boo Benji Special"
-                    width={150}
-                    height={150}
-                    className="absolute bottom-0 left-0 -translate-x-full group-hover:translate-x-0 transition-transform duration-200 w-[100px] md:w-[200px] hidden md:block"
-                />
-            )}
         </div>
     );
 }
