@@ -1,15 +1,41 @@
 export const products = [
+    // {
+    //     id: "bb-red-velvet",
+    //     label: "Valentine's Special ❤️",
+    //     title: "Red Velvet Cookie",
+    //     description:
+    //         "Surprise your sweetheart (or treat yourself!) this Valentine's Day with our limited edition Red Velvet Cookie! This recipe captures the essence of red velvet cake with the irresistible texture of a cookie, loaded with white and semi-sweet chocolate chips. Only available through Valentine's Day Weekend, ending 2/16!",
+    //     prices: [
+    //         {id: "bb-red-velvet-6", number: 6, cost: 1400},
+    //         {id: "bb-red-velvet-12", number: 12, cost: 2600},
+    //     ],
+    //     image: "/red-velvet.png",
+    //     special: true,
+    // },
     {
-        id: "bb-red-velvet",
-        label: "Valentine's Special ❤️",
-        title: "Red Velvet Cookie",
+        id: "bb-easter-cadbury",
+        label: "April Special",
+        title: "Brown Butter Cadbury Egg Cookie",
         description:
-            "Surprise your sweetheart (or treat yourself!) this Valentine's Day with our limited edition Red Velvet Cookie! This recipe captures the essence of red velvet cake with the irresistible texture of a cookie, loaded with white and semi-sweet chocolate chips. Only available through Valentine's Day Weekend, ending 2/16!",
+            "Our famous Brown Butter Chocolate Chip Cookie is getting a Spring makeover with the addition of milk chocolate Cadbury Eggs! Packed with semi-sweet chocolate chips and festive Cadbury goodness, the brown butter cookie you know and love is even sweeter this season.",
         prices: [
-            {id: "bb-red-velvet-6", number: 6, cost: 1400},
-            {id: "bb-red-velvet-12", number: 12, cost: 2600},
+            {id: "bb-easter-cadbury-6", number: 6, cost: 1600},
+            {id: "bb-easter-cadbury-12", number: 12, cost: 3000},
         ],
-        image: "/red-velvet.png",
+        image: "/cadbury-egg-cookie.png",
+        special: true,
+    },
+    {
+        id: "bb-easter-reeses",
+        label: "April Special",
+        title: "Reese's Egg Cookie Bar",
+        description:
+            "Introducing the Reese’s Egg Peanut Butter Bar—our first-ever cookie bar at Benji Bakes! This soft and chewy peanut buttery bar is topped with festive Spring sprinkles and a whole Reese’s Egg for the ultimate sweet and salty treat.",
+        prices: [
+            {id: "bb-easter-reeses-6", number: 6, cost: 1400},
+            {id: "bb-easter-reeses-12", number: 12, cost: 2600},
+        ],
+        image: "/reeses-egg.png",
         special: true,
     },
     {
@@ -38,7 +64,7 @@ export const products = [
     // },
     {
         id: "bb-lemon",
-        label: "Winter Special",
+        label: "Spring Special",
         title: "Lemon Burst Cookie",
         description:
             "It's citrus season, so say hello to the Lemon Burst Cookie—a perfectly balanced treat that’s crispy on the outside, soft on the inside, and bursting with bright, citrusy flavor. Made with fresh-squeezed lemon, white chocolate chips, and topped with a sprinkle of fresh lemon zest, it’s a fresh treat perfect for the new year!",
