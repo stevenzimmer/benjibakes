@@ -13,31 +13,44 @@ export const products = [
     //     special: true,
     // },
     {
-        id: "bb-easter-cadbury",
-        label: "April Special",
-        title: "Brown Butter Cadbury Egg Cookie",
+        id: "bb-coconut-oat",
+        label: "Spring Special",
+        title: "Coconut Oat Chocolate Chip Cookie",
         description:
-            "Our famous Brown Butter Chocolate Chip Cookie is getting a Spring makeover with the addition of milk chocolate Cadbury Eggs! Packed with semi-sweet chocolate chips and festive Cadbury goodness, the brown butter cookie you know and love is even sweeter this season.",
+            "A soft, ooey gooey oatmeal cookie, packed with shredded coconut and chocolate chips - and as always, topped with flaky sea salt for sweet & salty perfection. ",
         prices: [
             {id: "bb-easter-cadbury-6", number: 6, cost: 1600},
-            {id: "bb-easter-cadbury-12", number: 12, cost: 3000},
+            {id: "bb-easter-cadbury-12", number: 12, cost: 2800},
         ],
-        image: "/cadbury-egg-cookie.png",
+        image: "/bb-coconut-oat.png",
         special: true,
     },
-    {
-        id: "bb-easter-reeses",
-        label: "April Special",
-        title: "Reese's Egg Cookie Bar",
-        description:
-            "Introducing the Reese’s Egg Peanut Butter Bar—our first-ever cookie bar at Benji Bakes! This soft and chewy peanut buttery bar is topped with festive Spring sprinkles and a whole Reese’s Egg for the ultimate sweet and salty treat.",
-        prices: [
-            {id: "bb-easter-reeses-6", number: 6, cost: 1400},
-            {id: "bb-easter-reeses-12", number: 12, cost: 2600},
-        ],
-        image: "/reeses-egg.png",
-        special: true,
-    },
+    // {
+    //     id: "bb-easter-cadbury",
+    //     label: "April Special",
+    //     title: "Brown Butter Cadbury Egg Cookie",
+    //     description:
+    //         "Our famous Brown Butter Chocolate Chip Cookie is getting a Spring makeover with the addition of milk chocolate Cadbury Eggs! Packed with semi-sweet chocolate chips and festive Cadbury goodness, the brown butter cookie you know and love is even sweeter this season.",
+    //     prices: [
+    //         {id: "bb-easter-cadbury-6", number: 6, cost: 1600},
+    //         {id: "bb-easter-cadbury-12", number: 12, cost: 3000},
+    //     ],
+    //     image: "/cadbury-egg-cookie.png",
+    //     special: true,
+    // },
+    // {
+    //     id: "bb-easter-reeses",
+    //     label: "April Special",
+    //     title: "Reese's Egg Cookie Bar",
+    //     description:
+    //         "Introducing the Reese’s Egg Peanut Butter Bar—our first-ever cookie bar at Benji Bakes! This soft and chewy peanut buttery bar is topped with festive Spring sprinkles and a whole Reese’s Egg for the ultimate sweet and salty treat.",
+    //     prices: [
+    //         {id: "bb-easter-reeses-6", number: 6, cost: 1400},
+    //         {id: "bb-easter-reeses-12", number: 12, cost: 2600},
+    //     ],
+    //     image: "/reeses-egg.png",
+    //     special: true,
+    // },
     {
         id: "bb-choco-chip",
         label: "Benji Bakes' Famous",

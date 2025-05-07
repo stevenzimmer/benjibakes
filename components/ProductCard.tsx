@@ -50,7 +50,7 @@ export default function ProductCard({
     return (
         <div
             className={`pt-6 md:py-12 w-full rounded-lg mb-12 md:mb-6 group overflow-hidden relative ${
-                item.special ? "bg-yellow-50" : "bg-blue-50"
+                item.special ? "bg-lime-50" : "bg-blue-50"
             }`}
         >
             <div
@@ -64,7 +64,7 @@ export default function ProductCard({
                         alt={item.name}
                         width={500}
                         height={500}
-                        className="w-full group-hover:scale-110 transition-transform duration-200 max-w-md mx-auto"
+                        className="w-full group-hover:scale-110 group-hover:rotate-3 transition-transform duration-200 max-w-md mx-auto"
                     />
                 </div>
                 <div className="w-full md:w-1/2 lg:w-7/12 p-2 md:px-6">
