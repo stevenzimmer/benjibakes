@@ -99,7 +99,7 @@ export default function CateringPage() {
                         <h3 className="font-semibold text-xl text-center mb-6">
                             Ready to elevate your event with Benji Bakes Catering?
                         </h3>
-                        <CateringForm />
+                        {/* <CateringForm /> */}
                     </div>
                 </div>
             </div>

@@ -18,7 +18,7 @@ export default function NavItems() {
             </Link>
 
             <ViewMenuButton />
-            <SheetTrigger />
+            {/* <SheetTrigger /> */}
         </>
     );
 }

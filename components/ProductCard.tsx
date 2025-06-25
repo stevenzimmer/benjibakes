@@ -77,7 +77,7 @@ export default function ProductCard({
                             <p className="italic mb-2">{item.description}</p>
                         )}
                     </div>
-                    <div className="bg-white p-3 md:p-6 rounded-lg border mt-6 shadow-lg">
+                    {/* <div className="bg-white p-3 md:p-6 rounded-lg border mt-6 shadow-lg">
                         <h4 className="md:text-lg px-2 font-semibold">
                             Add {item.title} to cart
                         </h4>
@@ -128,7 +128,7 @@ export default function ProductCard({
                                 </div>
                             );
                         })}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

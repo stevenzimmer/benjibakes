@@ -8,6 +8,7 @@ import CookieBackground from "@/components/CookieBackground";
 import ThemeProvider from "@/providers/ThemeProvider";
 import Nav from "@/components/Nav";
 import { Toaster } from "@/components/ui/toaster"
+import ClosedModal  from "@/components/ClosedModal";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.benjibakes.com'),
@@ -93,6 +94,7 @@ export default function RootLayout({
             <Toaster />
           </ParallaxProviders>
         </ThemeProvider>
+        <ClosedModal />
         </body>
         <GoogleAnalytics gaId="G-XCT71CMV8P" />
     </html>
