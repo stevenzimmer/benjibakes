@@ -6,13 +6,7 @@ import {Price} from "@/types/Cart";
 import {Plus, Minus} from "lucide-react";
 import {useToast} from "@/hooks/use-toast";
 
-export default function ProductCard({
-    item,
-    i,
-}: {
-    item: any;
-    i: number;
-}): JSX.Element {
+export default function ProductCard({item}: {item: any}): JSX.Element {
     const {prices} = item;
     const {toast} = useToast();
     const cartStore = useCartStore();
@@ -20,7 +14,7 @@ export default function ProductCard({
         cartStore.addProduct({
             title: `${item.title}`,
             image: item.image,
-            id: item.name,
+            id: item.id,
             quantity: 1,
             price_id: prices[priceIndex].id,
             number: prices[priceIndex].number,
@@ -36,11 +30,11 @@ export default function ProductCard({
         cartStore.removeProduct({
             title: `${item.title}`,
             image: item.image,
-            id: item.name,
+            id: item.id,
             quantity: 1,
             price_id: prices[priceIndex].id,
             number: prices[priceIndex].number,
-            cost: prices[priceIndex].unit_amount,
+            cost: prices[priceIndex].cost,
         });
         toast({
             title: "Removed from cart",
@@ -49,86 +43,75 @@ export default function ProductCard({
     };
     return (
         <div
-            className={`pt-6 md:py-12 w-full rounded-lg mb-12 md:mb-6 group overflow-hidden relative ${
-                item.special ? "bg-lime-50" : "bg-blue-50"
+            className={`w-full rounded-[28px] overflow-hidden border border-bb-brown-20 bg-white/90 shadow-[0_20px_50px_rgba(59,36,23,0.12)] group ${
+                item.special ? "ring-1 ring-bb-gold/40" : ""
             }`}
         >
-            <div
-                className={`flex justify-center flex-wrap w-full ${
-                    i % 2 !== 0 ? "flex-row-reverse" : ""
-                }`}
-            >
-                <div className="w-full md:w-1/2 lg:w-5/12 px-12 md:px-6 mb-6 md:mb-0">
-                    <Image
-                        src={item.image}
-                        alt={item.name}
-                        width={500}
-                        height={500}
-                        className="w-full group-hover:scale-110 group-hover:rotate-3 transition-transform duration-200 max-w-md mx-auto"
-                    />
-                </div>
-                <div className="w-full md:w-1/2 lg:w-7/12 p-2 md:px-6">
-                    <div className="px-4 md:px-0">
-                        <p className="italic mb-2">{item.label}</p>
-                        <h3 className="text-2xl mb-2 font-light">
-                            {item.title}
-                        </h3>
-                        {item.description && (
-                            <p className="italic mb-2">{item.description}</p>
-                        )}
-                    </div>
-                    {/* <div className="bg-white p-3 md:p-6 rounded-lg border mt-6 shadow-lg">
-                        <h4 className="md:text-lg px-2 font-semibold">
-                            Add {item.title} to cart
-                        </h4>
-                        {item.prices.map((price: any, i: number) => {
-                            const cartItem = cartStore.cart.find(
-                                (item) => item.price_id === price.id
-                            );
-                            return (
-                                <div
-                                    key={i}
-                                    className="px-2 py-3 relative flex items-center justify-between flex-wrap border-b last:border-b-0"
-                                >
-                                    <div className="relative py-3 w-6/12 lg:w-7/12 text-left">
-                                        <span
-                                            className=" select-none
-                                        sm:text-lg md:text-base lg:text-xl font-semibold"
-                                        >
-                                            {price.number} cookies for{" "}
-                                            {formatPrice(price?.cost ?? 0)}
-                                        </span>
-                                    </div>
-
-                                    <div className="w-6/12 lg:w-5/12 flex items-center justify-end font-semibold text-lg relative group/prices ">
-                                        <QuantityButton
-                                            onClick={() =>
-                                                handleRemoveFromCart(i)
-                                            }
-                                            price={price}
-                                            item={item}
-                                            i={i}
-                                            state="decrement"
-                                        >
-                                            <Minus />
-                                        </QuantityButton>
-                                        <p className="mx-3 lg:mx-6">
-                                            {cartItem?.quantity ?? 0}
-                                        </p>
-                                        <QuantityButton
-                                            onClick={() => handleAddToCart(i)}
-                                            price={price}
-                                            item={item}
-                                            i={i}
-                                            state="increment"
-                                        >
-                                            <Plus />
-                                        </QuantityButton>
-                                    </div>
+            <div className="relative">
+                <span className="absolute left-4 top-4 z-10 rounded-full bg-white/90 text-bb-brown px-3 py-1 text-xs font-semibold border border-bb-brown-20">
+                    {item.label}
+                </span>
+                <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={600}
+                    height={600}
+                    className="w-full h-64 md:h-96 object-contain group-hover:scale-[1.03] transition-transform duration-300"
+                />
+            </div>
+            <div className="p-5">
+                <h3 className="font-display text-2xl md:text-3xl text-bb-ink mb-2">
+                    {item.title}
+                </h3>
+                {item.description && (
+                    <p className="text-sm md:text-base text-bb-brown/80 mb-5">
+                        {item.description}
+                    </p>
+                )}
+                <div className="space-y-3">
+                    {item.prices.map((price: any, i: number) => {
+                        const cartItem = cartStore.cart.find(
+                            (item) => item.price_id === price.id,
+                        );
+                        return (
+                            <div
+                                key={i}
+                                className="flex items-center justify-between gap-4 rounded-2xl border border-bb-brown-20 bg-bb-brown-10/60 px-4 py-3"
+                            >
+                                <div>
+                                    <p className="font-semibold text-bb-ink">
+                                        {price.number} cookies
+                                    </p>
+                                    <p className="text-sm text-bb-brown/70">
+                                        {formatPrice(price?.cost ?? 0)} per box
+                                    </p>
                                 </div>
-                            );
-                        })}
-                    </div> */}
+                                <div className="flex items-center gap-3">
+                                    <QuantityButton
+                                        onClick={() => handleRemoveFromCart(i)}
+                                        price={price}
+                                        item={item}
+                                        i={i}
+                                        state="decrement"
+                                    >
+                                        <Minus size={16} />
+                                    </QuantityButton>
+                                    <p className="w-6 text-center font-semibold text-bb-ink">
+                                        {cartItem?.quantity ?? 0}
+                                    </p>
+                                    <QuantityButton
+                                        onClick={() => handleAddToCart(i)}
+                                        price={price}
+                                        item={item}
+                                        i={i}
+                                        state="increment"
+                                    >
+                                        <Plus size={16} />
+                                    </QuantityButton>
+                                </div>
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </div>
@@ -157,9 +140,9 @@ function QuantityButton({
         <button
             className={`${
                 state === "increment"
-                    ? " hover:border-green-300"
-                    : " hover:border-red-300"
-            } bg-slate-100 border-2 border-transparent p-1 lg:p-2 xl:p-3 rounded-lg`}
+                    ? "hover:bg-bb-brown hover:text-white"
+                    : "hover:bg-bb-rose hover:text-bb-ink"
+            } bg-white border border-bb-brown-20 p-2 rounded-full transition-colors`}
             onClick={() => onClick(i)}
             title={`${state === "increment" ? "Add" : "Remove"} ${
                 price.number

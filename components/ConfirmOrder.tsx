@@ -68,13 +68,15 @@ export default function ConfirmOrder() {
         <div className="relative">
             {!isSent ? (
                 <>
-                    <h2>Order Summary</h2>
-                    <div>
+                    <h2 className="font-display text-2xl text-bb-ink mb-4">
+                        Order Summary
+                    </h2>
+                    <div className="rounded-2xl border border-bb-brown-20 bg-white/90 p-4">
                         {cartStore.cart.map((item, i) => (
                             <CartItem key={i} item={item} />
                         ))}
                     </div>
-                    <div className="p-3 bg-blue-50 rounded-lg my-6">
+                    <div className="p-5 bg-bb-brown-10 rounded-2xl my-6 border border-bb-brown-20">
                         <p className="mb-3">
                             <span className="font-semibold">
                                 Customer name:
@@ -102,7 +104,7 @@ export default function ConfirmOrder() {
                     <div className="sticky bottom-0 left-0 right-0 shadow-lg">
                         <Button
                             onClick={handleOrderSend}
-                            className="border-2 text-white bg-bb-blue border-bb-blue hover:bg-bb-blue-50 hover:border-bb-blue/80 font-semibold text-lg py-6 hover:text-white w-full disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed"
+                            className="rounded-full bg-bb-brown text-white font-semibold text-lg py-6 hover:bg-bb-ink w-full disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed"
                             title="Send order"
                             aria-label="Send order"
                             disabled={isSendingOrder}
@@ -112,7 +114,7 @@ export default function ConfirmOrder() {
                                 : "Send order"}
                             {isSendingOrder && (
                                 <svg
-                                    className="animate-spin ml-2 h-5 w-5 text-bb-blue"
+                                    className="animate-spin ml-2 h-5 w-5 text-white"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
                                     viewBox="0 0 24 24"
@@ -136,8 +138,10 @@ export default function ConfirmOrder() {
                     </div>
                 </>
             ) : (
-                <div className="bg-green-50 p-3 rounded-lg">
-                    <h2>Order Sent!</h2>
+                <div className="bg-bb-sage/40 p-4 rounded-2xl border border-bb-sage">
+                    <h2 className="font-display text-2xl text-bb-ink">
+                        Order Sent!
+                    </h2>
                     <p>
                         Your order has been sent. You will receive an email
                         confirmation shortly!

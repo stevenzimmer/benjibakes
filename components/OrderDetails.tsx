@@ -9,9 +9,6 @@ import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
 import {useContext} from "react";
 import ThemeContext from "@/context/ThemeContext";
 import {useCartStore} from "@/store";
-import {Label} from "@/components/ui/label";
-import {Separator} from "@/components/ui/separator";
-import {RadioGroup, RadioGroupItem} from "@/components/ui/radio-group";
 import BakeryAddress from "./BakeryAddress";
 
 export default function OrderDetails() {
@@ -36,7 +33,7 @@ export default function OrderDetails() {
     const setDisabledPickupDates = (date: Date) => {
         const currentDate = new Date();
         const tomorrowsDate = new Date(
-            currentDate.getTime() + 24 * 60 * 60 * 1000
+            currentDate.getTime() + 24 * 60 * 60 * 1000,
         );
         return (
             date < tomorrowsDate ||
@@ -45,7 +42,7 @@ export default function OrderDetails() {
                 const disabledDateObj = new Date(disabledDate);
                 const disabledDateTZOffset = disabledDateObj.getTimezoneOffset();
                 const disabledDateLocal = new Date(
-                    disabledDateObj.getTime() + disabledDateTZOffset * 100000
+                    disabledDateObj.getTime() + disabledDateTZOffset * 100000,
                 );
                 return date.toDateString() === disabledDateLocal.toDateString();
             }) ||
@@ -58,9 +55,6 @@ export default function OrderDetails() {
     const canProceed = !!cartStore.pickupDate;
 
     const buttonDetails = "Proceed to online checkout";
-    // cartStore.paymentDetails === "pay-now"
-    //     ? "Proceed to online checkout"
-    //     : "Review order";
 
     return (
         <div className="pb-6">
@@ -70,9 +64,9 @@ export default function OrderDetails() {
                         <Button
                             variant={"outline"}
                             className={cn(
-                                "w-full justify-start text-left font-normal text-lg py-6",
-                                !date && "bg-slate-100",
-                                date && "border-green-400 bg-slate-100"
+                                "w-full justify-start text-left font-normal text-lg py-6 rounded-2xl border-bb-brown-20",
+                                !date && "bg-white",
+                                date && "border-bb-sage bg-bb-brown-10",
                             )}
                         >
                             <CalendarIcon className="mr-3 h-5 w-5" />
@@ -89,7 +83,7 @@ export default function OrderDetails() {
                             selected={date}
                             onSelect={(e) => {
                                 cartStore.setPickupDate(
-                                    format(e as Date, "PPP")
+                                    format(e as Date, "PPP"),
                                 );
                                 setDate(e);
                                 setIsCalendarOpen(false);
@@ -100,46 +94,21 @@ export default function OrderDetails() {
                     </PopoverContent>
                 </Popover>
                 {cartStore.pickupDate && (
-                    <div className="p-3 bg-blue-50 rounded-lg mt-3">
-                        <strong>Selected pickup date</strong>:{" "}
-                        {cartStore.pickupDate}
+                    <div className="p-4 bg-bb-brown-10 rounded-2xl mt-3 border border-bb-brown-20">
+                        <strong className="text-bb-ink">
+                            Selected pickup date
+                        </strong>
+                        : {cartStore.pickupDate}
                     </div>
                 )}
             </div>
-            <div className="mb-6">
-                <BakeryAddress />
-            </div>
-            {/* <Separator className="my-8" />
-            <p className="font-semibold text-lg mb-2">
-                Would you like to pay now or when you pickup your order?
-            </p>
-            <RadioGroup
-                className="px-3"
-                onValueChange={(e) => cartStore.setPaymentDetails(e)}
-                value={cartStore.paymentDetails}
-            >
-                <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="pay-now" id="pay-now" />
-                    <Label htmlFor="pay-now" className="text-lg">
-                        Pay online now
-                    </Label>
-                </div>
-                <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="pay-later" id="pay-later" />
-                    <Label htmlFor="pay-later" className="text-lg">
-                        Pay when you pickup{" "}
-                        <span className="text-sm text-slate-800">
-                            (Cash, Zelle, Venmo only)
-                        </span>
-                    </Label>
-                </div>
-            </RadioGroup> */}
+
             {canProceed && (
                 <Button
                     variant="ghost"
                     onClick={() => setCheckoutState("checkout")}
                     disabled={!cartStore.pickupDate}
-                    className="disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed group text-bb-brown hover:text-bb-brown  font-semibold py-6  text-base md:text-lg  flex justify-end bg-bb-brown-10 hover:bg-bb-brown-20 shadow-lg"
+                    className="disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed group text-white hover:text-white font-semibold py-6 text-base md:text-lg flex justify-end bg-bb-brown hover:bg-bb-ink shadow-lg rounded-full px-8"
                     title={buttonDetails}
                     aria-label={buttonDetails}
                 >

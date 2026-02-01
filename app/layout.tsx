@@ -1,14 +1,22 @@
 import type { Metadata } from "next";
 import { ParallaxProviders } from "./ParallaxProvider";
-import { Roboto } from "next/font/google";
+import { Fraunces, Manrope } from "next/font/google";
 import "./globals.css";
-const roboto = Roboto({ weight: ["400",'700'], subsets: ["latin"] });
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-body",
+  weight: ["400", "500", "600", "700"],
+});
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["400", "600", "700"],
+});
 import { GoogleAnalytics } from '@next/third-parties/google'
 import CookieBackground from "@/components/CookieBackground";
 import ThemeProvider from "@/providers/ThemeProvider";
 import Nav from "@/components/Nav";
 import { Toaster } from "@/components/ui/toaster"
-import ClosedModal  from "@/components/ClosedModal";
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.benjibakes.com'),
@@ -77,24 +85,24 @@ export default function RootLayout({
       <head>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link href="https://fonts.googleapis.com/css2?family=Playwrite+US+Trad:wght@100..400&display=swap" rel="stylesheet" />
       <script
     type="application/ld+json"
     dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
   />
       </head>
-      <body className={`${roboto.className} bg-bb-blue !px-3 md:!px-6 lg:!px-12 relative overflow-x-hidden`}>
+      <body
+        className={`${manrope.variable} ${fraunces.variable} font-body bg-[radial-gradient(circle_at_10%_10%,#fff7ee_0%,#f7e5d3_45%,#efd9c2_100%)] text-bb-ink !px-3 md:!px-6 lg:!px-12 relative overflow-x-hidden`}
+      >
         <ThemeProvider>
           <ParallaxProviders>
             <CookieBackground />
-            <main className="px-3 md:px-6 pb-12 lg:px-16 lg:pb-16 bg-white max-w-6xl mx-auto rounded-lg relative  md:py-6 py-3">
+            <main className="px-3 md:px-8 pb-16 lg:px-10 lg:pb-20 bg-white/80 backdrop-blur-lg max-w-6xl mx-auto rounded-[28px] relative md:py-4 py-1 border border-bb-brown-20 shadow-[0_30px_80px_rgba(59,36,23,0.18)]">
             <Nav />
             {children}
             </main>
             <Toaster />
           </ParallaxProviders>
         </ThemeProvider>
-        <ClosedModal />
         </body>
         <GoogleAnalytics gaId="G-XCT71CMV8P" />
     </html>

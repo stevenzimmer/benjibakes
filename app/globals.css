@@ -21,3 +21,10 @@
   }
 }
 
+body {
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(226, 164, 90, 0.35);
+}

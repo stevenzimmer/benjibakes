@@ -20,7 +20,7 @@ export default function CustomerDetails() {
 
     const ref = useRef<HTMLInputElement>(null);
     const {setCheckoutState, setCheckoutError, checkoutError} = useContext(
-        ThemeContext
+        ThemeContext,
     );
 
     const handleFetchCustomer = async ({
@@ -85,7 +85,7 @@ export default function CustomerDetails() {
             <div className="mb-6">
                 <Label
                     htmlFor="name"
-                    className="font-semibold text-lg mb-2 inline-block"
+                    className="font-semibold text-lg mb-2 inline-block text-bb-ink"
                 >
                     First and last name
                 </Label>
@@ -97,14 +97,14 @@ export default function CustomerDetails() {
                         placeholder="Name"
                         value={name}
                         className={`mb-3 text-lg py-6 block w-full disabled:bg-slate-100 ${
-                            canProceed ? "bg-slate-100" : ""
+                            canProceed ? "bg-bb-brown-10" : "bg-white"
                         }`}
                         onChange={(e) => setName(e.target.value)}
                     />
 
                     {canProceed && (
-                        <div className="absolute right-0 top-0 bottom w-16 md:w-24 flex items-center justify-center h-full bg-green-400 rounded-lg ">
-                            <Check className="text-white" />
+                        <div className="absolute right-0 top-0 bottom w-16 md:w-24 flex items-center justify-center h-full bg-bb-sage rounded-lg ">
+                            <Check className="text-bb-ink" />
                         </div>
                     )}
                 </div>
@@ -112,7 +112,7 @@ export default function CustomerDetails() {
             <div className="mb-6">
                 <Label
                     htmlFor="email"
-                    className="font-semibold text-lg mb-2 inline-block"
+                    className="font-semibold text-lg mb-2 inline-block text-bb-ink"
                 >
                     Email address
                 </Label>
@@ -124,28 +124,28 @@ export default function CustomerDetails() {
                         placeholder="Email"
                         value={email}
                         className={`mb-3 text-lg py-6 block w-full  ${
-                            canProceed ? "bg-slate-100" : ""
+                            canProceed ? "bg-bb-brown-10" : "bg-white"
                         }`}
                         onChange={(e) => setEmail(e.target.value)}
                     />
 
                     {canProceed && (
-                        <div className="absolute right-0 top-0 bottom w-16 md:w-24 flex items-center justify-center h-full bg-green-400 rounded-lg">
-                            <Check className="text-white" />
+                        <div className="absolute right-0 top-0 bottom w-16 md:w-24 flex items-center justify-center h-full bg-bb-sage rounded-lg">
+                            <Check className="text-bb-ink" />
                         </div>
                     )}
                 </div>
             </div>
 
             {checkoutError && (
-                <div className="text-red-500 p-6 bg-red-200 mb-6 rounded-lg">
+                <div className="text-red-500 p-6 bg-red-100 mb-6 rounded-lg">
                     {checkoutError}
                 </div>
             )}
             {!canProceed ? (
                 <div className="flex justify-end">
                     <Button
-                        className="disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed group text-bb-brown  font-semibold py-6 hover:text-bb-brown text-base md:text-lg  flex justify-end bg-bb-brown-10 hover:bg-bb-brown-20 shadow-lg"
+                        className="disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed group text-white font-semibold py-6 text-base md:text-lg flex justify-end bg-bb-brown hover:bg-bb-ink shadow-lg rounded-full px-8"
                         variant="ghost"
                         disabled={!email || !name || isFetching}
                         onClick={() => {
@@ -191,12 +191,12 @@ export default function CustomerDetails() {
                     <h2 className="font-semibold mb-3 text-xl">
                         Welcome, {cartStore.name}!
                     </h2>
-                    <p className="mb-3">
+                    <p className="mb-3 text-bb-brown/80">
                         Next step is to provide a pickup date.
                     </p>
                     <div className="sticky bottom-0 left-0">
                         <Button
-                            className=" disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed group text-bb-brown  font-semibold py-6 hover:text-bb-brown text-base md:text-lg flex justify-end bg-bb-brown-10 hover:bg-bb-brown-20 shadow-lg"
+                            className="disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed group text-white hover:text-white font-semibold py-6 text-base md:text-lg flex justify-end bg-bb-brown hover:bg-bb-ink shadow-lg rounded-full px-8"
                             variant="ghost"
                             onClick={() => {
                                 setCheckoutState("orderDetails");

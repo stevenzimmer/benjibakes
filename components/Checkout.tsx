@@ -64,6 +64,14 @@ export default function Checkout() {
         appearance: {
             theme: "stripe",
             labels: "floating",
+            variables: {
+                colorPrimary: "#2C7A7B",
+                colorBackground: "#FFFDF9",
+                colorText: "#1F150F",
+                colorDanger: "#B91C1C",
+                borderRadius: "12px",
+                fontFamily: "Manrope, system-ui, sans-serif",
+            },
         },
     };
 
