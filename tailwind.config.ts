@@ -10,15 +10,22 @@ const config: Config = {
   theme: {
   	extend: {
   		fontFamily: {
+  			body: ["var(--font-body)", "sans-serif"],
+  			display: ["var(--font-display)", "serif"],
   			roboto: ["Roboto","sans-serif"],
   			pw: ['"Playwrite US Trad"', "cursive"]
   		},
   		colors: {
   			bb: {
-  				blue: '#5cbbf0',
-					"brown-10": '#FBF6EF', 
-					"brown-20": '#F7EDDF',
-  				brown: '#d9a361',
+  				blue: '#2C7A7B',
+					"brown-10": '#F9F1E7', 
+					"brown-20": '#EFD9C2',
+  				brown: '#3B2417',
+          cream: '#FFF7EE',
+          rose: '#F7C9B3',
+          gold: '#E2A45A',
+          ink: '#1F150F',
+          sage: '#DCE8D5',
   			}
   		},
   		backgroundImage: {

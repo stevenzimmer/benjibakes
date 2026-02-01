@@ -28,43 +28,43 @@ export default function SheetSidebar() {
     useEffect(() => {
         switch (checkoutState) {
             case "cart":
-                setSheetTitle("Step 1: Review your shopping cart");
+                setSheetTitle("Your cart");
                 break;
             case "customerDetails":
-                setSheetTitle("Step 2: Provide your information");
+                setSheetTitle("Your details");
                 break;
             case "orderDetails":
-                setSheetTitle("Step 3: Set pickup date");
+                setSheetTitle("Pickup details");
                 break;
             case "checkout":
-                setSheetTitle("Final Step: Complete payment");
+                setSheetTitle("Secure checkout");
                 break;
 
             case "confirmOrder":
-                setSheetTitle("Final Step: Confirm and send your order");
+                setSheetTitle("Confirm and send");
                 break;
 
             case "success":
-                setSheetTitle("Order Complete");
+                setSheetTitle("Order complete");
                 break;
             case "error":
-                setSheetTitle(
-                    "There was an error creating your order. Please try again."
-                );
+                setSheetTitle("Something went wrong. Please try again.");
                 break;
             default:
-                setSheetTitle("Review your shopping cart");
+                setSheetTitle("Your cart");
         }
     }, [checkoutState]);
 
     return (
         <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
-            <SheetContent className="w-full sm:w-[800px] sm:max-w-full overflow-scroll py-16">
+            <SheetContent className="w-full sm:w-[820px] sm:max-w-full overflow-scroll py-16 bg-bb-cream/80">
                 {checkoutState !== "success" && cartStore.cart.length > 0 && (
                     <CheckoutBreadCrumbs />
                 )}
                 {cartStore.cart.length > 0 && (
-                    <SheetTitle className="mb-6">{sheetTitle}</SheetTitle>
+                    <SheetTitle className="mb-6 font-display text-2xl md:text-3xl text-bb-ink">
+                        {sheetTitle}
+                    </SheetTitle>
                 )}
                 {checkoutState === "cart" && (
                     <>
@@ -90,6 +90,7 @@ export default function SheetSidebar() {
                             onClick={() => {
                                 setCheckoutState("cart");
                             }}
+                            className="rounded-full bg-bb-brown text-white hover:bg-bb-ink"
                         >
                             Back to Cart
                         </Button>

@@ -18,17 +18,19 @@ export default function ShoppingCart() {
     };
     return (
         <>
-            <div className="mb-6">
+            <div className="mb-6 rounded-2xl border border-bb-brown-20 bg-white/90 p-4 shadow-sm">
                 {cartStore.cart.map((item, i) => {
                     return <CartItem key={i} item={item} />;
                 })}
             </div>
-            <p className="mb-6 font-semibold text-xl">
-                Order Total: {formatPrice(totalPrice)}
-            </p>
-            <div className="sticky bottom-0 right-0 flex justify-end">
+            <div className="flex items-center justify-between flex-wrap gap-4 rounded-2xl border border-bb-brown-20 bg-bb-brown-10/70 p-5">
+                <p className="font-semibold text-xl text-bb-ink">
+                    Order Total: {formatPrice(totalPrice)}
+                </p>
+            </div>
+            <div className="sticky bottom-0 right-0 flex justify-end mt-6">
                 <Button
-                    className="group text-bb-brown  font-semibold py-6 text-base md:text-lg flex justify-end bg-bb-brown-10 hover:bg-bb-brown-20 hover:text-bb-brown shadow-lg"
+                    className="disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed group text-white hover:text-white font-semibold py-6 text-base md:text-lg flex justify-end bg-bb-brown hover:bg-bb-ink shadow-lg rounded-full px-8"
                     variant="ghost"
                     onClick={handleSelectPickupDate}
                 >

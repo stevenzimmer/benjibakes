@@ -11,11 +11,11 @@ export default function ViewMenuButton({isCart = false}) {
             onClick={(e) => {
                 setSheetOpen(false);
             }}
-            className={`border-bb-brown border-2 text-bb-brown font-semibold hover:bg-bb-brown/10 hover:text-bb-brown ${isCart &&
+            className={`border-bb-brown border-2 text-bb-brown font-semibold hover:bg-bb-brown/10 hover:text-bb-brown rounded-full px-6 py-2 ${isCart &&
                 "px-12 py-6 text-xl"}`}
             asChild
         >
-            <a href="/#menu">View our {season} Menu</a>
+            <a href="/#menu">View our Menu</a>
         </Button>
     );
 }

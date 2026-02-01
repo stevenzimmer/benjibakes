@@ -1,13 +1,6 @@
 import type { Metadata } from "next";
-import CateringForm from "@/components/Catering/Form";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import Image from "next/image";
+import CateringForm from "@/components/Catering/Form";
 export const metadata: Metadata = {
     alternates: {
         canonical: "/catering",
@@ -54,15 +47,15 @@ const cookies = [
 export default function CateringPage() {
     return (
         <div className="w-full">
-            <h1 className="font-semibold text-4xl text-center mb-12">
+            <h1 className="font-display text-4xl md:text-5xl text-center mb-12 text-bb-ink">
                 Benji Bakes Catering
             </h1>
             <div className="flex justify-between flex-wrap">
                 <div className="w-full lg:w-7/12">
-                    <h2 className="font-semibold text-xl mb-3">
+                    <h2 className="font-display text-2xl mb-3 text-bb-ink">
                         Our Catering Options
                     </h2>
-                    <ul className="list-disc pl-6 space-y-3">
+                    <ul className="list-disc pl-6 space-y-3 text-bb-brown">
                         <li>
                             <strong>Bulk cookies for large displays</strong>:
                             Order our homemade cookies in bulk at a special
@@ -85,21 +78,24 @@ export default function CateringPage() {
                             and we’ll work together to make it happen!
                         </li>
                     </ul>
-                    <div className="columns-2 sm:gap-6">
+                    <div className="columns-2 sm:gap-6 mt-8">
                     {cookies.map((cookie, i) => (
           <div key={i} className="w-full mx-auto py-6 break-inside-avoid-column ">
-<Image src={cookie.path} alt={cookie.caption} width={500} height={500} className="rounded-lg shadow-lg w-full" />
-       <p className="text-center text-slate-800 mt-3 px-3 text-sm sm:text-base">{cookie.caption}</p>
+<Image src={cookie.path} alt={cookie.caption} width={500} height={500} className="rounded-2xl border border-bb-brown-20 shadow-lg w-full object-cover" />
+       <p className="text-center text-bb-brown mt-3 px-3 text-sm sm:text-base">{cookie.caption}</p>
           </div>
         ))}
                     </div>
                 </div>
-                <div className="w-full lg:w-5/12  lg:pl-6 xl:pl-12">
-                    <div className="bg-bb-brown-20 rounded-lg px-6 py-6 sticky top-24 shadow-lg">
-                        <h3 className="font-semibold text-xl text-center mb-6">
+                <div className="w-full lg:w-5/12 lg:pl-6 xl:pl-12">
+                    <div className="bg-white/90 border border-bb-brown-20 rounded-2xl px-6 py-6 sticky top-24 shadow-lg">
+                        <h3 className="font-display text-2xl text-center mb-4 text-bb-ink">
                             Ready to elevate your event with Benji Bakes Catering?
                         </h3>
-                        {/* <CateringForm /> */}
+                        <p className="text-bb-brown text-center mb-6">
+                            Tell us about your event and we&apos;ll craft a custom quote.
+                        </p>
+                        <CateringForm />
                     </div>
                 </div>
             </div>

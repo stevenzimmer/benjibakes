@@ -1,5 +1,5 @@
 "use client";
-import {Cookie} from "lucide-react";
+import {ShoppingBag} from "lucide-react";
 import {useContext} from "react";
 import ThemeContext from "@/context/ThemeContext";
 import {motion, AnimatePresence} from "framer-motion";
@@ -14,10 +14,13 @@ export default function SheetTrigger() {
     return (
         <button
             aria-label="Open shopping cart"
-            className="relative bg-bb-brown ml-3 sm:ml-6  rounded-full p-1 flex items-center"
+            className="relative bg-bb-brown text-white ml-2 sm:ml-4 rounded-full px-4 py-2 flex items-center gap-2 shadow-md hover:shadow-lg transition-shadow"
             onClick={() => setSheetOpen(!sheetOpen)}
         >
-            <Cookie className="text-white" />
+            <ShoppingBag className="text-white" size={18} />
+            <span className="text-sm md:text-base font-semibold">
+                Cart
+            </span>
 
             {cartStore.cart.length > 0 && (
                 <AnimatePresence>

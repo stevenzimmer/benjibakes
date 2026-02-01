@@ -11,9 +11,11 @@ export default function Cookie({
     x: number;
     y: number;
 }): JSX.Element {
+    const rotationSeed = (x * 13 + y * 17 + size * 7) % 360;
+    const parallaxOffset = 40 + ((x + y + size) % 120);
     const cookieParallax = useParallax({
-        translateY: [0, Math.floor(Math.random() * 200)],
-        rotate: [0, Math.floor(Math.random() * 360)],
+        translateY: [0, parallaxOffset],
+        rotate: [0, rotationSeed],
     });
     return (
         <div
@@ -22,7 +24,7 @@ export default function Cookie({
             style={{
                 top: `${y}%`,
                 left: `${x}%`,
-                transform: `rotate(${Math.floor(Math.random() * 360)}deg)`,
+                transform: `rotate(${rotationSeed}deg)`,
             }}
         >
             <Image

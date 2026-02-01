@@ -6,19 +6,19 @@ export default function NavItems() {
         <>
             <Link
                 href="/#order"
-                className="text-bb-brown rounded-md text-xl md:text-center font-semibold md:px-3 hidden md:block"
+                className="text-bb-brown rounded-full text-base md:text-lg md:text-center font-semibold md:px-3 hidden md:block hover:text-bb-blue transition-colors"
             >
                 How to order
             </Link>
             <Link
                 href="/catering"
-                className="text-bb-brown rounded-md text-xl md:text-center font-semibold pl-3 pr-6 hidden md:block"
+                className="text-bb-brown rounded-full text-base md:text-lg md:text-center font-semibold pl-3 pr-6 hidden md:block hover:text-bb-blue transition-colors"
             >
                 Catering
             </Link>
 
             <ViewMenuButton />
-            {/* <SheetTrigger /> */}
+            <SheetTrigger />
         </>
     );
 }

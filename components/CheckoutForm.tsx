@@ -10,7 +10,8 @@ import {Button} from "./ui/button";
 import {useCartStore} from "@/store";
 import {useContext} from "react";
 import ThemeContext from "@/context/ThemeContext";
-import BakeryAddress from "./BakeryAddress";
+import {PausedOrders} from "./PausedOrders";
+
 export default function CheckoutForm({clientSecret}: {clientSecret: string}) {
     const stripe = useStripe();
     const elements = useElements();
@@ -93,80 +94,105 @@ export default function CheckoutForm({clientSecret}: {clientSecret: string}) {
 
     return (
         <form onSubmit={handleSubmit} id="payment-form">
-            <div className="mb-2">
-                <h3 className="mb-2">
-                    <strong>Payment Information</strong>
-                </h3>
-                <PaymentElement
-                    id="payment-element"
-                    options={{
-                        layout: "tabs",
-                    }}
-                />
-                {checkoutError && (
-                    <AnimatePresence>
-                        <motion.p
-                            initial={{opacity: 0}}
-                            animate={{opacity: 1}}
-                            exit={{opacity: 0}}
-                            className="text-red-500 py-3"
-                        >
-                            {checkoutError}
-                        </motion.p>
-                    </AnimatePresence>
-                )}
+            <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+                <div className="rounded-2xl border border-bb-brown-20 bg-white/90 p-5 shadow-sm">
+                    <PausedOrders />
+                    {/* <h3 className="mb-4 font-display text-xl text-bb-ink">
+                        Payment information
+                    </h3> */}
+                    {/* <PaymentElement
+                        id="payment-element"
+                        options={{
+                            layout: "tabs",
+                        }}
+                    /> */}
+                    {/* {checkoutError && (
+                        <AnimatePresence>
+                            <motion.p
+                                initial={{opacity: 0}}
+                                animate={{opacity: 1}}
+                                exit={{opacity: 0}}
+                                className="text-red-500 py-3"
+                            >
+                                {checkoutError}
+                            </motion.p>
+                        </AnimatePresence>
+                    )} */}
 
-                <Button
-                    className="my-3 border-2 text-white bg-bb-blue border-bb-blue hover:bg-bb-blue-50 hover:border-bb-blue/80 font-semibold text-lg py-6 hover:text-white w-full disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed"
-                    id="submit"
-                    type="submit"
-                    disabled={isLoading || !stripe || !elements}
-                >
-                    {isLoading
-                        ? "Order is processing..."
-                        : `Pay ${formattedPrice}`}
-                    {isLoading && (
-                        <svg
-                            className="animate-spin ml-2 h-5 w-5 text-bb-blue"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                        >
-                            <circle
-                                className="opacity-25"
-                                cx="12"
-                                cy="12"
-                                r="10"
-                                stroke="currentColor"
-                                strokeWidth="4"
-                            ></circle>
-                            <path
-                                className="opacity-75"
-                                fill="currentColor"
-                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                            ></path>
-                        </svg>
-                    )}
-                </Button>
+                    {/* <Button
+                        className="mt-4 w-full rounded-full bg-bb-brown text-white font-semibold py-6 text-lg hover:bg-bb-ink disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed"
+                        id="submit"
+                        type="submit"
+                        disabled={isLoading || !stripe || !elements}
+                    >
+                        {isLoading
+                            ? "Order is processing..."
+                            : `Pay ${formattedPrice}`}
+                        {isLoading && (
+                            <svg
+                                className="animate-spin ml-2 h-5 w-5 text-white"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                <circle
+                                    className="opacity-25"
+                                    cx="12"
+                                    cy="12"
+                                    r="10"
+                                    stroke="currentColor"
+                                    strokeWidth="4"
+                                ></circle>
+                                <path
+                                    className="opacity-75"
+                                    fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                ></path>
+                            </svg>
+                        )}
+                    </Button> */}
+                </div>
+                <div className="space-y-4">
+                    <div className="rounded-2xl border border-bb-brown-20 bg-bb-brown-10/70 p-5">
+                        <p className="mb-2 text-sm uppercase tracking-[0.2em] text-bb-blue font-semibold">
+                            Order summary
+                        </p>
+                        <div className="space-y-3 text-sm md:text-base">
+                            {cartStore.cart.map((item, idx) => (
+                                <div
+                                    key={`${item.price_id}-${idx}`}
+                                    className="flex items-center justify-between"
+                                >
+                                    <span className="text-bb-brown">
+                                        {item.quantity} × {item.title} (
+                                        {item.number})
+                                    </span>
+                                    <span className="font-semibold text-bb-ink">
+                                        {formatPrice(
+                                            item.cost! * item.quantity!,
+                                        )}
+                                    </span>
+                                </div>
+                            ))}
+                            <div className="flex items-center justify-between border-t border-bb-brown-20 pt-3 font-semibold text-bb-ink">
+                                <span>Total</span>
+                                <span>{formattedPrice}</span>
+                            </div>
+                            <p className="text-sm text-bb-brown/70">
+                                Pickup date: {cartStore.pickupDate}
+                            </p>
+                        </div>
+                    </div>
+                    <div className="rounded-2xl border border-bb-brown-20 bg-white/90 p-5 text-sm md:text-base text-bb-brown">
+                        <p className="mb-2">
+                            After checkout, we&apos;ll send a confirmation email
+                            with your order details and receipt. We&apos;ll also
+                            follow up to coordinate pickup time.
+                        </p>
+                        {/* <BakeryAddress /> */}
+                    </div>
+                </div>
             </div>
-            <div className="mb-6 text-base md:text-lg bg-blue-50 p-4 rounded-lg">
-                <p className="mb-2">
-                    <strong>Pickup Date</strong>: {cartStore.pickupDate}
-                </p>
-                <p className="mb-2">
-                    <strong>Order total</strong>: {formattedPrice}
-                </p>
-                <p className="mb-2">
-                    After order is completed, we will send you a confirmation
-                    email with the order details as well as a receipt for your
-                    payment.
-                </p>
-                <p className="">
-                    We will also send an email to arrange a pickup time.
-                </p>
-            </div>
-
-            <BakeryAddress />
         </form>
     );
 }
