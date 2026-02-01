@@ -23,11 +23,45 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-  title: "Benji Bakes - Homemade Cookies & Seasonal Treats",
-  description: "Benji Bakes offers delicious homemade cookies, including our signature Brown Butter Chocolate Chip Cookie and festive seasonal treats. Perfect for celebrations and special moments, our cookies are made with high-quality ingredients and baked fresh to order.",
-  keywords: ["homemade cookies, brown butter chocolate chip cookies, seasonal cookies, monster cookies, Benji Bakes, fresh baked cookies, best homemade cookies, celebration cookies, Halloween cookies, cookie delivery"],
+  title: "Benji Bakes - Cookies & Bakery in Rocklin + Roseville, CA",
+  description: "Benji Bakes is a local cookie bakery serving Rocklin and Roseville in Placer County, CA. Order small-batch, baked-to-order cookies for pickup, including seasonal favorites and our Brown Butter Chocolate Chip.",
+  keywords: [
+    "Rocklin bakery",
+    "Rocklin cookies",
+    "Roseville bakery",
+    "Roseville cookies",
+    "Placer County bakery",
+    "Placer County cookies",
+    "cookie pickup Rocklin",
+    "cookie pickup Roseville",
+    "homemade cookies",
+    "brown butter chocolate chip cookies",
+    "seasonal cookies",
+    "monster cookies",
+    "Benji Bakes",
+    "fresh baked cookies",
+  ],
   openGraph: {
-    images: '/logo-horizontal.png',
+    title: "Benji Bakes - Cookies & Bakery in Rocklin + Roseville, CA",
+    description: "Small-batch, baked-to-order cookies for pickup in Rocklin and Roseville, Placer County, CA.",
+    url: "https://www.benjibakes.com",
+    siteName: "Benji Bakes",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/logo-horizontal.png",
+        width: 1200,
+        height: 630,
+        alt: "Benji Bakes logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Benji Bakes - Cookies & Bakery in Rocklin + Roseville, CA",
+    description: "Small-batch, baked-to-order cookies for pickup in Rocklin and Roseville, Placer County, CA.",
+    images: ["/logo-horizontal.png"],
   },
   robots: {
     index: true,
@@ -36,25 +70,45 @@ export const metadata: Metadata = {
   icons: {
     icon: '/bb-letters.png',
   },
+  other: {
+    "geo.region": "US-CA",
+    "geo.placename": "Rocklin, Roseville, Placer County",
+  },
 };
 
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "Bakery",
+  "@type": ["Bakery", "LocalBusiness"],
   "name": "Benji Bakes",
   "url": "https://www.benjibakes.com",
-  "description": "Benji Bakes offers delicious homemade cookies, including our signature Brown Butter Chocolate Chip Cookie and festive seasonal treats like the Monster Cookie. Perfect for celebrations and special moments, our cookies are made with high-quality ingredients and baked fresh to order.",
+  "description": "Benji Bakes is a local cookie bakery serving Rocklin and Roseville in Placer County, CA. Small-batch cookies are baked to order for pickup, including the Brown Butter Chocolate Chip and seasonal favorites.",
   "logo": "https://www.benjibakes.com/logo-horizontal.png",
   "image": "https://www.benjibakes.com/cookie-stack-crop.png",
   "priceRange": "$",
   "servesCuisine": "Bakery",
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "4535 Mountaingate Dr.",
     "addressLocality": "Rocklin",
     "addressRegion": "CA",
     "postalCode": "95765",
     "addressCountry": "US"
   },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Rocklin"
+    },
+    {
+      "@type": "City",
+      "name": "Roseville"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "Placer County"
+    }
+  ],
+  "hasMap": "https://www.google.com/maps/place/4535+Mountaingate+Dr,+Rocklin,+CA+95765",
   "sameAs": [
     "https://www.instagram.com/benjibakescookies",
   ],

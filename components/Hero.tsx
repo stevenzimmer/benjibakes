@@ -32,15 +32,15 @@ export default function Hero() {
             <div className="relative grid gap-4 lg:gap-10 lg:grid-cols-[1.05fr_0.95fr]">
                 <div>
                     <div className="inline-flex items-center gap-2 rounded-full bg-bb-brown-10 px-4 py-2 text-xs md:text-sm font-semibold text-bb-brown">
-                        <Sparkles size={16} /> Rocklin, CA • Baked to order
+                        <Sparkles size={16} />Seasonal treats • Baked to order • Rocklin / Roseville, Ca
                     </div>
                     <h1 className="mt-6 font-display text-4xl md:text-6xl leading-tight text-bb-ink">
                         Small-batch cookies with big, buttery flavor.
                     </h1>
                     <p className="mt-4 text-lg md:text-xl text-bb-brown/80 max-w-xl">
-                        Benji Bakes is your local cookie counter for seasonal
-                        favorites and crowd-pleasers. Order online and pick up
-                        fresh treats the same week.
+                        Benji Bakes is your local cookie counter in Rocklin and
+                        Roseville for seasonal favorites and crowd-pleasers.
+                        Order online and pick up fresh treats the same week.
                     </p>
                     <div className="mt-8 flex flex-wrap gap-4">
                         <button
