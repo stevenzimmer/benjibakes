@@ -1,22 +1,22 @@
-import {redirect} from "next/navigation";
-import {stripe} from "@/utils/stripe";
+import { redirect } from "next/navigation";
+import { stripe } from "@/utils/stripe";
 import SuccessPageTemplate from "@/components/SuccessPageTemplate";
 export default async function SuccessPage({
-    searchParams: {id, pay_later},
+  searchParams: { id, pay_later },
 }: {
-    searchParams: {id: string; pay_later: string};
+  searchParams: { id: string; pay_later: string };
 }) {
-    if (!id && !pay_later) {
-        redirect("/");
-    }
+  if (!id && !pay_later) {
+    redirect("/");
+  }
 
-    const payment = id ? await stripe.paymentIntents.retrieve(id) : null;
+  const payment = id ? await stripe.paymentIntents.retrieve(id) : null;
 
-    const charge = payment
-        ? await stripe.charges.retrieve(payment.latest_charge as string)
-        : null;
+  const charge = payment
+    ? await stripe.charges.retrieve(payment.latest_charge as string)
+    : null;
 
-    const serializedCharge = charge ? JSON.stringify(charge) : null;
+  const serializedCharge = charge ? JSON.stringify(charge) : null;
 
-    return <SuccessPageTemplate serializedCharge={serializedCharge} />;
+  return <SuccessPageTemplate serializedCharge={serializedCharge} />;
 }

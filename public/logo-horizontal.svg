@@ -1,0 +1,43 @@
+<svg width="1200" height="320" viewBox="0 0 1200 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Benji Bakes logo</title>
+  <desc id="desc">Wordmark in warm brown and teal with a golden cookie icon.</desc>
+  <defs>
+    <mask id="cookie-bite">
+      <rect width="1200" height="320" fill="white" />
+      <circle cx="1100" cy="86" r="28" fill="black" />
+      <circle cx="1132" cy="112" r="22" fill="black" />
+      <circle cx="1088" cy="128" r="20" fill="black" />
+    </mask>
+  </defs>
+
+  <text
+    x="40"
+    y="205"
+    font-family="Fraunces, 'Times New Roman', serif"
+    font-size="150"
+    font-weight="700"
+    letter-spacing="6"
+  >
+    <tspan fill="#3B2417">BENJI</tspan>
+    <tspan dx="22" fill="#2C7A7B">BAKES</tspan>
+  </text>
+
+  <path
+    d="M60 255 C 220 285, 420 285, 580 255"
+    stroke="#E2A45A"
+    stroke-width="10"
+    stroke-linecap="round"
+  />
+
+  <g mask="url(#cookie-bite)">
+    <circle cx="1080" cy="175" r="92" fill="#E2A45A" stroke="#3B2417" stroke-width="8" />
+  </g>
+
+  <circle cx="1046" cy="152" r="10" fill="#3B2417" />
+  <circle cx="1078" cy="188" r="12" fill="#3B2417" />
+  <circle cx="1114" cy="160" r="9" fill="#3B2417" />
+  <circle cx="1064" cy="214" r="8" fill="#3B2417" />
+  <circle cx="1098" cy="132" r="6" fill="#F9F1E7" />
+  <circle cx="1126" cy="198" r="6" fill="#F7C9B3" />
+  <circle cx="1032" cy="196" r="5" fill="#2C7A7B" />
+</svg>

@@ -1,25 +1,25 @@
-import {NextResponse} from "next/server";
-import {NextApiResponse} from "next";
+import { NextResponse } from "next/server";
+import { NextApiResponse } from "next";
 
-import {sendEmail} from "@/utils/sendEmail";
-import {AddCartType} from "@/types/Cart";
-import {calculateOrderAmount} from "@/utils/calculateOrderAmount";
+import { sendEmail } from "@/utils/sendEmail";
+import { AddCartType } from "@/types/Cart";
+import { calculateOrderAmount } from "@/utils/calculateOrderAmount";
 import formatPrice from "@/utils/formatPrice";
 export async function POST(req: Request, res: NextApiResponse) {
-    const {cart, email, pickupDate, name} = await req.json();
+  const { cart, email, pickupDate, name } = await req.json();
 
-    const cartItems = cart.reduce((str: string, item: AddCartType) => {
-        return (
-            str +
-            `<li>${item.quantity} order${item.quantity! > 1 ? "s" : ""} of (${
-                item.number
-            }) ${item.title}</li>`
-        );
-    }, "");
+  const cartItems = cart.reduce((str: string, item: AddCartType) => {
+    return (
+      str +
+      `<li>${item.quantity} order${item.quantity! > 1 ? "s" : ""} of (${
+        item.number
+      }) ${item.title}</li>`
+    );
+  }, "");
 
-    const total = calculateOrderAmount(cart);
+  const total = calculateOrderAmount(cart);
 
-    const htmlStore = `
+  const htmlStore = `
         <h1>Order Summary</h1>
         <ul>
             ${cartItems}
@@ -30,7 +30,7 @@ export async function POST(req: Request, res: NextApiResponse) {
         <p>Amount due on pickup: ${formatPrice(total)}</p>
     `;
 
-    const htmlCustomer = `
+  const htmlCustomer = `
         <h1>Thank you for your order!</h1>
         <ul>
             ${cartItems}
@@ -48,35 +48,35 @@ export async function POST(req: Request, res: NextApiResponse) {
         <p>Thank you for choosing Benji Bakes!</p>
     `;
 
-    try {
-        // Send email to the store
-        const {result} = await sendEmail({
-            to: process.env.SMTP_ORDER_EMAIL!,
-            subject: `Pay on pickup Order from ${name}`,
-            body: htmlStore,
-        });
+  try {
+    // Send email to the store
+    const { result } = await sendEmail({
+      to: process.env.SMTP_ORDER_EMAIL!,
+      subject: `Pay on pickup Order from ${name}`,
+      body: htmlStore,
+    });
 
-        // Send email to the customer
-        const {result: resultCustomer} = await sendEmail({
-            to: email,
-            subject: `Benji Bakes order`,
-            body: htmlCustomer,
-        });
+    // Send email to the customer
+    const { result: resultCustomer } = await sendEmail({
+      to: email,
+      subject: `Benji Bakes order`,
+      body: htmlCustomer,
+    });
 
-        return NextResponse.json(
-            {result, resultCustomer},
-            {
-                status: 200,
-            }
-        );
-    } catch (error) {
-        return NextResponse.json(
-            {
-                error: error instanceof Error && error.message,
-            },
-            {
-                status: 500,
-            }
-        );
-    }
+    return NextResponse.json(
+      { result, resultCustomer },
+      {
+        status: 200,
+      },
+    );
+  } catch (error) {
+    return NextResponse.json(
+      {
+        error: error instanceof Error && error.message,
+      },
+      {
+        status: 500,
+      },
+    );
+  }
 }
