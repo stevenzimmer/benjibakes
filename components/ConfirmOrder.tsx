@@ -109,7 +109,7 @@ export default function ConfirmOrder() {
                         </div>
                     )}
                     <div className="sticky bottom-0 left-0 right-0 ">
-                        <Button
+                        {/* <Button
                             onClick={handleOrderSend}
                             className="rounded-full bg-bb-brown text-white font-semibold text-lg py-6 hover:bg-bb-ink w-full disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed"
                             title="Send order"
@@ -141,7 +141,7 @@ export default function ConfirmOrder() {
                                     ></path>
                                 </svg>
                             )}
-                        </Button>
+                        </Button> */}
                     </div>
                 </>
             ) : (
