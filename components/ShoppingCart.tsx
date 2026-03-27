@@ -1,46 +1,46 @@
-import {useCartStore} from "@/store";
+import { useCartStore } from "@/store";
 import CartItem from "./CartItem";
 import formatPrice from "@/utils/formatPrice";
 
-import {useContext} from "react";
+import { useContext } from "react";
 import ThemeContext from "@/context/ThemeContext";
-import {Button} from "@/components/ui/button";
-import {ArrowRight} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 export default function ShoppingCart() {
-    const cartStore = useCartStore();
-    const {setCheckoutState} = useContext(ThemeContext);
-    const totalPrice = cartStore.cart.reduce((acc, item) => {
-        return acc + item.cost! * item.quantity!;
-    }, 0);
-    const handleSelectPickupDate = () => {
-        setCheckoutState("customerDetails");
-    };
-    return (
-        <>
-            <div className="mb-6 rounded-2xl border border-bb-brown-20 bg-white/90 p-4 shadow-sm">
-                {cartStore.cart.map((item, i) => {
-                    return <CartItem key={i} item={item} />;
-                })}
-            </div>
-            <div className="flex items-center justify-between flex-wrap gap-4 rounded-2xl border border-bb-brown-20 bg-bb-brown-10/70 p-5">
-                <p className="font-semibold text-xl text-bb-ink">
-                    Order Total: {formatPrice(totalPrice)}
-                </p>
-            </div>
-            <div className="sticky bottom-0 right-0 flex justify-end mt-6">
-                <Button
-                    className="disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed group text-white hover:text-white font-semibold py-6 text-base md:text-lg flex justify-end bg-bb-brown hover:bg-bb-ink shadow-lg rounded-full px-8"
-                    variant="ghost"
-                    onClick={handleSelectPickupDate}
-                >
-                    Provide customer details{" "}
-                    <ArrowRight
-                        className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
-                        size={16}
-                    />
-                </Button>
-            </div>
-        </>
-    );
+  const cartStore = useCartStore();
+  const { setCheckoutState } = useContext(ThemeContext);
+  const totalPrice = cartStore.cart.reduce((acc, item) => {
+    return acc + item.cost! * item.quantity!;
+  }, 0);
+  const handleSelectPickupDate = () => {
+    setCheckoutState("customerDetails");
+  };
+  return (
+    <>
+      <div className="mb-6 rounded-2xl border border-bb-brown-20 bg-white/90 p-4 shadow-sm">
+        {cartStore.cart.map((item, i) => {
+          return <CartItem key={i} item={item} />;
+        })}
+      </div>
+      <div className="flex items-center justify-between flex-wrap gap-4 rounded-2xl border border-bb-brown-20 bg-bb-brown-10/70 p-5">
+        <p className="font-semibold text-xl text-bb-ink">
+          Order Total: {formatPrice(totalPrice)}
+        </p>
+      </div>
+      <div className="sticky bottom-0 right-0 flex justify-end mt-6">
+        <Button
+          className="disabled:bg-slate-100 disabled:text-slate-400 disabled:cursor-not-allowed group text-white hover:text-white font-semibold py-6 text-base md:text-lg flex justify-end bg-bb-brown hover:bg-bb-ink shadow-lg rounded-full px-8"
+          variant="ghost"
+          onClick={handleSelectPickupDate}
+        >
+          Provide customer details{" "}
+          <ArrowRight
+            className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
+            size={16}
+          />
+        </Button>
+      </div>
+    </>
+  );
 }
